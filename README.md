@@ -1,7 +1,7 @@
 # rrthozopsi
 
 [![license-img][]] [license-file]
-[![travis-ci-img][]] [travis-ci]
+[![travis-image][]] [travis-link]
 
 ## Overview
 
