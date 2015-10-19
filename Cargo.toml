@@ -1,0 +1,13 @@
+[package]
+name = "rrthozopsi"
+version = "0.0.1"
+authors = ["DarkEld3r <stanislav.tkach@gmail.com>"]
+description = "Experimental game"
+readme = "README.md"
+license = "MIT"
+keywords = ["game", "piston"]
+repository = "https://github.com/DarkEld3r/rrthozopsi"
+
+[[bin]]
+name = "rrthozopsi"
+path = "main/main.rs"
