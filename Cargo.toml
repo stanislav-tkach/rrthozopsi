@@ -13,4 +13,4 @@ name = "rrthozopsi"
 path = "main/main.rs"
 
 [dependencies]
-piston = "*"
+sdl2 = "*"

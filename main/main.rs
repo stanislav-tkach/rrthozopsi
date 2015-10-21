@@ -1,12 +1,14 @@
 //extern crate opengl_graphics;
+//extern crate glutin_window;
+//extern crate piston;
 
 fn main()
 {
-	/*
-    let opengl = opengl_graphics::OpenGL::_3_2;
+/*
+    let opengl = opengl_graphics::OpenGL::OpenGL_3_2;
 
-    let window: GlutinWindow =
-        WindowSettings::new("Test", [1024, 600])
+    let window: glutin_window::GlutinWindow =
+        piston::window::WindowSettings::new("Test", [1024, 600])
             .exit_on_esc(true)
             .opengl(opengl)
             .samples(8)
@@ -20,5 +22,5 @@ fn main()
             _ => {}
         }
     }
-	*/
+*/
 }
