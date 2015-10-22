@@ -1,26 +1,37 @@
-//extern crate opengl_graphics;
-//extern crate glutin_window;
-//extern crate piston;
+extern crate sdl2;
+
+use sdl2::pixels::Color;
+use sdl2::event::Event;
+use sdl2::keyboard::Keycode;
 
 fn main()
 {
-/*
-    let opengl = opengl_graphics::OpenGL::OpenGL_3_2;
+	let sdl_context = sdl2::init().unwrap();
+    let video_subsystem = sdl_context.video().unwrap();
 
-    let window: glutin_window::GlutinWindow =
-        piston::window::WindowSettings::new("Test", [1024, 600])
-            .exit_on_esc(true)
-            .opengl(opengl)
-            .samples(8)
-            .into();
+    let window = video_subsystem.window("rust-sdl2 demo: Video", 800, 600)
+        .position_centered()
+        .opengl()
+        .build()
+        .unwrap();
 
-    let mut gl = opengl_graphics::GlGraphics::new(opengl);
+    let mut renderer = window.renderer().build().unwrap();
 
-    // Event handling
-    for e in window.events().ups(60).max_fps(60) {
-        match e {
-            _ => {}
+    renderer.set_draw_color(Color::RGB(255, 0, 0));
+    renderer.clear();
+    renderer.present();
+
+    let mut event_pump = sdl_context.event_pump().unwrap();
+
+    'running: loop {
+        for event in event_pump.poll_iter() {
+            match event {
+                Event::Quit {..} | Event::KeyDown { keycode: Some(Keycode::Escape), .. } => {
+                    break 'running
+                },
+                _ => {}
+            }
         }
+        // The rest of the game loop goes here...
     }
-*/
 }
