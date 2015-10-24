@@ -5,3 +5,5 @@ Cargo.lock
 # Files for redirecting output of the corresponding git command.
 _diff
 _status
+# Win DLL.
+SDL2.dll
