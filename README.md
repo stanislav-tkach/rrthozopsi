@@ -9,6 +9,10 @@ Simple experimental game.
 
 ## Building
 
+### Instal SDL2
+https://github.com/AngryLawyer/rust-sdl2
+
+### Build
 ```sh
 git clone https://github.com/DarkEld3r/rrthozopsi
 cd rrthozopsi

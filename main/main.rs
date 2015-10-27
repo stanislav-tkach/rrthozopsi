@@ -6,10 +6,10 @@ use sdl2::keyboard::Keycode;
 
 fn main()
 {
-	let sdl_context = sdl2::init().unwrap();
-    let video_subsystem = sdl_context.video().unwrap();
+    let context = sdl2::init().unwrap();
+    let video = context.video().unwrap();
 
-    let window = video_subsystem.window("rust-sdl2 demo: Video", 800, 600)
+    let window = video.window("rrthozopsi", 800, 600)
         .position_centered()
         .opengl()
         .build()
@@ -21,7 +21,7 @@ fn main()
     renderer.clear();
     renderer.present();
 
-    let mut event_pump = sdl_context.event_pump().unwrap();
+    let mut event_pump = context.event_pump().unwrap();
 
     'running: loop {
         for event in event_pump.poll_iter() {
@@ -32,6 +32,5 @@ fn main()
                 _ => {}
             }
         }
-        // The rest of the game loop goes here...
     }
 }
