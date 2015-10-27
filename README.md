@@ -11,6 +11,7 @@ Simple experimental game.
 
 ### Instal SDL2
 Follow instructions in the README file:
+
 https://github.com/AngryLawyer/rust-sdl2
 
 ### Build
