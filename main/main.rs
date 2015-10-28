@@ -1,6 +1,5 @@
 extern crate sdl2;
 
-use sdl2::pixels::Color;
 use sdl2::event::Event;
 use sdl2::keyboard::Keycode;
 
@@ -17,7 +16,7 @@ fn main()
 
     let mut renderer = window.renderer().build().unwrap();
 
-    renderer.set_draw_color(Color::RGB(255, 0, 0));
+    renderer.set_draw_color(sdl2::pixels::Color::RGB(0, 0, 0));
     renderer.clear();
     renderer.present();
 
@@ -28,6 +27,11 @@ fn main()
             match event {
                 Event::Quit {..} | Event::KeyDown { keycode: Some(Keycode::Escape), .. } => {
                     break 'running
+                },
+                Event::KeyDown {..} => {
+                    renderer.set_draw_color(sdl2::pixels::Color::RGB(255, 0, 0));
+                    renderer.clear();
+                    renderer.present();
                 },
                 _ => {}
             }
