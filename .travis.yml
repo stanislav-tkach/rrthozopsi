@@ -1,12 +1,18 @@
+# sudo: false
 language: rust
 rust:
   - stable
   - beta
   - nightly
+matrix:
+  allow_failures:
+    - rust: nightly
 install:
   - sudo add-apt-repository ppa:team-xbmc/ppa -y
   - sudo apt-get update -q
   - sudo apt-get install libsdl2-dev
-matrix:
-  allow_failures:
-    - rust: nightly
+after_success:
+  - travis-cargo coveralls --no-sudo
+notifications:
+  email:
+    on_success: never
