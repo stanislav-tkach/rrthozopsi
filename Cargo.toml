@@ -2,11 +2,12 @@
 name = "rrthozopsi"
 version = "0.0.1"
 authors = ["DarkEld3r <stanislav.tkach@gmail.com>"]
-description = "Experimental game"
-readme = "README.md"
+repository = "https://github.com/DarkEld3r/rrthozopsi.git"
+homepage = "https://github.com/DarkEld3r/rrthozopsi.git"
 license = "MIT"
-keywords = ["game", "piston"]
-repository = "https://github.com/DarkEld3r/rrthozopsi"
+readme = "README.md"
+description = "Experimental game"
+keywords = ["game", "sdl2"]
 
 [[bin]]
 name = "rrthozopsi"
