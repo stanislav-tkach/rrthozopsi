@@ -1,17 +1,5 @@
 extern crate sdl2;
 
-use sdl2::event::Event;
-use sdl2::keyboard::Keycode;
-
-pub enum ViewAction {
-    None,
-    Quit,
-}
-
-pub trait View {
-    fn render(&mut self, elapsed: f64) -> ViewAction;
-}
-
 fn main()
 {
     let context = sdl2::init().unwrap();
