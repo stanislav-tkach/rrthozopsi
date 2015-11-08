@@ -17,6 +17,10 @@ fn main()
     let mut renderer = window.renderer().build().unwrap();
     let mut event_pump = context.event_pump().unwrap();
 
+    let mut timer = context.timer().unwrap();
+    let mut frames = 0;
+    let mut start_time = timer.ticks();
+
     'running: loop {
         for event in event_pump.poll_iter() {
             match event {
@@ -30,6 +34,17 @@ fn main()
                 },
                 _ => {}
             }
+        }
+
+        frames += 1;
+
+        let current_time = timer.ticks();
+        let diff_time = current_time - start_time;
+        if diff_time > 250
+        {
+            println!("PFS: {}", frames / diff_time);
+            start_time = current_time;
+            frames = 0;
         }
     }
 }
