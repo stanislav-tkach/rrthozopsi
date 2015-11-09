@@ -42,7 +42,7 @@ fn main()
         let diff_time = current_time - start_time;
         if diff_time > 250
         {
-            println!("PFS: {}", frames / diff_time);
+            println!("FPS: {}", frames / diff_time);
             start_time = current_time;
             frames = 0;
         }
