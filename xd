@@ -1,0 +1,47 @@
+[1mdiff --git a/main/main.rs b/main/main.rs[m
+[1mindex 4595c9c..8749c42 100644[m
+[1m--- a/main/main.rs[m
+[1m+++ b/main/main.rs[m
+[36m@@ -3,8 +3,7 @@[m [mextern crate sdl2;[m
+ use sdl2::event::Event;[m
+ use sdl2::keyboard::Keycode;[m
+ [m
+[31m-fn main()[m
+[31m-{[m
+[32m+[m[32mfn main() {[m
+     let context = sdl2::init().unwrap();[m
+     let video = context.video().unwrap();[m
+ [m
+[36m@@ -22,15 +21,6 @@[m [mfn main()[m
+     let mut start_time = timer.ticks();[m
+ [m
+     'running: loop {[m
+[31m-        for event in event_pump.poll_iter() {[m
+[31m-            match event {[m
+[31m-                Event::Quit {..} | Event::KeyDown { keycode: Some(Keycode::Escape), .. } => {[m
+[31m-                    break 'running[m
+[31m-                },[m
+[31m-                _ => {}[m
+[31m-            }[m
+[31m-        }[m
+[31m-[m
+         renderer.set_draw_color(sdl2::pixels::Color::RGB(255, 0, 0));[m
+         renderer.clear();[m
+         renderer.present();[m
+[36m@@ -45,5 +35,14 @@[m [mfn main()[m
+             start_time = current_time;[m
+             frames = 0;[m
+         }[m
+[32m+[m
+[32m+[m[32m        for event in event_pump.poll_iter() {[m
+[32m+[m[32m            match event {[m
+[32m+[m[32m                Event::Quit {..} | Event::KeyDown { keycode: Some(Keycode::Escape), .. } => {[m
+[32m+[m[32m                    break 'running[m
+[32m+[m[32m                },[m
+[32m+[m[32m                _ => {}[m
+[32m+[m[32m            }[m
+[32m+[m[32m        }[m
+     }[m
+ }[m
+warning: LF will be replaced by CRLF in main/main.rs.
+The file will have its original line endings in your working directory.
