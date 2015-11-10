@@ -27,14 +27,13 @@ fn main()
                 Event::Quit {..} | Event::KeyDown { keycode: Some(Keycode::Escape), .. } => {
                     break 'running
                 },
-                Event::KeyDown {..} => {
-                    renderer.set_draw_color(sdl2::pixels::Color::RGB(255, 0, 0));
-                    renderer.clear();
-                    renderer.present();
-                },
                 _ => {}
             }
         }
+
+        renderer.set_draw_color(sdl2::pixels::Color::RGB(255, 0, 0));
+        renderer.clear();
+        renderer.present();
 
         frames += 1;
 
