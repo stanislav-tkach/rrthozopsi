@@ -17,7 +17,7 @@ fn main() {
     let mut event_pump = context.event_pump().unwrap();
 
     let mut timer = context.timer().unwrap();
-    let mut frames = 0;
+    let mut fps = 0;
     let mut start_time = timer.ticks();
 
     'running: loop {
@@ -34,15 +34,15 @@ fn main() {
         renderer.clear();
         renderer.present();
 
-        frames += 1;
+        fps += 1;
 
         let current_time = timer.ticks();
         let diff_time = current_time - start_time;
-        if diff_time > 250
+        if diff_time > 1_000
         {
-            println!("FPS: {}", frames / diff_time);
+            println!("FPS: {}", fps);
             start_time = current_time;
-            frames = 0;
+            fps = 0;
         }
     }
 }
