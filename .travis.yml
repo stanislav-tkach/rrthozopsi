@@ -1,4 +1,4 @@
-# sudo: false
+sudo: false
 language: rust
 rust:
   - stable
@@ -7,10 +7,6 @@ rust:
 matrix:
   allow_failures:
     - rust: nightly
-install:
-  - sudo add-apt-repository ppa:team-xbmc/ppa -y
-  - sudo apt-get update -q
-  - sudo apt-get install libsdl2-dev
 notifications:
   email:
     on_success: never
