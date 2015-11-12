@@ -7,11 +7,11 @@ homepage = "https://github.com/DarkEld3r/rrthozopsi.git"
 license = "MIT"
 readme = "README.md"
 description = "Experimental game"
-keywords = ["game", "sdl2"]
+keywords = ["game", "piston"]
 
 [[bin]]
 name = "rrthozopsi"
 path = "main/main.rs"
 
 [dependencies]
-sdl2 = "*"
+piston_window = "*"
