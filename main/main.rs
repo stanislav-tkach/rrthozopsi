@@ -38,8 +38,7 @@ fn main() {
 
         let current_time = timer.ticks();
         let diff_time = current_time - start_time;
-        if diff_time > 1_000
-        {
+        if diff_time > 1_000 {
             println!("FPS: {}", fps);
             start_time = current_time;
             fps = 0;
