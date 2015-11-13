@@ -5,6 +5,7 @@ fn main() {
         .exit_on_esc(true)
         .build()
         .unwrap();
+
     for _e in window {
         break;
     }
