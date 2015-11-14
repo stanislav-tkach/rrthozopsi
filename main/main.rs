@@ -7,6 +7,5 @@ fn main() {
         .unwrap();
 
     for _e in window {
-        break;
     }
 }
