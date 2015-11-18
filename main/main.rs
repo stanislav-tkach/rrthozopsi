@@ -6,6 +6,8 @@ use piston_window as pw;
 
 struct Game {
     rotation: f64,
+	x: f64,
+	y: f64,
 	up: bool,
 	down: bool,
 	left: bool,
@@ -14,11 +16,24 @@ struct Game {
 
 impl Game {
     fn new() -> Game {
-        Game { rotation: 0.0, up: false, down: false, left: false, right: false }
+        Game { rotation: 0.0, x: 0., y: 0., up: false, down: false, left: false, right: false }
     }
 
     fn on_update(&mut self, args: &pw::UpdateArgs) {
         self.rotation += 3.0 * args.dt;
+
+		if self.up {
+			self.y += -50.0 * args.dt;
+		}
+		if self.down {
+			self.y += 50.0 * args.dt;
+		}
+		if self.left {
+			self.x += -50.0 * args.dt;
+		}
+		if self.right {
+			self.x += 50.0 * args.dt;
+		}
     }
 
     fn on_draw(&mut self, args: &pw::RenderArgs, window: &pw::PistonWindow) {
