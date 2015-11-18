@@ -43,7 +43,7 @@ impl Game {
             let red = [1.0, 0.0, 0.0, 1.0];
             let square = pw::rectangle::square(0.0, 0.0, 100.0);
             let center = context.transform.trans((args.width / 2) as f64, (args.height / 2) as f64);
-            pw::rectangle(red, square, center.rot_rad(self.rotation).trans(-50.0, -50.0), graphics);
+            pw::rectangle(red, square, center.trans(self.x, self.y).rot_rad(self.rotation).trans(-50.0, -50.0), graphics);
         });
     }
 
