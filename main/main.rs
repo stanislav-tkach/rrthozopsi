@@ -5,12 +5,16 @@ use piston_window::Transformed;
 use piston_window as pw;
 
 struct Game {
-    rotation: f64
+    rotation: f64,
+	up: bool,
+	down: bool,
+	left: bool,
+	right: bool,
 }
 
 impl Game {
     fn new() -> Game {
-        Game { rotation : 0.0 }
+        Game { rotation: 0.0, up: false, down: false, left: false, right: false }
     }
 
     fn on_update(&mut self, args: &pw::UpdateArgs) {
@@ -27,6 +31,9 @@ impl Game {
             pw::rectangle(red, square, center.rot_rad(self.rotation).trans(-50.0, -50.0), graphics);
         });
     }
+
+	fn on_input(&mut self, input: &pw::Input) {
+	}
 }
 
 fn main() {
@@ -41,6 +48,7 @@ fn main() {
 		match w.event {
 			Some(pw::Event::Update(args)) => { game.on_update(&args); }
 			Some(pw::Event::Render(args)) => { game.on_draw(&args, &w); }
+			Some(pw::Event::Input(input)) => { game.on_input(&input); }
 			_ => {}
 		}
     }
