@@ -33,6 +33,27 @@ impl Game {
     }
 
 	fn on_input(&mut self, input: &pw::Input) {
+		match input {
+			&pw::Input::Press(button) => {
+				match button {
+					pw::Button::Keyboard(pw::Key::Up) => { self.up = true; }
+					pw::Button::Keyboard(pw::Key::Down) => { self.down = true; }
+					pw::Button::Keyboard(pw::Key::Left) => { self.left = true; }
+					pw::Button::Keyboard(pw::Key::Right) => { self.right = true; }
+					_ => {}
+				}
+			}
+			&pw::Input::Release(button) => {
+				match button {
+					pw::Button::Keyboard(pw::Key::Up) => { self.up = false; }
+					pw::Button::Keyboard(pw::Key::Down) => { self.down = false; }
+					pw::Button::Keyboard(pw::Key::Left) => { self.left = false; }
+					pw::Button::Keyboard(pw::Key::Right) => { self.right = false; }
+					_ => {}
+				}
+			}
+			_ => {}
+		}
 	}
 }
 
