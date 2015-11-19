@@ -48,22 +48,24 @@ impl Game {
     }
 
 	fn on_input(&mut self, input: &pw::Input) {
+		use piston_window::{Button, Key};
+
 		match input {
 			&pw::Input::Press(button) => {
 				match button {
-					pw::Button::Keyboard(pw::Key::Up) => { self.up = true; }
-					pw::Button::Keyboard(pw::Key::Down) => { self.down = true; }
-					pw::Button::Keyboard(pw::Key::Left) => { self.left = true; }
-					pw::Button::Keyboard(pw::Key::Right) => { self.right = true; }
+					Button::Keyboard(Key::Up) => { self.up = true; }
+					Button::Keyboard(Key::Down) => { self.down = true; }
+					Button::Keyboard(Key::Left) => { self.left = true; }
+					Button::Keyboard(Key::Right) => { self.right = true; }
 					_ => {}
 				}
 			}
 			&pw::Input::Release(button) => {
 				match button {
-					pw::Button::Keyboard(pw::Key::Up) => { self.up = false; }
-					pw::Button::Keyboard(pw::Key::Down) => { self.down = false; }
-					pw::Button::Keyboard(pw::Key::Left) => { self.left = false; }
-					pw::Button::Keyboard(pw::Key::Right) => { self.right = false; }
+					Button::Keyboard(Key::Up) => { self.up = false; }
+					Button::Keyboard(Key::Down) => { self.down = false; }
+					Button::Keyboard(Key::Left) => { self.left = false; }
+					Button::Keyboard(Key::Right) => { self.right = false; }
 					_ => {}
 				}
 			}
@@ -73,6 +75,8 @@ impl Game {
 }
 
 fn main() {
+	use piston_window::Event;
+
     let window: pw::PistonWindow = pw::WindowSettings::new("rrthozopsi", [600, 600])
         .exit_on_esc(true)
         .build()
@@ -82,9 +86,9 @@ fn main() {
 
     for w in window {
 		match w.event {
-			Some(pw::Event::Update(args)) => { game.on_update(&args); }
-			Some(pw::Event::Render(args)) => { game.on_draw(&args, &w); }
-			Some(pw::Event::Input(input)) => { game.on_input(&input); }
+			Some(Event::Update(args)) => { game.on_update(&args); }
+			Some(Event::Render(args)) => { game.on_draw(&args, &w); }
+			Some(Event::Input(input)) => { game.on_input(&input); }
 			_ => {}
 		}
     }
