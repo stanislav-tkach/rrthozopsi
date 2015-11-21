@@ -15,3 +15,5 @@ path = "main/main.rs"
 
 [dependencies]
 piston_window = "*"
+gfx_device_gl = "*"
+piston2d-gfx_graphics = "*"

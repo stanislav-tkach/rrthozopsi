@@ -1,13 +1,17 @@
 extern crate piston_window;
+extern crate gfx_device_gl;
+extern crate gfx_graphics;
 
 use piston_window::Transformed;
 
 use piston_window as pw;
 
+mod object;
+use object::Object;
+
 struct Game {
     rotation: f64,
-    x: f64,
-    y: f64,
+    player: Object,
     up: bool,
     down: bool,
     left: bool,
@@ -16,34 +20,24 @@ struct Game {
 
 impl Game {
     fn new() -> Game {
-        Game { rotation: 0.0, x: 0., y: 0., up: false, down: false, left: false, right: false }
+        Game { rotation: 0.0, player: Object::new(), up: false, down: false, left: false, right: false }
     }
 
     fn on_update(&mut self, args: &pw::UpdateArgs) {
         self.rotation += 3.0 * args.dt;
 
-        if self.up {
-            self.y += -50.0 * args.dt;
-        }
-        if self.down {
-            self.y += 50.0 * args.dt;
-        }
-        if self.left {
-            self.x += -50.0 * args.dt;
-        }
-        if self.right {
-            self.x += 50.0 * args.dt;
-        }
+        if self.up   { self.player.mov(0.0, -150.0 * args.dt); }
+        if self.down { self.player.mov(0.0, 150.0 * args.dt); }
+        if self.left { self.player.mov(-150.0 * args.dt, 0.0); }
+        if self.right { self.player.mov(150.0 * args.dt, 0.0); }
     }
 
     fn on_draw(&mut self, args: &pw::RenderArgs, window: &pw::PistonWindow) {
         window.draw_2d(|context, graphics| {
             pw::clear([0.0, 0.0, 0.0, 1.0], graphics);
 
-            let red = [1.0, 0.0, 0.0, 1.0];
-            let square = pw::rectangle::square(0.0, 0.0, 100.0);
             let center = context.transform.trans((args.width / 2) as f64, (args.height / 2) as f64);
-            pw::rectangle(red, square, center.trans(self.x, self.y).rot_rad(self.rotation).trans(-50.0, -50.0), graphics);
+            self.player.render(graphics, &center);
         });
     }
 
