@@ -1,6 +1,7 @@
 extern crate piston_window;
 extern crate gfx_device_gl;
 extern crate gfx_graphics;
+extern crate find_folder;
 
 use piston_window::Transformed;
 
