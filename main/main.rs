@@ -10,7 +10,6 @@ mod object;
 use object::Object;
 
 struct Game {
-    rotation: f64,
     player: Object,
     up: bool,
     down: bool,
@@ -20,12 +19,10 @@ struct Game {
 
 impl Game {
     fn new() -> Game {
-        Game { rotation: 0.0, player: Object::new(), up: false, down: false, left: false, right: false }
+        Game { player: Object::new(), up: false, down: false, left: false, right: false }
     }
 
     fn on_update(&mut self, args: &pw::UpdateArgs) {
-        self.rotation += 3.0 * args.dt;
-
         if self.up   { self.player.mov(0.0, -150.0 * args.dt); }
         if self.down { self.player.mov(0.0, 150.0 * args.dt); }
         if self.left { self.player.mov(-150.0 * args.dt, 0.0); }
