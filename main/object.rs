@@ -6,11 +6,12 @@ use piston_window::Transformed;
 pub struct Object {
     x: f64,
     y: f64,
+    sprite: Option<piston_window::Texture<Resources>>,
 }
 
 impl Object {
     pub fn new() -> Object {
-        Object { x: 0., y: 0. }
+        Object { x: 0., y: 0., sprite: None }
     }
 
     pub fn mov(&mut self, x: f64, y: f64) {
