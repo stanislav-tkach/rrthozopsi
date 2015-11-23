@@ -24,11 +24,11 @@ impl Object {
         self.y = y;
     }
 
-    pub fn set_sprite(&mut self, sprite: Texture<Resources>) {
+    pub fn set_sprite(&mut self, sprite: piston_window::Texture<Resources>) {
         self.sprite = Some(sprite);
     }
 
-    pub fn render(&self, graphic: &mut GfxGraphics<Resources, CommandBuffer<Resources>, Output>, view: &piston_window::math::Matrix2d) {\
+    pub fn render(&self, graphic: &mut GfxGraphics<Resources, CommandBuffer<Resources>, Output>, view: &piston_window::math::Matrix2d) {
         match self.sprite {
             None => {
                 let red = [1.0, 0.0, 0.0, 1.0];
