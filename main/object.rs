@@ -24,9 +24,20 @@ impl Object {
         self.y = y;
     }
 
-    pub fn render(&self, graphic: &mut GfxGraphics<Resources, CommandBuffer<Resources>, Output>, view: &piston_window::math::Matrix2d) {
-        let red = [1.0, 0.0, 0.0, 1.0];
-        let square = piston_window::rectangle::square(0.0, 0.0, 100.0);
-        piston_window::rectangle(red, square, view.trans(self.x, self.y).trans(-50.0, -50.0), graphic);
+    pub fn set_sprite(&mut self, sprite: Texture<Resources>) {
+        self.sprite = Some(sprite);
+    }
+
+    pub fn render(&self, graphic: &mut GfxGraphics<Resources, CommandBuffer<Resources>, Output>, view: &piston_window::math::Matrix2d) {\
+        match self.sprite {
+            None => {
+                let red = [1.0, 0.0, 0.0, 1.0];
+                let square = piston_window::rectangle::square(0.0, 0.0, 100.0);
+                piston_window::rectangle(red, square, view.trans(self.x, self.y).trans(-50.0, -50.0), graphic);
+            }
+            Some(ref sprite) => {
+                piston_window::image(sprite, view.trans(self.x, self.y).trans(-50.0, -50.0), graphic);
+            }
+        }
     }
 }
