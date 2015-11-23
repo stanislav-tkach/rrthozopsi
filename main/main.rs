@@ -75,6 +75,13 @@ fn main() {
         .unwrap();
 
     let mut game = Game::new();
+    {
+        let assets = find_folder::Search::ParentsThenKids(3, 3).for_folder("assets").unwrap();
+        let sprite = assets.join("skeleton.png");
+        let sprite = pw::Texture::from_path(&mut *window.factory.borrow_mut(), &sprite, pw::Flip::None, &pw::TextureSettings::new()).unwrap();
+
+        game.player.set_sprite(sprite);
+    }
 
     for w in window {
         match w.event {
