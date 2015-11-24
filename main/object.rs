@@ -41,3 +41,10 @@ impl Object {
         }
     }
 }
+
+#[test]
+fn object_new() {
+    let object = Object::new();
+    assert_eq!(object.x, 0.0);
+    assert_eq!(object.y, 0.0);
+}
