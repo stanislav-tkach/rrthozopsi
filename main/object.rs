@@ -48,3 +48,22 @@ fn object_new() {
     assert_eq!(object.x, 0.0);
     assert_eq!(object.y, 0.0);
 }
+
+#[test]
+fn object_mov() {
+    let mut object = Object::new();
+    assert_eq!(object.x, 0.);
+    assert_eq!(object.y, 0.);
+
+    object.mov(0., 0.);
+    assert_eq!(object.x, 0.);
+    assert_eq!(object.y, 0.);
+
+    object.mov(1., 1.);
+    assert_eq!(object.x, 1.);
+    assert_eq!(object.y, 1.);
+
+    object.mov(-3., -3.);
+    assert_eq!(object.x, -2.);
+    assert_eq!(object.y, -2.);
+}
