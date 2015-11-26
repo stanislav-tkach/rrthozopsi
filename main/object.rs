@@ -1,7 +1,9 @@
 use piston_window;
 use gfx_device_gl::{Resources, Output, CommandBuffer};
 use gfx_graphics::GfxGraphics;
+
 use piston_window::Transformed;
+use piston_window::ImageSize;
 
 pub struct Object {
     x: f64,
@@ -36,7 +38,9 @@ impl Object {
                 piston_window::rectangle(red, square, view.trans(self.x, self.y).trans(-50.0, -50.0), graphic);
             }
             Some(ref sprite) => {
-                piston_window::image(sprite, view.trans(self.x, self.y).trans(-50.0, -50.0), graphic);
+                let (x, y) = sprite.get_size();
+                let (x, y) = (x / 2, y / 2);
+                piston_window::image(sprite, view.trans(self.x, self.y).trans(-(x as f64), -(y as f64)), graphic);
             }
         }
     }
