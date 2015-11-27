@@ -40,10 +40,10 @@ impl Game {
     }
 
     fn on_input(&mut self, input: &pw::Input) {
-        use piston_window::{Button, Key};
+        use piston_window::{Input, Button, Key};
 
         match input {
-            &pw::Input::Press(button) => {
+            &Input::Press(button) => {
                 match button {
                     Button::Keyboard(Key::Up) => { self.up = true; }
                     Button::Keyboard(Key::Down) => { self.down = true; }
@@ -52,7 +52,7 @@ impl Game {
                     _ => {}
                 }
             }
-            &pw::Input::Release(button) => {
+            &Input::Release(button) => {
                 match button {
                     Button::Keyboard(Key::Up) => { self.up = false; }
                     Button::Keyboard(Key::Down) => { self.down = false; }
