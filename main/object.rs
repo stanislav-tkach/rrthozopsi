@@ -5,6 +5,7 @@ use gfx_graphics::GfxGraphics;
 use piston_window::Transformed;
 use piston_window::ImageSize;
 
+#[derive(Debug)]
 pub struct Object {
     x: f64,
     y: f64,
