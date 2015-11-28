@@ -13,8 +13,8 @@ pub struct Object {
 }
 
 impl Object {
-    pub fn new() -> Object {
-        Object { x: 0., y: 0., sprite: None }
+    pub fn new(sprite: piston_window::Texture<Resources>) -> Object {
+        Object { x: 0., y: 0., sprite: sprite }
     }
 
     pub fn mov(&mut self, x: f64, y: f64) {
@@ -25,10 +25,6 @@ impl Object {
     pub fn mov_to(&mut self, x: f64, y: f64) {
         self.x = x;
         self.y = y;
-    }
-
-    pub fn set_sprite(&mut self, sprite: piston_window::Texture<Resources>) {
-        self.sprite = Some(sprite);
     }
 
     pub fn render(&self, graphic: &mut GfxGraphics<Resources, CommandBuffer<Resources>, Output>, view: &piston_window::math::Matrix2d) {
