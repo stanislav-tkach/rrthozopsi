@@ -19,11 +19,7 @@ struct Game {
 }
 
 impl Game {
-    fn new() -> Game {
-        let assets = find_folder::Search::ParentsThenKids(3, 3).for_folder("assets").unwrap();
-        let sprite = assets.join("skeleton.png");
-        let sprite = pw::Texture::from_path(&mut *window.factory.borrow_mut(), &sprite, pw::Flip::None, &pw::TextureSettings::new()).unwrap();
-
+    fn new(sprite: piston_window::Texture<gfx_device_gl::Resources>) -> Game {
         Game { player: Object::new(sprite), up: false, down: false, left: false, right: false }
     }
 
@@ -78,7 +74,10 @@ fn main() {
         .build()
         .unwrap();
 
-    let mut game = Game::new();
+    let assets = find_folder::Search::ParentsThenKids(3, 3).for_folder("assets").unwrap();
+    let sprite = assets.join("skeleton.png");
+    let sprite = pw::Texture::from_path(&mut *window.factory.borrow_mut(), &sprite, pw::Flip::None, &pw::TextureSettings::new()).unwrap();
+    let mut game = Game::new(sprite);
 
     for w in window {
         match w.event {
