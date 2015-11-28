@@ -66,6 +66,12 @@ impl Game {
     }
 }
 
+fn load_sprite(window: &pw::PistonWindow, name: &str) -> piston_window::Texture<gfx_device_gl::Resources> {
+    let assets = find_folder::Search::ParentsThenKids(3, 3).for_folder("assets").unwrap();
+    let sprite = assets.join(name);
+    pw::Texture::from_path(&mut *window.factory.borrow_mut(), &sprite, pw::Flip::None, &pw::TextureSettings::new()).unwrap()
+}
+
 fn main() {
     use piston_window::Event;
 
@@ -74,10 +80,7 @@ fn main() {
         .build()
         .unwrap();
 
-    let assets = find_folder::Search::ParentsThenKids(3, 3).for_folder("assets").unwrap();
-    let sprite = assets.join("skeleton.png");
-    let sprite = pw::Texture::from_path(&mut *window.factory.borrow_mut(), &sprite, pw::Flip::None, &pw::TextureSettings::new()).unwrap();
-    let mut game = Game::new(sprite);
+    let mut game = Game::new(load_sprite(&window, "skeleton.png"));
 
     for w in window {
         match w.event {
