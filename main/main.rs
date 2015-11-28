@@ -20,7 +20,11 @@ struct Game {
 
 impl Game {
     fn new() -> Game {
-        Game { player: Object::new(), up: false, down: false, left: false, right: false }
+        let assets = find_folder::Search::ParentsThenKids(3, 3).for_folder("assets").unwrap();
+        let sprite = assets.join("skeleton.png");
+        let sprite = pw::Texture::from_path(&mut *window.factory.borrow_mut(), &sprite, pw::Flip::None, &pw::TextureSettings::new()).unwrap();
+
+        Game { player: Object::new(sprite), up: false, down: false, left: false, right: false }
     }
 
     fn on_update(&mut self, args: &pw::UpdateArgs) {
@@ -75,13 +79,6 @@ fn main() {
         .unwrap();
 
     let mut game = Game::new();
-    {
-        let assets = find_folder::Search::ParentsThenKids(3, 3).for_folder("assets").unwrap();
-        let sprite = assets.join("skeleton.png");
-        let sprite = pw::Texture::from_path(&mut *window.factory.borrow_mut(), &sprite, pw::Flip::None, &pw::TextureSettings::new()).unwrap();
-
-        game.player.set_sprite(sprite);
-    }
 
     for w in window {
         match w.event {
