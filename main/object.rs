@@ -28,9 +28,9 @@ impl Object {
     }
 
     pub fn render(&self, graphic: &mut GfxGraphics<Resources, CommandBuffer<Resources>, Output>, view: &piston_window::math::Matrix2d) {
-        let (x, y) = sprite.get_size();
+        let (x, y) = self.sprite.get_size();
         let (x, y) = (x / 2, y / 2);
-        piston_window::image(sprite, view.trans(self.x, self.y).trans(-(x as f64), -(y as f64)), graphic);
+        piston_window::image(self.sprite, view.trans(self.x, self.y).trans(-(x as f64), -(y as f64)), graphic);
     }
 }
 
