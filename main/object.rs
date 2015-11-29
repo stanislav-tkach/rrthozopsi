@@ -34,47 +34,56 @@ impl Object {
     }
 }
 
-#[test]
-fn object_new() {
-    let object = Object::new();
-    assert_eq!(object.x, 0.0);
-    assert_eq!(object.y, 0.0);
-}
+#[cfg(test)]
+mod tests {
+    use super::*;
 
-#[test]
-fn object_mov() {
-    let mut object = Object::new();
-    assert_eq!(object.x, 0.);
-    assert_eq!(object.y, 0.);
+    fn create_object() -> Object {
+        Object::new()
+    }
 
-    object.mov(0., 0.);
-    assert_eq!(object.x, 0.);
-    assert_eq!(object.y, 0.);
+    #[test]
+    fn object_new() {
+        let object = create_object();
+        assert_eq!(object.x, 0.0);
+        assert_eq!(object.y, 0.0);
+    }
 
-    object.mov(1., 1.);
-    assert_eq!(object.x, 1.);
-    assert_eq!(object.y, 1.);
+    #[test]
+    fn object_mov() {
+        let mut object = create_object();
+        assert_eq!(object.x, 0.);
+        assert_eq!(object.y, 0.);
 
-    object.mov(-3., -3.);
-    assert_eq!(object.x, -2.);
-    assert_eq!(object.y, -2.);
-}
+        object.mov(0., 0.);
+        assert_eq!(object.x, 0.);
+        assert_eq!(object.y, 0.);
 
-#[test]
-fn object_mov_to() {
-    let mut object = Object::new();
-    assert_eq!(object.x, 0.);
-    assert_eq!(object.y, 0.);
+        object.mov(1., 1.);
+        assert_eq!(object.x, 1.);
+        assert_eq!(object.y, 1.);
 
-    object.mov_to(0., 0.);
-    assert_eq!(object.x, 0.);
-    assert_eq!(object.y, 0.);
+        object.mov(-3., -3.);
+        assert_eq!(object.x, -2.);
+        assert_eq!(object.y, -2.);
+    }
 
-    object.mov_to(10., 10.);
-    assert_eq!(object.x, 10.);
-    assert_eq!(object.y, 10.);
+    #[test]
+    fn object_mov_to() {
+        let mut object = create_object();
+        assert_eq!(object.x, 0.);
+        assert_eq!(object.y, 0.);
 
-    object.mov_to(-30., -30.);
-    assert_eq!(object.x, -30.);
-    assert_eq!(object.y, -30.);
+        object.mov_to(0., 0.);
+        assert_eq!(object.x, 0.);
+        assert_eq!(object.y, 0.);
+
+        object.mov_to(10., 10.);
+        assert_eq!(object.x, 10.);
+        assert_eq!(object.y, 10.);
+
+        object.mov_to(-30., -30.);
+        assert_eq!(object.x, -30.);
+        assert_eq!(object.y, -30.);
+    }
 }
