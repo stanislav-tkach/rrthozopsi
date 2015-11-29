@@ -67,6 +67,7 @@ impl Game {
 }
 
 fn load_sprite(window: &pw::PistonWindow, name: &str) -> piston_window::Texture<gfx_device_gl::Resources> {
+    // TODO: Create and use default sprite in case of failure during loading?
     let assets = find_folder::Search::ParentsThenKids(3, 3).for_folder("assets").unwrap();
     let sprite = assets.join(name);
     pw::Texture::from_path(&mut *window.factory.borrow_mut(), &sprite, pw::Flip::None, &pw::TextureSettings::new()).unwrap()
