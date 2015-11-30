@@ -39,7 +39,9 @@ mod tests {
     use super::*;
 
     fn create_object() -> Object {
-        Object::new()
+        let window: ::piston_window::PistonWindow = ::piston_window::WindowSettings::new("", [0, 0]).build().unwrap();
+        let sprite = ::piston_window::Texture::empty(&mut *window.factory.borrow_mut()).unwrap();
+        Object::new(sprite)
     }
 
     #[test]
