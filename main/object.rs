@@ -41,13 +41,6 @@ impl Object {
 mod tests {
     use super::*;
 
-//    fn create_object() -> Object {
-//        // TODO: Get rid of window creation?
-//        let window: ::piston_window::PistonWindow = ::piston_window::WindowSettings::new("", [0, 0]).build().unwrap();
-//        let sprite = ::piston_window::Texture::empty(&mut *window.factory.borrow_mut()).unwrap();
-//        Object::new(sprite)
-//    }
-
     #[test]
     fn object_new() {
         let object = Object::new(None);
