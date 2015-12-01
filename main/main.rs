@@ -20,7 +20,7 @@ struct Game {
 
 impl Game {
     fn new(sprite: piston_window::Texture<gfx_device_gl::Resources>) -> Game {
-        Game { player: Object::new(sprite), up: false, down: false, left: false, right: false }
+        Game { player: Object::new(Some(sprite)), up: false, down: false, left: false, right: false }
     }
 
     fn on_update(&mut self, args: &pw::UpdateArgs) {
