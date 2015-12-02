@@ -36,7 +36,7 @@ script:
 
 after_success:
     # Measure code coverage and upload to coveralls.io.
-    - travis-cargo coveralls --no-sudo --verify
+    - travis-cargo coveralls --no-sudo
 
 env:
   global:
