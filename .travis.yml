@@ -32,8 +32,7 @@ script:
     - |
         travis-cargo build &&
         travis-cargo test &&
-        travis-cargo bench &&
-        travis-cargo --only stable doc
+        travis-cargo bench
 
 after_success:
     # Measure code coverage and upload to coveralls.io.
