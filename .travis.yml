@@ -21,6 +21,7 @@ addons:
             - libcurl4-openssl-dev
             - libelf-dev
             - libdw-dev
+            - libbfd-dev
 
 # Load travis-cargo.
 before_script:
@@ -37,4 +38,4 @@ script:
 
 after_success:
     # Measure code coverage and upload to coveralls.io.
-    - travis-cargo coveralls --no-sudo --verify
+    - travis-cargo --only stable coveralls --no-sudo --verify
