@@ -22,6 +22,7 @@ addons:
             - libcurl4-openssl-dev
             - libelf-dev
             - libdw-dev
+            - binutils-dev # For the --verify flag of coveralls.
 
 # Load travis-cargo.
 before_script:
@@ -37,7 +38,7 @@ script:
 
 after_success:
     # Measure code coverage and upload to coveralls.io.
-    - travis-cargo coveralls --no-sudo
+    - travis-cargo coveralls --no-sudo --verify
 
 env:
   global:
