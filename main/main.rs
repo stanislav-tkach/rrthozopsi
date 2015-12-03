@@ -76,6 +76,7 @@ fn load_sprite(window: &pw::PistonWindow, name: &str) -> piston_window::Texture<
 fn main() {
     use piston_window::Event;
 
+    // TODO: Show 'main menu' first?
     let window: pw::PistonWindow = pw::WindowSettings::new("rrthozopsi", [600, 600])
         .exit_on_esc(true)
         .build()
