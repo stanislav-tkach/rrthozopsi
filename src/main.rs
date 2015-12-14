@@ -8,6 +8,7 @@ use piston_window::Transformed;
 use piston_window as pw;
 
 mod object;
+mod screen;
 use object::Object;
 
 struct Game {
