@@ -11,7 +11,8 @@ keywords = ["game", "piston"]
 
 [[bin]]
 name = "rrthozopsi"
-path = "main.rs"
+# TODO: FIXME.
+# path = "main.rs"
 
 [dependencies]
 piston_window = "*"
