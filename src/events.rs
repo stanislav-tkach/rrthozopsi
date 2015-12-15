@@ -22,5 +22,7 @@ impl Events {
     pub fn is_right() -> bool {
         self.right
     }
-}
 
+    pub fn handle_input() {
+    }
+}
