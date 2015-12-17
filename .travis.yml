@@ -13,7 +13,7 @@ matrix:
 notifications:
     email:
         on_success: change
-        on_failure: alway
+        on_failure: always
 
 # Necessary for `travis-cargo coveralls --no-sudo`.
 addons:
