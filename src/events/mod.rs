@@ -8,6 +8,10 @@ pub struct Events {
 }
 
 impl Events {
+    pub fn new() -> Events {
+        Events { up: false, down: false, left: false, right: false }
+    }
+
     pub fn is_up(&self) -> bool {
         self.up
     }

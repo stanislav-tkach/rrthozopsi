@@ -27,7 +27,7 @@ fn main() {
         .build()
         .unwrap();
 
-    let mut game = Game::new(load_sprite(&window, "skeleton.png"));
+    let mut game = game::Game::new(load_sprite(&window, "skeleton.png"));
 
     for w in window {
         match w.event {
