@@ -11,7 +11,7 @@ struct Game {
 
 impl Game {
     fn new(sprite: piston_window::Texture<gfx_device_gl::Resources>) -> Game {
-        Game { player: object::Object::new(Some(sprite)), up: false, down: false, left: false, right: false }
+        Game { events: events::Events::new(), player: object::Object::new(Some(sprite)) }
     }
 
     fn on_update(&mut self, args: &piston_window::UpdateArgs) {
