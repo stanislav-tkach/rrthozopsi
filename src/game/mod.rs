@@ -1,6 +1,7 @@
 use ::events;
+use ::object;
 
 struct Game {
-    events: Events,
-    player: Object,
+    events: events::Events,
+    player: object::Object,
 }
