@@ -1,3 +1,4 @@
+use piston_window;
 
 pub struct Events {
     up: bool,
