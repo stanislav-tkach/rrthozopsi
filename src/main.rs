@@ -7,17 +7,11 @@ use piston_window::Transformed;
 
 use piston_window as pw;
 
+mod game;
 mod object;
-//mod screen;
-use object::Object;
+mod events;
 
-struct Game {
-    player: Object,
-    up: bool,
-    down: bool,
-    left: bool,
-    right: bool,
-}
+use object::Object;
 
 impl Game {
     fn new(sprite: piston_window::Texture<gfx_device_gl::Resources>) -> Game {
