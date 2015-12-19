@@ -54,3 +54,12 @@ impl Events {
         }
     }
 }
+
+#[test]
+fn events_new() {
+    let events = Events::new();
+    assert_eq!(false, events.up);
+    assert_eq!(false, events.down);
+    assert_eq!(false, events.left);
+    assert_eq!(false, events.right);
+}
