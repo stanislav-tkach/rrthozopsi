@@ -7,19 +7,19 @@ pub struct Events {
 }
 
 impl Events {
-    pub fn is_up() -> bool {
+    pub fn is_up(&self) -> bool {
         self.up
     }
 
-    pub fn is_down() -> bool {
+    pub fn is_down(&self) -> bool {
         self.down
     }
 
-    pub fn is_left() -> bool {
+    pub fn is_left(&self) -> bool {
         self.left
     }
 
-    pub fn is_right() -> bool {
+    pub fn is_right(&self) -> bool {
         self.right
     }
 
