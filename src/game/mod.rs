@@ -6,7 +6,7 @@ use piston_window::Transformed;
 
 use gfx_device_gl;
 
-struct Game {
+pub struct Game {
     events: events::Events,
     player: object::Object,
 }
