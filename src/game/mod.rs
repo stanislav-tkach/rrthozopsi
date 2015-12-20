@@ -8,14 +8,25 @@ use piston_window::Transformed;
 use gfx_device_gl;
 
 pub struct Game {
+    window: piston_window::PistonWindow;
     screens: Vec<Box<screen::Screen>>,
     events: events::Events,
     player: object::Object,
 }
 
+// TODO: Remove
+fn load_sprite(window: &pw::PistonWindow, name: &str) -> piston_window::Texture<gfx_device_gl::Resources> {
+    // TODO: Create and use default sprite in case of failure during loading?
+    let assets = find_folder::Search::ParentsThenKids(3, 3).for_folder("assets").unwrap();
+    let sprite = assets.join(name);
+    pw::Texture::from_path(&mut *window.factory.borrow_mut(), &sprite, pw::Flip::None, &pw::TextureSettings::new()).unwrap()
+}
+
 impl Game {
     pub fn new(sprite: piston_window::Texture<gfx_device_gl::Resources>) -> Game {
-        Game { screens: Vec::new(), events: events::Events::new(), player: object::Object::new(Some(sprite)) }
+        Game { 
+            window: piston_window::WindowSettings::new("rrthozopsi", [600, 600]).exit_on_esc(true).build().unwrap(),
+            screens: Vec::new(), events: events::Events::new(), player: object::Object::new(Some(sprite)) }
     }
 
     pub fn run() {

@@ -12,13 +12,6 @@ mod screen;
 mod object;
 mod events;
 
-fn load_sprite(window: &pw::PistonWindow, name: &str) -> piston_window::Texture<gfx_device_gl::Resources> {
-    // TODO: Create and use default sprite in case of failure during loading?
-    let assets = find_folder::Search::ParentsThenKids(3, 3).for_folder("assets").unwrap();
-    let sprite = assets.join(name);
-    pw::Texture::from_path(&mut *window.factory.borrow_mut(), &sprite, pw::Flip::None, &pw::TextureSettings::new()).unwrap()
-}
-
 fn main() {
     let mut game = game::Game::new(load_sprite(&window, "skeleton.png"));
     game.run();
@@ -30,8 +23,6 @@ fn main() {
         .exit_on_esc(true)
         .build()
         .unwrap();
-
-    let mut game = game::Game::new(load_sprite(&window, "skeleton.png"));
 
     for w in window {
         match w.event {
