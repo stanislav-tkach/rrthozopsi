@@ -20,6 +20,10 @@ fn load_sprite(window: &pw::PistonWindow, name: &str) -> piston_window::Texture<
 }
 
 fn main() {
+    let mut game = game::Game::new(load_sprite(&window, "skeleton.png"));
+    game.run();
+
+
     use piston_window::Event;
 
     let window: pw::PistonWindow = pw::WindowSettings::new("rrthozopsi", [600, 600])

@@ -18,6 +18,9 @@ impl Game {
         Game { screens: Vec::new(), events: events::Events::new(), player: object::Object::new(Some(sprite)) }
     }
 
+    pub fn run() {
+    }
+
     pub fn on_update(&mut self, args: &piston_window::UpdateArgs) {
         if self.events.is_up()   { self.player.mov(0.0, -150.0 * args.dt); }
         if self.events.is_down() { self.player.mov(0.0, 150.0 * args.dt); }
