@@ -1,3 +1,4 @@
+use ::screen;
 use ::events;
 use ::object;
 
@@ -7,13 +8,14 @@ use piston_window::Transformed;
 use gfx_device_gl;
 
 pub struct Game {
+    screens: Vec<Box<screen::Screen>>,
     events: events::Events,
     player: object::Object,
 }
 
 impl Game {
     pub fn new(sprite: piston_window::Texture<gfx_device_gl::Resources>) -> Game {
-        Game { events: events::Events::new(), player: object::Object::new(Some(sprite)) }
+        Game { screens: Vec::new(), events: events::Events::new(), player: object::Object::new(Some(sprite)) }
     }
 
     pub fn on_update(&mut self, args: &piston_window::UpdateArgs) {

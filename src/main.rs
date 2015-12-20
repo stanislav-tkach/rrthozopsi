@@ -8,6 +8,7 @@ use piston_window::Transformed;
 use piston_window as pw;
 
 mod game;
+mod screen;
 mod object;
 mod events;
 
