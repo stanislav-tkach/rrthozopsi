@@ -39,13 +39,11 @@ impl Game {
     pub fn run(&mut self) {
         use piston_window::Event;
 
-        for ref event in &self.window.event {
-            match event {
-                10 => {},
-//                &Some(_) => {},
-//                Some(Event::Update(args)) => { self.on_update(&args); }
-//                &Some(Event::Render(args)) => { self.on_draw(&args, &self.window); }
-//                &Some(Event::Input(input)) => { self.on_input(&input); }
+        for window in self.window.clone() {
+            match window.event {
+                Some(Event::Update(args)) => { self.on_update(&args); }
+                Some(Event::Render(args)) => { self.on_draw(&args, &window); }
+                Some(Event::Input(input)) => { self.on_input(&input); }
                 _ => {}
             }
         }
