@@ -1,8 +1,8 @@
 mod screen;
 
-pub struct MainMenuScreen;
+pub struct BattleScreen;
 
-impl Screen for MainMenuScreen {
+impl Screen for BattleScreen {
     fn on_input(&mut self, input: &piston_window::Input) {
     }
 
