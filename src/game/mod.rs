@@ -1,3 +1,5 @@
+extern crate find_folder;
+
 use ::screen;
 use ::events;
 use ::object;
@@ -8,28 +10,45 @@ use piston_window::Transformed;
 use gfx_device_gl;
 
 pub struct Game {
-    window: piston_window::PistonWindow;
+    window: piston_window::PistonWindow,
     screens: Vec<Box<screen::Screen>>,
     events: events::Events,
     player: object::Object,
 }
 
 // TODO: Remove
-fn load_sprite(window: &pw::PistonWindow, name: &str) -> piston_window::Texture<gfx_device_gl::Resources> {
+fn load_sprite(window: &piston_window::PistonWindow, name: &str) -> piston_window::Texture<gfx_device_gl::Resources> {
     // TODO: Create and use default sprite in case of failure during loading?
     let assets = find_folder::Search::ParentsThenKids(3, 3).for_folder("assets").unwrap();
     let sprite = assets.join(name);
-    pw::Texture::from_path(&mut *window.factory.borrow_mut(), &sprite, pw::Flip::None, &pw::TextureSettings::new()).unwrap()
+    piston_window::Texture::from_path(&mut *window.factory.borrow_mut(), &sprite, piston_window::Flip::None, &piston_window::TextureSettings::new()).unwrap()
 }
 
 impl Game {
-    pub fn new(sprite: piston_window::Texture<gfx_device_gl::Resources>) -> Game {
+    pub fn new() -> Game {
+        let window: piston_window::PistonWindow = piston_window::WindowSettings::new("rrthozopsi", [600, 600]).exit_on_esc(true).build().unwrap();
+        let sprite = load_sprite(&window, "skeleton.png");
         Game { 
-            window: piston_window::WindowSettings::new("rrthozopsi", [600, 600]).exit_on_esc(true).build().unwrap(),
-            screens: Vec::new(), events: events::Events::new(), player: object::Object::new(Some(sprite)) }
+            window: window,
+            screens: Vec::new(), 
+            events: events::Events::new(), 
+            player: object::Object::new(Some(sprite)),
+        }
     }
 
-    pub fn run() {
+    pub fn run(&mut self) {
+        use piston_window::Event;
+
+        for ref event in &self.window.event {
+            match event {
+                10 => {},
+//                &Some(_) => {},
+//                Some(Event::Update(args)) => { self.on_update(&args); }
+//                &Some(Event::Render(args)) => { self.on_draw(&args, &self.window); }
+//                &Some(Event::Input(input)) => { self.on_input(&input); }
+                _ => {}
+            }
+        }
     }
 
     pub fn on_update(&mut self, args: &piston_window::UpdateArgs) {
