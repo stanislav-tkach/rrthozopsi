@@ -39,6 +39,7 @@ impl Game {
     pub fn run(&mut self) {
         use piston_window::Event;
 
+        // TODO: Remove clone?
         for window in self.window.clone() {
             match window.event {
                 Some(Event::Update(args)) => { self.on_update(&args); }
