@@ -1,6 +1,8 @@
 mod screen;
 
-pub struct BattleScreen;
+pub struct BattleScreen {
+    player: object::Object,
+}
 
 impl Screen for BattleScreen {
     fn on_input(&mut self, input: &piston_window::Input) {
