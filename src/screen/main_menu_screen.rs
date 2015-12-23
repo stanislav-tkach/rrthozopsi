@@ -1,4 +1,5 @@
-mod screen;
+use screen::Screen;
+use piston_window;
 
 pub struct MainMenuScreen;
 

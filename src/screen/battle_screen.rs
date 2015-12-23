@@ -1,7 +1,10 @@
-mod screen;
+use screen::Screen;
+use piston_window;
 
 pub struct BattleScreen {
-    player: object::Object,
+    // TODO: FIXME.
+    _fixme: i32,
+//    player: object::Object,
 }
 
 impl Screen for BattleScreen {
