@@ -1,10 +1,11 @@
-use screen::Screen;
+use screen;
 use piston_window;
 
 pub struct MainMenuScreen;
 
-impl Screen for MainMenuScreen {
-    fn on_input(&mut self, input: &piston_window::Input) {
+impl screen::Screen for MainMenuScreen {
+    fn on_input(&mut self, input: &piston_window::Input) -> Option<screen::InputResult> {
+        None
     }
 
     fn on_draw(&mut self, args: &piston_window::RenderArgs, window: &piston_window::PistonWindow) {
