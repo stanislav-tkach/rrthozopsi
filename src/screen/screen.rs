@@ -1,6 +1,8 @@
 use piston_window;
 
 enum InputResult {
+    PushScreen(Box<Screen>),
+    PopScreen,
 }
 
 pub trait Screen {
