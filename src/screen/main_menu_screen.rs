@@ -5,7 +5,7 @@ pub struct MainMenuScreen;
 
 impl screen::Screen for MainMenuScreen {
     fn on_input(&mut self, input: &piston_window::Input) -> screen::InputResult {
-        None
+        screen::InputResult::NoAction
     }
 
     fn on_draw(&mut self, args: &piston_window::RenderArgs, window: &piston_window::PistonWindow) {
