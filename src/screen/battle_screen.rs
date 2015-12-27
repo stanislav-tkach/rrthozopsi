@@ -8,7 +8,7 @@ pub struct BattleScreen {
 }
 
 impl screen::Screen for BattleScreen {
-    fn on_input(&mut self, input: &piston_window::Input) -> Option<screen::InputResult> {
+    fn on_input(&mut self, input: &piston_window::Input) -> screen::InputResult {
         None
     }
 

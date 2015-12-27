@@ -4,7 +4,7 @@ use piston_window;
 pub struct MainMenuScreen;
 
 impl screen::Screen for MainMenuScreen {
-    fn on_input(&mut self, input: &piston_window::Input) -> Option<screen::InputResult> {
+    fn on_input(&mut self, input: &piston_window::Input) -> screen::InputResult {
         None
     }
 
