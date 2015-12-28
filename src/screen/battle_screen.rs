@@ -8,7 +8,7 @@ pub struct BattleScreen {
 }
 
 impl BattleScreen {
-    fn new() -> BattleScreen {
+    pub fn new() -> BattleScreen {
         BattleScreen{ _fixme: 42 }
     }
 }

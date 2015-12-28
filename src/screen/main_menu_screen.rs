@@ -7,12 +7,13 @@ impl Screen for MainMenuScreen {
     fn on_input(&mut self, input: &piston_window::Input) -> InputResults {
         use piston_window::{Input, Button, Key};
 
-        let result = Vec::new();
+        let mut result = Vec::new();
 
         match input {
             &Input::Press(_) => {
                 result.push(InputResult::PushScreen(Box::new(BattleScreen::new())));
             }
+            _ => {}
         }
 
         result
