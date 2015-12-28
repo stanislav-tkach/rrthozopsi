@@ -1,7 +1,6 @@
 use piston_window;
 
 pub enum InputResult {
-    NoAction,
     PushScreen(Box<Screen>),
     PopScreen,
 }
