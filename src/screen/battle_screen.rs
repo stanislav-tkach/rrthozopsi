@@ -1,4 +1,4 @@
-use screen;
+use screen::*;
 use piston_window;
 
 pub struct BattleScreen {
@@ -9,7 +9,8 @@ pub struct BattleScreen {
 
 impl Screen for BattleScreen {
     fn on_input(&mut self, input: &piston_window::Input) -> InputResults {
-        InputResults
+        let result = Vec::new();
+        result
     }
 
     fn on_draw(&mut self, args: &piston_window::RenderArgs, window: &piston_window::PistonWindow) {

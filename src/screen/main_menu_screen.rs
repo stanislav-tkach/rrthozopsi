@@ -5,7 +5,8 @@ pub struct MainMenuScreen;
 
 impl Screen for MainMenuScreen {
     fn on_input(&mut self, input: &piston_window::Input) -> InputResults {
-        InputResults
+        let result = Vec::new();
+        result
     }
 
     fn on_draw(&mut self, args: &piston_window::RenderArgs, window: &piston_window::PistonWindow) {
