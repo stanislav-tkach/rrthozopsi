@@ -7,9 +7,9 @@ pub struct BattleScreen {
 //    player: object::Object,
 }
 
-impl screen::Screen for BattleScreen {
-    fn on_input(&mut self, input: &piston_window::Input) -> screen::InputResult {
-        screen::InputResult::NoAction
+impl Screen for BattleScreen {
+    fn on_input(&mut self, input: &piston_window::Input) -> InputResults {
+        InputResults
     }
 
     fn on_draw(&mut self, args: &piston_window::RenderArgs, window: &piston_window::PistonWindow) {
