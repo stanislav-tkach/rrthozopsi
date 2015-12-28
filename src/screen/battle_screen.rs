@@ -7,6 +7,12 @@ pub struct BattleScreen {
 //    player: object::Object,
 }
 
+impl BattleScreen {
+    fn new() -> BattleScreen {
+        BattleScreen{ _fixme: 42 }
+    }
+}
+
 impl Screen for BattleScreen {
     fn on_input(&mut self, input: &piston_window::Input) -> InputResults {
         let result = Vec::new();
