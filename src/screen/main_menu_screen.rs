@@ -12,6 +12,7 @@ impl Screen for MainMenuScreen {
 
         match input {
             &Input::Press(Button::Mouse(MouseButton::Left)) => {
+                result.push(InputResult::PopScreen);
                 result.push(InputResult::PushScreen(Box::new(BattleScreen::new())));
             }
             _ => {}
