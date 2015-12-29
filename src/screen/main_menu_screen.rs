@@ -6,12 +6,12 @@ pub struct MainMenuScreen;
 impl Screen for MainMenuScreen {
     fn on_input(&mut self, input: &piston_window::Input) -> InputResults {
         // TODO: FIXME: 
-        use piston_window::{Input, Button, Key};
+        use piston_window::{Input, Button, MouseButton};
 
         let mut result = Vec::new();
 
         match input {
-            &Input::Press(_) => {
+            &Input::Press(Button::Mouse(MouseButton::Left)) => {
                 result.push(InputResult::PushScreen(Box::new(BattleScreen::new())));
             }
             _ => {}
