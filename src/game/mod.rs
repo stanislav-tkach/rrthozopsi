@@ -1,6 +1,7 @@
 extern crate find_folder;
 
 use ::screen;
+use ::screen::Screen;
 use ::events;
 use ::object;
 
@@ -44,7 +45,7 @@ impl Game {
             match window.event {
                 Some(Event::Update(args)) => { window.on_update(&args); }
                 Some(Event::Render(args)) => { window.on_draw(&args); }
-                Some(Event::Input(input)) => { }
+                Some(Event::Input(input)) => { window.on_input(&input); }
                 _ => {}
             }
         }
