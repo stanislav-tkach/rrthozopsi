@@ -40,11 +40,11 @@ impl Game {
         use piston_window::Event;
 
         // TODO: Remove clone?
-        for window in self.window.clone() {
+        for window in &mut self.window {
             match window.event {
-                Some(Event::Update(args)) => { self.on_update(&args); }
-                Some(Event::Render(args)) => { self.on_draw(&args, &window); }
-                Some(Event::Input(input)) => { self.on_input(&input); }
+                Some(Event::Update(args)) => { }
+                Some(Event::Render(args)) => { }
+                Some(Event::Input(input)) => { }
                 _ => {}
             }
         }
