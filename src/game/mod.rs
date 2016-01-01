@@ -40,7 +40,7 @@ impl Game {
     pub fn run(&mut self) {
         use piston_window::Event;
 
-        let mut screen = self.screens.last().unwrap();
+        let mut screen = self.screens.last_mut().unwrap();
 
         // TODO: Remove clone?
         for window in &mut self.window {
