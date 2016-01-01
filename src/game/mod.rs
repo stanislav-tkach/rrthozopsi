@@ -43,7 +43,7 @@ impl Game {
         for window in &mut self.window {
             match window.event {
                 Some(Event::Update(args)) => { window.on_update(&args); }
-                Some(Event::Render(args)) => { }
+                Some(Event::Render(args)) => { window.on_draw(&args); }
                 Some(Event::Input(input)) => { }
                 _ => {}
             }
