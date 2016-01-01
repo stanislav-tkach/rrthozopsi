@@ -1,4 +1,4 @@
-mod screen;
+pub mod screen;
 mod main_menu_screen;
 mod battle_screen;
 
