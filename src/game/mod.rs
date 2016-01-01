@@ -42,7 +42,7 @@ impl Game {
         // TODO: Remove clone?
         for window in &mut self.window {
             match window.event {
-                Some(Event::Update(args)) => { }
+                Some(Event::Update(args)) => { window.on_update(&args); }
                 Some(Event::Render(args)) => { }
                 Some(Event::Input(input)) => { }
                 _ => {}
