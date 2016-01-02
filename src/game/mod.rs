@@ -29,9 +29,10 @@ impl Game {
     pub fn new() -> Game {
         let window: piston_window::PistonWindow = piston_window::WindowSettings::new("rrthozopsi", [600, 600]).exit_on_esc(true).build().unwrap();
         let sprite = load_sprite(&window, "skeleton.png");
+        let screens: Vec<Box<screen::Screen>> = vec![Box::new(screen::MainMenuScreen::new())];
         Game { 
             window: window,
-            screens: Vec::new(), 
+            screens: screens, 
             events: events::Events::new(), 
             player: object::Object::new(Some(sprite)),
         }
