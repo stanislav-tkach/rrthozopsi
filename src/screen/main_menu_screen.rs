@@ -3,6 +3,12 @@ use piston_window;
 
 pub struct MainMenuScreen;
 
+impl MainMenuScreen {
+    pub fn new() -> MainMenuScreen {
+        MainMenuScreen
+    }
+}
+
 impl Screen for MainMenuScreen {
     fn on_input(&mut self, input: &piston_window::Input) -> InputResults {
         use piston_window::{Input, Button, MouseButton};
