@@ -15,7 +15,7 @@ fn load_sprite(window: &piston_window::PistonWindow, name: &str) -> piston_windo
 
 impl BattleScreen {
     pub fn new() -> BattleScreen {
-        BattleScreen{ _fixme: 42 }
+        BattleScreen{ player: load_sprite(&window, "skeleton.png"), }
     }
 }
 
