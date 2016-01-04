@@ -1,12 +1,8 @@
-extern crate find_folder;
-
 use ::screen;
 use ::screen::Screen;
 
 use piston_window;
 use piston_window::Transformed;
-
-use gfx_device_gl;
 
 pub struct Game {
     window: piston_window::PistonWindow,
