@@ -38,8 +38,4 @@ impl Game {
             }
         }
     }
-
-    pub fn on_input(&mut self, input: &piston_window::Input) {
-        self.events.process_input(&input);
-    }
 }
