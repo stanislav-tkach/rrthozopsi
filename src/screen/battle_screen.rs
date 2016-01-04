@@ -64,5 +64,9 @@ impl Screen for BattleScreen {
     }
 
     fn on_update(&mut self, args: &piston_window::UpdateArgs) {
+	if self.up   { self.player.mov(0.0, -150.0 * args.dt); }
+        if self.down { self.player.mov(0.0, 150.0 * args.dt); }
+        if self.left { self.player.mov(-150.0 * args.dt, 0.0); }
+        if self.right { self.player.mov(150.0 * args.dt, 0.0); }
     }
 }
