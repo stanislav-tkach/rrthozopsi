@@ -59,7 +59,10 @@ impl Screen for BattleScreen {
 
     fn on_draw(&mut self, args: &piston_window::RenderArgs, window: &piston_window::PistonWindow) {
 	window.draw_2d(|context, graphics| {
-	    piston_window::clear([1., 0., 0., 1.0], graphics);
+	    piston_window::clear([0.0, 0.0, 0.0, 1.0], graphics);
+
+            let center = context.transform.trans((args.width / 2) as f64, (args.height / 2) as f64);
+            self.player.render(graphics, &center);
 	});
     }
 
