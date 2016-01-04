@@ -1,8 +1,15 @@
 use screen::*;
+
+use ::object;
+
 use piston_window;
 
 pub struct BattleScreen {
     player: object::Object,
+    up: bool,
+    down: bool,
+    left: bool,
+    right: bool,
 }
 
 // TODO: Remove
@@ -28,19 +35,19 @@ impl Screen for BattleScreen {
         match input {
             &Input::Press(button) => {
                 match button {
-//                    Button::Keyboard(Key::Up) => { self.up = true; }
-//                    Button::Keyboard(Key::Down) => { self.down = true; }
-//                    Button::Keyboard(Key::Left) => { self.left = true; }
-//                    Button::Keyboard(Key::Right) => { self.right = true; }
+                    Button::Keyboard(Key::Up) => { self.up = true; }
+                    Button::Keyboard(Key::Down) => { self.down = true; }
+                    Button::Keyboard(Key::Left) => { self.left = true; }
+                    Button::Keyboard(Key::Right) => { self.right = true; }
                     _ => {}
                 }
             }
             &Input::Release(button) => {
                 match button {
-//                    Button::Keyboard(Key::Up) => { self.up = false; }
-//                    Button::Keyboard(Key::Down) => { self.down = false; }
-//                    Button::Keyboard(Key::Left) => { self.left = false; }
-//                    Button::Keyboard(Key::Right) => { self.right = false; }
+                    Button::Keyboard(Key::Up) => { self.up = false; }
+                    Button::Keyboard(Key::Down) => { self.down = false; }
+                    Button::Keyboard(Key::Left) => { self.left = false; }
+                    Button::Keyboard(Key::Right) => { self.right = false; }
                     _ => {}
                 }
             }
