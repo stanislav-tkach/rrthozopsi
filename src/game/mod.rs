@@ -20,7 +20,6 @@ impl Game {
         Game { 
             window: window,
             screens: screens, 
-            events: events::Events::new(), 
         }
     }
 
