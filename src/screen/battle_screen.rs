@@ -1,7 +1,5 @@
 use screen::*;
-
 use ::object;
-
 use piston_window;
 
 pub struct BattleScreen {
