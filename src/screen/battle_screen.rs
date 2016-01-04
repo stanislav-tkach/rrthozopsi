@@ -13,6 +13,7 @@ pub struct BattleScreen {
     right: bool,
 }
 
+// TODO: Replace by sprite loader?
 // TODO: Remove
 fn load_sprite(window: &piston_window::PistonWindow, name: &str) -> piston_window::Texture<gfx_device_gl::Resources> {
     // TODO: Create and use default sprite in case of failure during loading?
