@@ -17,14 +17,6 @@ pub struct Game {
     player: object::Object,
 }
 
-// TODO: Remove
-fn load_sprite(window: &piston_window::PistonWindow, name: &str) -> piston_window::Texture<gfx_device_gl::Resources> {
-    // TODO: Create and use default sprite in case of failure during loading?
-    let assets = find_folder::Search::ParentsThenKids(3, 3).for_folder("assets").unwrap();
-    let sprite = assets.join(name);
-    piston_window::Texture::from_path(&mut *window.factory.borrow_mut(), &sprite, piston_window::Flip::None, &piston_window::TextureSettings::new()).unwrap()
-}
-
 impl Game {
     pub fn new() -> Game {
         let window: piston_window::PistonWindow = piston_window::WindowSettings::new("rrthozopsi", [600, 600]).exit_on_esc(true).build().unwrap();
