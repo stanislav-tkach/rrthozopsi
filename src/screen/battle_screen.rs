@@ -3,6 +3,7 @@ extern crate find_folder;
 use screen::*;
 use ::object;
 use piston_window;
+use piston_window::Transformed;
 use gfx_device_gl;
 
 pub struct BattleScreen {
@@ -25,7 +26,7 @@ fn load_sprite(window: &piston_window::PistonWindow, name: &str) -> piston_windo
 impl BattleScreen {
     pub fn new(window: &piston_window::PistonWindow) -> BattleScreen {
         BattleScreen { 
-    	    player: object::Object::new(load_sprite(&window, "skeleton.png")),
+    	    player: object::Object::new(Some(load_sprite(&window, "skeleton.png"))),
     	    up: false, down: false, left: false, right: false,
         }
     }

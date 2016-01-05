@@ -2,7 +2,6 @@ use ::screen;
 use ::screen::Screen;
 
 use piston_window;
-use piston_window::Transformed;
 
 pub struct Game {
     window: piston_window::PistonWindow,
@@ -29,7 +28,7 @@ impl Game {
             match window.event {
                 Some(Event::Update(args)) => { screen.on_update(&args); }
                 Some(Event::Render(args)) => { screen.on_draw(&args, &window); }
-                Some(Event::Input(input)) => { screen.on_input(&input, &window); }
+                Some(Event::Input(ref input)) => { screen.on_input(&input, &window); }
                 _ => {}
             }
         }
