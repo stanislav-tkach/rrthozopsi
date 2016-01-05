@@ -29,7 +29,7 @@ impl Game {
             match window.event {
                 Some(Event::Update(args)) => { screen.on_update(&args); }
                 Some(Event::Render(args)) => { screen.on_draw(&args, &window); }
-                Some(Event::Input(input)) => { screen.on_input(&input); }
+                Some(Event::Input(input)) => { screen.on_input(&input, &window); }
                 _ => {}
             }
         }
