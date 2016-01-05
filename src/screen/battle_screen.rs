@@ -24,7 +24,10 @@ fn load_sprite(window: &piston_window::PistonWindow, name: &str) -> piston_windo
 
 impl BattleScreen {
     pub fn new(window: &piston_window::PistonWindow) -> BattleScreen {
-        BattleScreen{ player: load_sprite(&window, "skeleton.png"), }
+        BattleScreen { 
+    	    player: object::Object::new(load_sprite(&window, "skeleton.png")),
+    	    up: false, down: false, left: false, right: false,
+        }
     }
 }
 
