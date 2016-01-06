@@ -28,7 +28,9 @@ impl Game {
             match window.event {
                 Some(Event::Update(args)) => { screen.on_update(&args); }
                 Some(Event::Render(args)) => { screen.on_draw(&args, &window); }
-                Some(Event::Input(ref input)) => { screen.on_input(&input, &window); }
+                Some(Event::Input(ref input)) => { 
+            	    let result = screen.on_input(&input, &window);
+            	}
                 _ => {}
             }
         }
