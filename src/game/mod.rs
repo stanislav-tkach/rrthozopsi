@@ -28,7 +28,8 @@ impl Game {
             match window.event {
                 Some(Event::Update(args)) => { screen.on_update(&args); }
                 Some(Event::Render(args)) => { screen.on_draw(&args, &window); }
-                Some(Event::Input(ref input)) => { 
+                Some(Event::Input(ref input)) => {
+            	    // TODO iter (for) over result.
             	    let result = screen.on_input(&input, &window);
             	}
                 _ => {}
