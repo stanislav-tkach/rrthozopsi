@@ -30,7 +30,13 @@ impl Game {
                 Some(Event::Render(args)) => { screen.on_draw(&args, &window); }
                 Some(Event::Input(ref input)) => {
             	    // TODO iter (for) over result.
-            	    let result = screen.on_input(&input, &window);
+            	    for action in screen.on_input(&input, &window) {
+            		match action {
+            		    screen::InputResult::PushScreen(_) => {}
+            		    screen::InputResult::PopScreen => {}
+            		}
+            	    }
+            	    //let result = screen.on_input(&input, &window);
             	}
                 _ => {}
             }
