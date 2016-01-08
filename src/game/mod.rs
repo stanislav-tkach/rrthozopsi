@@ -29,7 +29,6 @@ impl Game {
                 Some(Event::Update(args)) => { screen.on_update(&args); }
                 Some(Event::Render(args)) => { screen.on_draw(&args, &window); }
                 Some(Event::Input(ref input)) => {
-            	    // TODO iter (for) over result.
             	    for action in screen.on_input(&input, &window) {
             		match action {
             		    screen::InputResult::PushScreen(_) => {}
