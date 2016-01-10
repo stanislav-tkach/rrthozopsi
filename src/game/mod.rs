@@ -21,18 +21,22 @@ impl Game {
     pub fn run(&mut self) {
         use piston_window::Event;
 
-        let mut screen = self.screens.last_mut().unwrap();
+	// ???
+	// TODO: Use drop to unborrow?
+        //let mut screen = self.screens.last_mut().unwrap();
 
         // TODO: Remove clone?
         for window in &mut self.window {
             match window.event {
-                Some(Event::Update(args)) => { screen.on_update(&args); }
-                Some(Event::Render(args)) => { screen.on_draw(&args, &window); }
+                Some(Event::Update(args)) => { self.screens.last_mut().unwrap().on_update(&args); }
+                Some(Event::Render(args)) => { self.screens.last_mut().unwrap().on_draw(&args, &window); }
                 Some(Event::Input(ref input)) => {
-            	    for action in screen.on_input(&input, &window) {
+            	    for action in self.screens.last_mut().unwrap().on_input(&input, &window) {
             		match action {
             		    screen::InputResult::PushScreen(_) => {}
-            		    screen::InputResult::PopScreen => {}
+            		    screen::InputResult::PopScreen => {
+            			self.screens.pop();
+            		    }
             		}
             	    }
             	    //let result = screen.on_input(&input, &window);
