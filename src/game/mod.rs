@@ -21,19 +21,21 @@ impl Game {
     pub fn run(&mut self) {
         use piston_window::Event;
 
+        let screens = &mut self.screens;
+
         // TODO: Remove clone?
         for window in &mut self.window {
             match window.event {
-                Some(Event::Update(ref args)) => { self.screens.last_mut().unwrap().on_update(&args); }
-                Some(Event::Render(ref args)) => { self.screens.last_mut().unwrap().on_draw(&args, &window); }
+                Some(Event::Update(ref args)) => { last(screens).on_update(&args); }
+                Some(Event::Render(ref args)) => { last(screens).on_draw(&args, &window); }
                 Some(Event::Input(ref input)) => {
-                    for action in self.screens.last_mut().unwrap().on_input(&input, &window) {
+                    for action in last(screens).on_input(&input, &window) {
                         match action {
                             screen::InputResult::PushScreen(new_screen) => {
-                                self.screens.push(new_screen);
+                                screens.push(new_screen);
                             }
             		        screen::InputResult::PopScreen => {
-            			        self.screens.pop();
+            			        screens.pop();
             		        }
                         }
                     }
