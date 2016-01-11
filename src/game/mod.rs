@@ -21,10 +21,6 @@ impl Game {
     pub fn run(&mut self) {
         use piston_window::Event;
 
-	// ???
-	// TODO: Use drop to unborrow?
-        //let mut screen = self.screens.last_mut().unwrap();
-
         // TODO: Remove clone?
         for window in &mut self.window {
             match window.event {
