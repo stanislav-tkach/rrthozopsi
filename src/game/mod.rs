@@ -49,3 +49,16 @@ impl Game {
 fn last<'a>(vec: &'a mut Vec<Box<screen::Screen>>) -> &'a mut Box<screen::Screen> {
     vec.last_mut().unwrap()
 }
+
+fn handle_input(screens: &mut Vec<Box<screen::Screen>>, input: &piston_window::Input, window: &piston_window::PistonWindow) {
+    for action in last(screens).on_input(&input, &window) {
+        match action {
+            screen::InputResult::PushScreen(new_screen) => {
+                screens.push(new_screen);
+            }
+            screen::InputResult::PopScreen => {
+                screens.pop();
+            }
+        }
+    }
+}
