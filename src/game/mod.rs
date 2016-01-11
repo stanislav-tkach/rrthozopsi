@@ -28,20 +28,19 @@ impl Game {
         // TODO: Remove clone?
         for window in &mut self.window {
             match window.event {
-                Some(Event::Update(args)) => { self.screens.last_mut().unwrap().on_update(&args); }
-                Some(Event::Render(args)) => { self.screens.last_mut().unwrap().on_draw(&args, &window); }
+                Some(Event::Update(ref args)) => { self.screens.last_mut().unwrap().on_update(&args); }
+                Some(Event::Render(ref args)) => { self.screens.last_mut().unwrap().on_draw(&args, &window); }
                 Some(Event::Input(ref input)) => {
-            	    for action in self.screens.last_mut().unwrap().on_input(&input, &window) {
-            		match action {
-            		    screen::InputResult::PushScreen(new_screen) => {
-            			self.screens.push(new_screen);
-            		    }
-            		    screen::InputResult::PopScreen => {
-            			self.screens.pop();
-            		    }
-            		}
-            	    }
-            	    //let result = screen.on_input(&input, &window);
+                    for action in self.screens.last_mut().unwrap().on_input(&input, &window) {
+                        match action {
+                            screen::InputResult::PushScreen(new_screen) => {
+                                self.screens.push(new_screen);
+                            }
+            		        screen::InputResult::PopScreen => {
+            			        self.screens.pop();
+            		        }
+                        }
+                    }
             	}
                 _ => {}
             }
