@@ -43,3 +43,7 @@ impl Game {
         }
     }
 }
+
+fn last<'a>(vec: &'a mut Vec<Box<screen::Screen>>) -> &'a mut Box<screen::Screen> {
+    vec.last_mut().unwrap()
+}
