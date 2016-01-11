@@ -33,7 +33,9 @@ impl Game {
                 Some(Event::Input(ref input)) => {
             	    for action in self.screens.last_mut().unwrap().on_input(&input, &window) {
             		match action {
-            		    screen::InputResult::PushScreen(_) => {}
+            		    screen::InputResult::PushScreen(new_screen) => {
+            			self.screens.push(new_screen);
+            		    }
             		    screen::InputResult::PopScreen => {
             			self.screens.pop();
             		    }
