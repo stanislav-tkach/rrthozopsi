@@ -28,18 +28,7 @@ impl Game {
             match window.event {
                 Some(Event::Update(ref args)) => { last(screens).on_update(&args); }
                 Some(Event::Render(ref args)) => { last(screens).on_draw(&args, &window); }
-                Some(Event::Input(ref input)) => {
-                    for action in last(screens).on_input(&input, &window) {
-                        match action {
-                            screen::InputResult::PushScreen(new_screen) => {
-                                screens.push(new_screen);
-                            }
-            		        screen::InputResult::PopScreen => {
-            			        screens.pop();
-            		        }
-                        }
-                    }
-            	}
+                Some(Event::Input(ref input)) => { handle_input(screens, &input, &window); }
                 _ => {}
             }
         }
