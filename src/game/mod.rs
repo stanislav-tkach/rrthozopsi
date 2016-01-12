@@ -3,15 +3,17 @@ use ::screen::Screen;
 
 use piston_window;
 
+type Screens = Vec<Box<screen::Screen>>;
+
 pub struct Game {
     window: piston_window::PistonWindow,
-    screens: Vec<Box<screen::Screen>>,
+    screens: Screens,
 }
 
 impl Game {
     pub fn new() -> Game {
         let window: piston_window::PistonWindow = piston_window::WindowSettings::new("rrthozopsi", [600, 600]).exit_on_esc(true).build().unwrap();
-        let screens: Vec<Box<screen::Screen>> = vec![Box::new(screen::MainMenuScreen::new())];
+        let screens: Screens = vec![Box::new(screen::MainMenuScreen::new())];
         Game { 
             window: window,
             screens: screens, 
@@ -35,11 +37,11 @@ impl Game {
     }
 }
 
-fn last<'a>(vec: &'a mut Vec<Box<screen::Screen>>) -> &'a mut Box<screen::Screen> {
+fn last<'a>(vec: &'a mut Screens) -> &'a mut Box<screen::Screen> {
     vec.last_mut().unwrap()
 }
 
-fn handle_input(screens: &mut Vec<Box<screen::Screen>>, input: &piston_window::Input, window: &piston_window::PistonWindow) {
+fn handle_input(screens: &mut Screens, input: &piston_window::Input, window: &piston_window::PistonWindow) {
     for action in last(screens).on_input(&input, &window) {
         match action {
             screen::InputResult::PushScreen(new_screen) => {
