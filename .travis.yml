@@ -22,7 +22,9 @@ addons:
             - libcurl4-openssl-dev
             - libelf-dev
             - libdw-dev
-            - libbfd-dev
+            # To suppress kcov warning:
+            # kcov: WARNING: kcov has been built without libbfd-dev (or kcov: binutils-dev), so the --verify option will not do anything.
+            - binutils-dev
 
 # Load travis-cargo.
 before_script:
