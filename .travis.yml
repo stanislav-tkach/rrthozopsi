@@ -39,3 +39,8 @@ script:
 after_success:
     # Measure code coverage and upload to coveralls.io.
     - travis-cargo --only stable coveralls --no-sudo --verify
+
+env:
+    global:
+        # Override the default `--features unstable` used for the nightly branch.
+        - TRAVIS_CARGO_NIGHTLY_FEATURE=""
