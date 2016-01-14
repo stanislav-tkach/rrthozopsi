@@ -5,7 +5,6 @@ extern crate gfx_graphics;
 mod game;
 mod screen;
 mod object;
-mod events;
 
 fn main() {
     let mut game = game::Game::new();
