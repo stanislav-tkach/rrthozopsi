@@ -12,8 +12,7 @@ pub struct Game {
 
 impl Game {
     pub fn new() -> Game {
-        let window: piston_window::PistonWindow = piston_window::WindowSettings::new("rrthozopsi",
-                                                                                     [600, 600])
+        let window: piston_window::PistonWindow = piston_window::WindowSettings::new("rrthozopsi", [600, 600])
                                                       .exit_on_esc(true)
                                                       .build()
                                                       .unwrap();
@@ -51,9 +50,7 @@ fn last<'a>(vec: &'a mut Screens) -> &'a mut Box<screen::Screen> {
     vec.last_mut().unwrap()
 }
 
-fn handle_input(screens: &mut Screens,
-                input: &piston_window::Input,
-                window: &piston_window::PistonWindow) {
+fn handle_input(screens: &mut Screens, input: &piston_window::Input, window: &piston_window::PistonWindow) {
     for action in last(screens).on_input(&input, &window) {
         match action {
             screen::InputResult::PushScreen(new_screen) => {

@@ -16,9 +16,7 @@ pub struct BattleScreen {
 
 // TODO: Replace by sprite loader?
 // TODO: Remove
-fn load_sprite(window: &piston_window::PistonWindow,
-               name: &str)
-               -> piston_window::Texture<gfx_device_gl::Resources> {
+fn load_sprite(window: &piston_window::PistonWindow, name: &str) -> piston_window::Texture<gfx_device_gl::Resources> {
     // TODO: Create and use default sprite in case of failure during loading?
     let assets = find_folder::Search::ParentsThenKids(3, 3).for_folder("assets").unwrap();
     let sprite = assets.join(name);
@@ -42,10 +40,7 @@ impl BattleScreen {
 }
 
 impl Screen for BattleScreen {
-    fn on_input(&mut self,
-                input: &piston_window::Input,
-                window: &piston_window::PistonWindow)
-                -> InputResults {
+    fn on_input(&mut self, input: &piston_window::Input, window: &piston_window::PistonWindow) -> InputResults {
         use piston_window::{Input, Button, Key};
 
         let result = Vec::new();
