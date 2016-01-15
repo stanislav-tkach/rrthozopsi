@@ -15,11 +15,7 @@ pub struct Object {
 
 impl Object {
     pub fn new(sprite: Option<piston_window::Texture<Resources>>) -> Object {
-        Object {
-            x: 0.,
-            y: 0.,
-            sprite: sprite,
-        }
+        Object { x: 0., y: 0., sprite: sprite }
     }
 
     pub fn mov(&mut self, x: f64, y: f64) {
@@ -32,15 +28,11 @@ impl Object {
         self.y = y;
     }
 
-    pub fn render(&self,
-                  graphic: &mut GfxGraphics<Resources, CommandBuffer<Resources>, Output>,
-                  view: &piston_window::math::Matrix2d) {
+    pub fn render(&self, graphic: &mut GfxGraphics<Resources, CommandBuffer<Resources>, Output>, view: &piston_window::math::Matrix2d) {
         if let Some(ref sprite) = self.sprite {
             let (x, y) = sprite.get_size();
             let (x, y) = (x / 2, y / 2);
-            piston_window::image(sprite,
-                                 view.trans(self.x, self.y).trans(-(x as f64), -(y as f64)),
-                                 graphic);
+            piston_window::image(sprite, view.trans(self.x, self.y).trans(-(x as f64), -(y as f64)), graphic);
         }
     }
 }

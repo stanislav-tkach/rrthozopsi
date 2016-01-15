@@ -1,5 +1,5 @@
-use ::screen;
-use ::screen::Screen;
+use screen;
+use screen::Screen;
 
 use piston_window;
 
@@ -12,11 +12,15 @@ pub struct Game {
 
 impl Game {
     pub fn new() -> Game {
-        let window: piston_window::PistonWindow = piston_window::WindowSettings::new("rrthozopsi", [600, 600]).exit_on_esc(true).build().unwrap();
+        let window: piston_window::PistonWindow = piston_window::WindowSettings::new("rrthozopsi",
+                                                                                     [600, 600])
+                                                      .exit_on_esc(true)
+                                                      .build()
+                                                      .unwrap();
         let screens: Screens = vec![Box::new(screen::MainMenuScreen::new())];
-        Game { 
+        Game {
             window: window,
-            screens: screens, 
+            screens: screens,
         }
     }
 
@@ -28,9 +32,15 @@ impl Game {
         // TODO: Remove clone?
         for window in &mut self.window {
             match window.event {
-                Some(Event::Update(ref args)) => { last(screens).on_update(&args); }
-                Some(Event::Render(ref args)) => { last(screens).on_draw(&args, &window); }
-                Some(Event::Input(ref input)) => { handle_input(screens, &input, &window); }
+                Some(Event::Update(ref args)) => {
+                    last(screens).on_update(&args);
+                }
+                Some(Event::Render(ref args)) => {
+                    last(screens).on_draw(&args, &window);
+                }
+                Some(Event::Input(ref input)) => {
+                    handle_input(screens, &input, &window);
+                }
                 _ => {}
             }
         }
@@ -41,7 +51,9 @@ fn last<'a>(vec: &'a mut Screens) -> &'a mut Box<screen::Screen> {
     vec.last_mut().unwrap()
 }
 
-fn handle_input(screens: &mut Screens, input: &piston_window::Input, window: &piston_window::PistonWindow) {
+fn handle_input(screens: &mut Screens,
+                input: &piston_window::Input,
+                window: &piston_window::PistonWindow) {
     for action in last(screens).on_input(&input, &window) {
         match action {
             screen::InputResult::PushScreen(new_screen) => {
