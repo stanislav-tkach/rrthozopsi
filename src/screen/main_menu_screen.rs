@@ -3,9 +3,10 @@ extern crate find_folder;
 use screen::*;
 use piston_window;
 use conrod;
-use conrod::frame::Frameable;
+use conrod::Widget;
+use conrod::Frameable;
 use conrod::color::Colorable;
-use conrod::position::Positionable;
+use conrod::Positionable;
 
 pub struct MainMenuScreen;
 
