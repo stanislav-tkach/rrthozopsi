@@ -43,7 +43,7 @@ impl Screen for MainMenuScreen {
         // type Ui = conrod::Ui<Glyphs>;
         let mut ui = {
             let assets = find_folder::Search::KidsThenParents(3, 5).for_folder("assets").unwrap();
-            let font_path = assets.join("fonts/NotoSans/NotoSans-Regular.ttf");
+            let font_path = assets.join("NotoSans-Regular.ttf");
             let theme = conrod::Theme::default();
             let glyph_cache = piston_window::Glyphs::new(&font_path, window.factory.borrow().clone());
             conrod::Ui::new(glyph_cache.unwrap(), theme)
