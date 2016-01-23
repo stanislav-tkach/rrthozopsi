@@ -1,4 +1,4 @@
-use gfx_device_gl::{self, Resources};
+use gfx_device_gl;
 use gfx_graphics::GfxGraphics;
 
 use piston_window;
@@ -10,11 +10,11 @@ pub struct Object {
     x: f64,
     y: f64,
     // TODO: Remove Option.
-    sprite: Option<piston_window::Texture<Resources>>,
+    sprite: Option<piston_window::Texture<gfx_device_gl::Resources>>,
 }
 
 impl Object {
-    pub fn new(sprite: Option<piston_window::Texture<Resources>>) -> Object {
+    pub fn new(sprite: Option<piston_window::Texture<gfx_device_gl::Resources>>) -> Object {
         Object {
             x: 0.,
             y: 0.,
@@ -33,7 +33,7 @@ impl Object {
     }
 
     pub fn render(&self,
-                  graphic: &mut GfxGraphics<Resources, gfx_device_gl::command::CommandBuffer<Resources>, Output>,
+                  graphic: &mut GfxGraphics<gfx_device_gl::Resources, gfx_device_gl::CommandBuffer<gfx_device_gl::Resources>, gfx_device_gl::Output>,
                   view: &piston_window::math::Matrix2d) {
         if let Some(ref sprite) = self.sprite {
             let (x, y) = sprite.get_size();

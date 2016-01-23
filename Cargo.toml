@@ -14,7 +14,7 @@ name = "rrthozopsi"
 
 [dependencies]
 piston_window = "*"
-gfx_device_gl = "*"
+gfx_device_gl = "0.7.0"
 piston2d-gfx_graphics = "*"
 find_folder = "*"
 conrod = "*"
