@@ -1,7 +1,7 @@
 extern crate piston_window;
 extern crate gfx_device_gl;
 extern crate gfx_graphics;
-extern crate conrod;
+#[macro_use] extern crate conrod;
 
 mod game;
 mod screen;

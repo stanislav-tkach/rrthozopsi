@@ -3,6 +3,9 @@ extern crate find_folder;
 use screen::*;
 use piston_window;
 use conrod;
+use conrod::frame::Frameable;
+use conrod::color::Colorable;
+use conrod::position::Positionable;
 
 pub struct MainMenuScreen;
 
@@ -45,25 +48,26 @@ impl Screen for MainMenuScreen {
             conrod::Ui::new(glyph_cache.unwrap(), theme)
         };
 
-        let canvas = 0;
-
         conrod::Canvas::new()
-            .frame(200)
+            .frame(200.)
             .pad(30.0)
             .color(conrod::color::rgb(0.2, 0.35, 0.45))
             .scroll_kids()
-            .set(canvas, ui);
-
-        let title = 1;
+            .set(CANVAS, &mut ui);
 
         conrod::Text::new("Widget Demonstration")
-            .top_left_with_margins_on(canvas, 0.0, 350.0)
+            .top_left_with_margins_on(CANVAS, 0.0, 350.0)
             .font_size(32)
             .color(conrod::color::rgb(0.2, 0.35, 0.45).plain_contrast())
-            .set(title, ui);
+            .set(TITLE, &mut ui);
 ////////////////////////////////////////////////////////////////////////////////////
         });
     }
 
     fn on_update(&mut self, args: &piston_window::UpdateArgs) {}
+}
+
+widget_ids! {
+    CANVAS,
+    TITLE,
 }
