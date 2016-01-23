@@ -1,3 +1,5 @@
+extern crate find_folder;
+
 use screen::*;
 use piston_window;
 use conrod;
@@ -31,34 +33,34 @@ impl Screen for MainMenuScreen {
         window.draw_2d(|context, graphics| {
             piston_window::clear([0., 0., 1., 1.0], graphics);
 
-// TODO: Some control?
 ////////////////////////////////////////////////////////////////////////////////////
-// TODO: Create Ui.
-/*
+        // TODO: Move Ui to some context?
+        // piston_window::Glyphs
+        // type Ui = conrod::Ui<Glyphs>;
         let mut ui = {
-            let assets = find_folder::Search::KidsThenParents(3, 5)
-                .for_folder("assets").unwrap();
+            let assets = find_folder::Search::KidsThenParents(3, 5).for_folder("assets").unwrap();
             let font_path = assets.join("fonts/NotoSans/NotoSans-Regular.ttf");
-            let theme = Theme::default();
-            let glyph_cache = Glyphs::new(&font_path, window.factory.borrow().clone());
-            Ui::new(glyph_cache.unwrap(), theme)
+            let theme = conrod::Theme::default();
+            let glyph_cache = piston_window::Glyphs::new(&font_path, window.factory.borrow().clone());
+            conrod::Ui::new(glyph_cache.unwrap(), theme)
         };
-*/
-/*
-    Canvas::new()
-        .frame(app.frame_width)
-        .pad(30.0)
-        .color(app.bg_color)
-        .scroll_kids()
-        .set(CANVAS, ui);
 
-    // Text example.
-    Text::new("Widget Demonstration")
-        .top_left_with_margins_on(CANVAS, 0.0, app.title_pad)
-        .font_size(32)
-        .color(app.bg_color.plain_contrast())
-        .set(TITLE, ui);
-*/
+        let canvas = 0;
+
+        conrod::Canvas::new()
+            .frame(200)
+            .pad(30.0)
+            .color(conrod::color::rgb(0.2, 0.35, 0.45))
+            .scroll_kids()
+            .set(canvas, ui);
+
+        let title = 1;
+
+        conrod::Text::new("Widget Demonstration")
+            .top_left_with_margins_on(canvas, 0.0, 350.0)
+            .font_size(32)
+            .color(conrod::color::rgb(0.2, 0.35, 0.45).plain_contrast())
+            .set(title, ui);
 ////////////////////////////////////////////////////////////////////////////////////
         });
     }

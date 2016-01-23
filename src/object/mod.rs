@@ -1,4 +1,4 @@
-use gfx_device_gl::{Resources, Output, CommandBuffer};
+use gfx_device_gl::{self, Resources};
 use gfx_graphics::GfxGraphics;
 
 use piston_window;
@@ -33,7 +33,7 @@ impl Object {
     }
 
     pub fn render(&self,
-                  graphic: &mut GfxGraphics<Resources, CommandBuffer<Resources>, Output>,
+                  graphic: &mut GfxGraphics<Resources, gfx_device_gl::command::CommandBuffer<Resources>, Output>,
                   view: &piston_window::math::Matrix2d) {
         if let Some(ref sprite) = self.sprite {
             let (x, y) = sprite.get_size();
