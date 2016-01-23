@@ -34,10 +34,6 @@ impl Screen for MainMenuScreen {
     }
 
     fn on_draw(&mut self, args: &piston_window::RenderArgs, window: &piston_window::PistonWindow) {
-        window.draw_2d(|context, graphics| {
-            piston_window::clear([0., 0., 1., 1.0], graphics);
-
-////////////////////////////////////////////////////////////////////////////////////
         // TODO: Move Ui to some context?
         // piston_window::Glyphs
         // type Ui = conrod::Ui<Glyphs>;
@@ -49,20 +45,25 @@ impl Screen for MainMenuScreen {
             conrod::Ui::new(glyph_cache.unwrap(), theme)
         };
 
-        conrod::Canvas::new()
-            .frame(200.)
-            .pad(30.0)
-            .color(conrod::color::rgb(0.2, 0.35, 0.45))
-            .scroll_kids()
-            .set(CANVAS, &mut ui);
+        ui.handle_event(window);
 
-        conrod::Text::new("Widget Demonstration")
-            .top_left_with_margins_on(CANVAS, 0.0, 350.0)
-            .font_size(32)
-            .color(conrod::color::rgb(0.2, 0.35, 0.45).plain_contrast())
-            .set(TITLE, &mut ui);
-////////////////////////////////////////////////////////////////////////////////////
+        //window.update(|_| {
+        ui.set_widgets(|ui| {
+            conrod::Canvas::new()
+                .frame(200.)
+                .pad(30.0)
+                .color(conrod::color::rgb(0.2, 0.35, 0.45))
+                .scroll_kids()
+                .set(CANVAS, ui);
+
+            conrod::Text::new("Widget Demonstration")
+                .top_left_with_margins_on(CANVAS, 0.0, 350.0)
+                .font_size(32)
+                .color(conrod::color::rgb(0.2, 0.35, 0.45).plain_contrast())
+                .set(TITLE, ui);
         });
+
+        window.draw_2d(|context, graphics| ui.draw(context, graphics));
     }
 
     fn on_update(&mut self, args: &piston_window::UpdateArgs) {}
