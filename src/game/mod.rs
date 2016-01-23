@@ -21,18 +21,6 @@ impl Game {
             window: window,
             screens: screens,
         }
-
-// TODO: Create Ui.
-/*
-        let mut ui = {
-            let assets = find_folder::Search::KidsThenParents(3, 5)
-                .for_folder("assets").unwrap();
-            let font_path = assets.join("fonts/NotoSans/NotoSans-Regular.ttf");
-            let theme = Theme::default();
-            let glyph_cache = Glyphs::new(&font_path, window.factory.borrow().clone());
-            Ui::new(glyph_cache.unwrap(), theme)
-        };
-*/
     }
 
     pub fn run(&mut self) {
