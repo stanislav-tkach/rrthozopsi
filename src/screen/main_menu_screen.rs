@@ -9,12 +9,12 @@ use conrod::color::Colorable;
 use conrod::Positionable;
 
 pub struct MainMenuScreen {
-    ui: conrod::Ui,
+    ui: conrod::Ui<Glyphs>,
 }
 
 impl MainMenuScreen {
-    pub fn new() -> MainMenuScreen {
-        MainMenuScreen { ui: create_ui() }
+    pub fn new(window: &piston_window::PistonWindow) -> MainMenuScreen {
+        MainMenuScreen { ui: create_ui(&window) }
     }
 }
 
@@ -75,7 +75,7 @@ widget_ids! {
     TITLE,
 }
 
-fn create_ui() -> conrod::Ui {
+fn create_ui(window: &piston_window::PistonWindow) -> conrod::Ui {
     let assets = find_folder::Search::KidsThenParents(3, 5).for_folder("assets").unwrap();
     let font_path = assets.join("NotoSans-Regular.ttf");
     let theme = conrod::Theme::default();
