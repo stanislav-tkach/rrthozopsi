@@ -36,20 +36,8 @@ impl Screen for MainMenuScreen {
     }
 
     fn on_draw(&mut self, args: &piston_window::RenderArgs, window: &piston_window::PistonWindow) {
-        // TODO: Move Ui to some context?
-        // piston_window::Glyphs
-        // type Ui = conrod::Ui<Glyphs>;
-        let mut ui = {
-            let assets = find_folder::Search::KidsThenParents(3, 5).for_folder("assets").unwrap();
-            let font_path = assets.join("NotoSans-Regular.ttf");
-            let theme = conrod::Theme::default();
-            let glyph_cache = piston_window::Glyphs::new(&font_path, window.factory.borrow().clone());
-            conrod::Ui::new(glyph_cache.unwrap(), theme)
-        };
-
-        ui.handle_event(window);
-
-        ui.set_widgets(|ui| {
+        self.ui.handle_event(window);
+        self.ui.set_widgets(|ui| {
             conrod::Canvas::new()
                 .frame(200.)
                 .pad(30.0)
@@ -64,7 +52,7 @@ impl Screen for MainMenuScreen {
                 .set(TITLE, ui);
         });
 
-        window.draw_2d(|context, graphics| ui.draw(context, graphics));
+        window.draw_2d(|context, graphics| self.ui.draw(context, graphics));
     }
 
     fn on_update(&mut self, args: &piston_window::UpdateArgs) {}
