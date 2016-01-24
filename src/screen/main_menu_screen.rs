@@ -47,7 +47,6 @@ impl Screen for MainMenuScreen {
 
         ui.handle_event(window);
 
-        //window.update(|_| {
         ui.set_widgets(|ui| {
             conrod::Canvas::new()
                 .frame(200.)
