@@ -8,11 +8,13 @@ use conrod::Frameable;
 use conrod::color::Colorable;
 use conrod::Positionable;
 
-pub struct MainMenuScreen;
+pub struct MainMenuScreen {
+    ui: conrod::Ui,
+}
 
 impl MainMenuScreen {
     pub fn new() -> MainMenuScreen {
-        MainMenuScreen
+        MainMenuScreen { ui: create_ui() }
     }
 }
 
@@ -71,4 +73,12 @@ impl Screen for MainMenuScreen {
 widget_ids! {
     CANVAS,
     TITLE,
+}
+
+fn create_ui() -> conrod::Ui {
+    let assets = find_folder::Search::KidsThenParents(3, 5).for_folder("assets").unwrap();
+    let font_path = assets.join("NotoSans-Regular.ttf");
+    let theme = conrod::Theme::default();
+    let glyph_cache = piston_window::Glyphs::new(&font_path, window.factory.borrow().clone());
+    conrod::Ui::new(glyph_cache.unwrap(), theme)
 }
