@@ -2,11 +2,8 @@ extern crate find_folder;
 
 use screen::*;
 use piston_window;
-use conrod;
-use conrod::Widget;
-use conrod::Frameable;
+use conrod::{self, Widget, Frameable, Positionable};
 use conrod::color::Colorable;
-use conrod::Positionable;
 
 pub struct MainMenuScreen {
     ui: conrod::Ui<piston_window::Glyphs>,
