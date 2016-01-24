@@ -16,7 +16,7 @@ impl Game {
                                                       .exit_on_esc(true)
                                                       .build()
                                                       .unwrap();
-        let screens: Screens = vec![Box::new(screen::MainMenuScreen::new())];
+        let screens: Screens = vec![Box::new(screen::MainMenuScreen::new(&window))];
         Game {
             window: window,
             screens: screens,
