@@ -34,6 +34,10 @@ impl Screen for MainMenuScreen {
 
     fn on_draw(&mut self, args: &piston_window::RenderArgs, window: &piston_window::PistonWindow) {
         self.ui.handle_event(window);
+        window.draw_2d(|context, graphics| self.ui.draw(context, graphics));
+    }
+
+    fn on_update(&mut self, args: &piston_window::UpdateArgs) {
         self.ui.set_widgets(|ui| {
             conrod::Canvas::new()
                 .frame(200.)
@@ -48,11 +52,7 @@ impl Screen for MainMenuScreen {
                 .color(conrod::color::rgb(0.2, 0.35, 0.45).plain_contrast())
                 .set(TITLE, ui);
         });
-
-        window.draw_2d(|context, graphics| self.ui.draw(context, graphics));
     }
-
-    fn on_update(&mut self, args: &piston_window::UpdateArgs) {}
 }
 
 widget_ids! {
