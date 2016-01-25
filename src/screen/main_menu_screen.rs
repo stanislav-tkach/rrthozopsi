@@ -34,7 +34,7 @@ impl Screen for MainMenuScreen {
 
     fn on_draw(&mut self, args: &piston_window::RenderArgs, window: &piston_window::PistonWindow) {
         self.ui.handle_event(window);
-        window.draw_2d(|context, graphics| self.ui.draw(context, graphics));
+        window.draw_2d(|context, graphics| self.ui.draw_if_changed(context, graphics));
     }
 
     fn on_update(&mut self, args: &piston_window::UpdateArgs) {
