@@ -2,8 +2,7 @@ extern crate find_folder;
 
 use screen::*;
 use object;
-use piston_window;
-use piston_window::Transformed;
+use piston_window::{self, Transformed};
 use gfx_device_gl;
 
 pub struct BattleScreen {
