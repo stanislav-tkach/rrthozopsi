@@ -27,7 +27,7 @@ impl Game {
         use piston_window::Event;
 
         let screens = &mut self.screens;
-        let mut context = screen::Context{ assets: ::std::path::Path::new("") };
+        let mut context = screen::Context{ assets: ::std::path::PathBuf::from("") };
 
         // TODO: Remove clone?
         for window in &mut self.window {

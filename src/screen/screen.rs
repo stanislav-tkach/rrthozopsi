@@ -8,7 +8,7 @@ pub enum InputResult {
 pub type InputResults = Vec<InputResult>;
 
 pub struct Context {
-    pub assets: ::std::path::Path,
+    pub assets: ::std::path::PathBuf,
 }
 
 pub trait Screen {
