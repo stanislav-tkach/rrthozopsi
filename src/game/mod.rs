@@ -27,6 +27,7 @@ impl Game {
         use piston_window::Event;
 
         let screens = &mut self.screens;
+        let mut context = screen::Context{ assets: ::std::path::Path::new("") };
 
         // TODO: Remove clone?
         for window in &mut self.window {
@@ -38,7 +39,7 @@ impl Game {
                     last(screens).on_draw(&args, &window);
                 }
                 Some(Event::Input(ref input)) => {
-                    handle_input(screens, &input, &window);
+                    handle_input(screens, &input, &window, &mut context);
                 }
                 _ => {}
             }
@@ -50,8 +51,8 @@ fn last<'a>(vec: &'a mut Screens) -> &'a mut Box<screen::Screen> {
     vec.last_mut().unwrap()
 }
 
-fn handle_input(screens: &mut Screens, input: &piston_window::Input, window: &piston_window::PistonWindow) {
-    for action in last(screens).on_input(&input, &window) {
+fn handle_input(screens: &mut Screens, input: &piston_window::Input, window: &piston_window::PistonWindow, context: &mut screen::Context) {
+    for action in last(screens).on_input(&input, &window, context) {
         match action {
             screen::InputResult::PushScreen(new_screen) => {
                 screens.push(new_screen);
