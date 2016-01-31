@@ -9,6 +9,7 @@ type Screens = Vec<Box<screen::Screen>>;
 
 pub struct Game {
     window: piston_window::PistonWindow,
+    context: screen::Context,
     screens: Screens,
 }
 
@@ -18,10 +19,12 @@ impl Game {
                                                       .exit_on_esc(true)
                                                       .build()
                                                       .unwrap();
-        let screens: Screens = vec![Box::new(screen::MainMenuScreen::new(&window))];
+        let mut context = screen::Context{ assets_path: find_folder::Search::KidsThenParents(3, 5).for_folder("assets").unwrap() };
+        let screens: Screens = vec![Box::new(screen::MainMenuScreen::new(&window, &mut context))];
         Game {
             window: window,
             screens: screens,
+            context: context,
         }
     }
 
@@ -29,7 +32,6 @@ impl Game {
         use piston_window::Event;
 
         let screens = &mut self.screens;
-        let mut context = screen::Context{ assets_path: find_folder::Search::KidsThenParents(3, 5).for_folder("assets").unwrap() };
 
         // TODO: Remove clone?
         for window in &mut self.window {
@@ -41,7 +43,7 @@ impl Game {
                     last(screens).on_draw(&args, &window);
                 }
                 Some(Event::Input(ref input)) => {
-                    handle_input(screens, &input, &window, &mut context);
+                    handle_input(screens, &input, &window, &mut self.context);
                 }
                 _ => {}
             }
