@@ -19,7 +19,9 @@ impl Game {
                                                       .exit_on_esc(true)
                                                       .build()
                                                       .unwrap();
-        let mut context = screen::Context{ assets_path: find_folder::Search::KidsThenParents(3, 5).for_folder("assets").unwrap() };
+        let mut context = screen::Context {
+            assets_path: find_folder::Search::KidsThenParents(3, 5).for_folder("assets").unwrap(),
+        };
         let screens: Screens = vec![Box::new(screen::MainMenuScreen::new(&window, &mut context))];
         Game {
             window: window,
@@ -55,7 +57,10 @@ fn last<'a>(vec: &'a mut Screens) -> &'a mut Box<screen::Screen> {
     vec.last_mut().unwrap()
 }
 
-fn handle_input(screens: &mut Screens, input: &piston_window::Input, window: &piston_window::PistonWindow, context: &mut screen::Context) {
+fn handle_input(screens: &mut Screens,
+                input: &piston_window::Input,
+                window: &piston_window::PistonWindow,
+                context: &mut screen::Context) {
     for action in last(screens).on_input(&input, &window, context) {
         match action {
             screen::InputResult::PushScreen(new_screen) => {

@@ -11,7 +11,10 @@ pub struct BattleScreen {
     right: bool,
 }
 
-fn load_sprite(window: &piston_window::PistonWindow, assets_path: &::std::path::Path, name: &str) -> piston_window::Texture<gfx_device_gl::Resources> {
+fn load_sprite(window: &piston_window::PistonWindow,
+               assets_path: &::std::path::Path,
+               name: &str)
+               -> piston_window::Texture<gfx_device_gl::Resources> {
     // TODO: Create and use default sprite in case of failure during loading?
     let sprite = assets_path.join(name);
     piston_window::Texture::from_path(&mut *window.factory.borrow_mut(),
@@ -34,7 +37,11 @@ impl BattleScreen {
 }
 
 impl Screen for BattleScreen {
-    fn on_input(&mut self, input: &piston_window::Input, window: &piston_window::PistonWindow, context: &mut Context) -> InputResults {
+    fn on_input(&mut self,
+                input: &piston_window::Input,
+                window: &piston_window::PistonWindow,
+                context: &mut Context)
+                -> InputResults {
         use piston_window::{Input, Button, Key};
 
         let result = Vec::new();
