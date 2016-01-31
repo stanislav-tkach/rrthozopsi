@@ -1,5 +1,3 @@
-extern crate find_folder;
-
 use screen::*;
 use object;
 use piston_window::{self, Transformed};
@@ -13,12 +11,9 @@ pub struct BattleScreen {
     right: bool,
 }
 
-// TODO: Replace by sprite loader?
-// TODO: Remove
-fn load_sprite(window: &piston_window::PistonWindow, name: &str) -> piston_window::Texture<gfx_device_gl::Resources> {
+fn load_sprite(window: &piston_window::PistonWindow, assets_path: &::std::path::Path, name: &str) -> piston_window::Texture<gfx_device_gl::Resources> {
     // TODO: Create and use default sprite in case of failure during loading?
-    let assets = find_folder::Search::ParentsThenKids(3, 3).for_folder("assets").unwrap();
-    let sprite = assets.join(name);
+    let sprite = assets_path.join(name);
     piston_window::Texture::from_path(&mut *window.factory.borrow_mut(),
                                       &sprite,
                                       piston_window::Flip::None,
@@ -27,9 +22,9 @@ fn load_sprite(window: &piston_window::PistonWindow, name: &str) -> piston_windo
 }
 
 impl BattleScreen {
-    pub fn new(window: &piston_window::PistonWindow) -> BattleScreen {
+    pub fn new(window: &piston_window::PistonWindow, context: &mut Context) -> BattleScreen {
         BattleScreen {
-            player: object::Object::new(Some(load_sprite(&window, "skeleton.png"))),
+            player: object::Object::new(Some(load_sprite(&window, &context.assets_path, "skeleton.png"))),
             up: false,
             down: false,
             left: false,
