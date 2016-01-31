@@ -1,5 +1,3 @@
-extern crate find_folder;
-
 use screen::*;
 use piston_window;
 use conrod::{self, Widget, Frameable, Positionable};
@@ -10,8 +8,8 @@ pub struct MainMenuScreen {
 }
 
 impl MainMenuScreen {
-    pub fn new(window: &piston_window::PistonWindow) -> MainMenuScreen {
-        MainMenuScreen { ui: create_ui(&window) }
+    pub fn new(window: &piston_window::PistonWindow, context: &mut Context) -> MainMenuScreen {
+        MainMenuScreen { ui: create_ui(&window, &context.assets_path) }
     }
 }
 
@@ -60,9 +58,8 @@ widget_ids! {
     TITLE,
 }
 
-fn create_ui(window: &piston_window::PistonWindow) -> conrod::Ui<piston_window::Glyphs> {
-    let assets = find_folder::Search::KidsThenParents(3, 5).for_folder("assets").unwrap();
-    let font_path = assets.join("NotoSans-Regular.ttf");
+fn create_ui(window: &piston_window::PistonWindow, assets_path: &::std::path::Path) -> conrod::Ui<piston_window::Glyphs> {
+    let font_path = assets_path.join("NotoSans-Regular.ttf");
     let theme = conrod::Theme::default();
     let glyph_cache = piston_window::Glyphs::new(&font_path, window.factory.borrow().clone());
     conrod::Ui::new(glyph_cache.unwrap(), theme)
