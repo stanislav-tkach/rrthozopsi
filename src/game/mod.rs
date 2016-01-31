@@ -1,3 +1,5 @@
+extern crate find_folder;
+
 use screen;
 use screen::Screen;
 
@@ -27,7 +29,7 @@ impl Game {
         use piston_window::Event;
 
         let screens = &mut self.screens;
-        let mut context = screen::Context{ assets: ::std::path::PathBuf::from("") };
+        let mut context = screen::Context{ assets: find_folder::Search::KidsThenParents(3, 5).for_folder("assets").unwrap() };
 
         // TODO: Remove clone?
         for window in &mut self.window {
