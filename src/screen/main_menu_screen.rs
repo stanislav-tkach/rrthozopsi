@@ -48,7 +48,7 @@ impl Screen for MainMenuScreen {
                 .scroll_kids()
                 .set(CANVAS, ui);
 
-            conrod::Text::new("Widget Demonstration")
+            conrod::Text::new("Main menu")
                 .top_left_with_margins_on(CANVAS, 0.0, 350.0)
                 .font_size(32)
                 .color(conrod::color::rgb(0.2, 0.35, 0.45).plain_contrast())
@@ -62,6 +62,8 @@ impl Screen for MainMenuScreen {
 widget_ids! {
     CANVAS,
     TITLE,
+    NEW_GAME_BUTTON,
+    EXIT_BUTTON,
 }
 
 fn create_ui(window: &piston_window::PistonWindow,
