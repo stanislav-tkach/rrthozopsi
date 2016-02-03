@@ -1,7 +1,8 @@
 use screen::*;
 use piston_window;
-use conrod::{self, Widget, Frameable, Positionable};
+use conrod::{self, Widget, Frameable, Positionable, Sizeable, Labelable};
 use conrod::color::Colorable;
+//use gif::traits::SetParameter;
 
 pub struct MainMenuScreen {
     ui: conrod::Ui<piston_window::Glyphs>,
@@ -53,6 +54,17 @@ impl Screen for MainMenuScreen {
                 .font_size(32)
                 .color(conrod::color::rgb(0.2, 0.35, 0.45).plain_contrast())
                 .set(TITLE, ui);
+
+            conrod::Button::new()
+//                .w_h(200.0, 50.0)
+//                .mid_left_of(CANVAS)
+//                .down_from(TITLE, 45.0)
+                .rgb(0.4, 0.75, 0.6)
+                .frame(100.)
+                .label("New game")
+//                .react(conrod::color::rgb(0.2, 0.35, 0.45))
+                .react(|| ())
+                .set(NEW_GAME_BUTTON, ui);
         });
     }
 }
