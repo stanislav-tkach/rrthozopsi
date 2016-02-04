@@ -45,15 +45,9 @@ impl Screen for MainMenuScreen {
             conrod::Canvas::new()
                 .frame(200.)
                 .pad(30.0)
-                .color(conrod::color::rgb(0.2, 0.35, 0.45))
+                .color(conrod::color::rgb(1., 0.35, 0.45))
                 .scroll_kids()
                 .set(CANVAS, ui);
-
-            conrod::Text::new("Main menu")
-                .top_left_with_margins_on(CANVAS, 0.0, 350.0)
-                .font_size(32)
-                .color(conrod::color::rgb(0.2, 0.35, 0.45).plain_contrast())
-                .set(TITLE, ui);
 
             conrod::Button::new()
 //                .w_h(200.0, 50.0)
