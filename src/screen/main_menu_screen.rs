@@ -55,7 +55,7 @@ impl Screen for MainMenuScreen {
             conrod::Button::new()
                 .w_h(200.0, 50.0)
                 .mid_left_of(CANVAS)
-                .top_left_with_margins_on(CANVAS, 0.0, 350.0)
+//                .top_left_with_margins_on(CANVAS, 0.0, 350.0)
                 .rgb(0.4, 0.75, 0.6)
                 .frame(FRAME_WIDTH)
                 .label("New game")
