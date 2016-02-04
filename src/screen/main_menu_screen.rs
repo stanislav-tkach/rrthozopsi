@@ -41,9 +41,11 @@ impl Screen for MainMenuScreen {
     }
 
     fn on_update(&mut self, args: &piston_window::UpdateArgs) {
+        const FRAME_WIDTH: f64 = 1.;
+
         self.ui.set_widgets(|ui| {
             conrod::Canvas::new()
-                .frame(1.)
+                .frame(FRAME_WIDTH)
                 .pad(30.)
                 .color(conrod::color::rgb(0.2, 0.35, 0.45))
                 .scroll_kids()
@@ -54,7 +56,7 @@ impl Screen for MainMenuScreen {
                 .mid_left_of(CANVAS)
                 .top_left_with_margins_on(CANVAS, 0.0, 350.0)
                 .rgb(0.4, 0.75, 0.6)
-                .frame(1.)
+                .frame(FRAME_WIDTH)
                 .label("New game")
                 .react(|| ())
                 .set(NEW_GAME_BUTTON, ui);
@@ -64,7 +66,7 @@ impl Screen for MainMenuScreen {
                 .mid_left_of(CANVAS)
                 .down_from(NEW_GAME_BUTTON, 45.0)
                 .rgb(0.4, 0.75, 0.6)
-                .frame(1.)
+                .frame(FRAME_WIDTH)
                 .label("Exit")
                 .react(|| ())
                 .set(EXIT_BUTTON, ui);
