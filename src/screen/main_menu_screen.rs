@@ -41,6 +41,7 @@ impl Screen for MainMenuScreen {
     }
 
     fn on_update(&mut self, args: &piston_window::UpdateArgs) {
+        // TODO: Remove?
         const FRAME_WIDTH: f64 = 1.;
 
         self.ui.set_widgets(|ui| {
