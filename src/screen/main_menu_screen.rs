@@ -2,7 +2,6 @@ use screen::*;
 use piston_window;
 use conrod::{self, Widget, Frameable, Positionable, Sizeable, Labelable};
 use conrod::color::Colorable;
-//use gif::traits::SetParameter;
 
 pub struct MainMenuScreen {
     ui: conrod::Ui<piston_window::Glyphs>,
