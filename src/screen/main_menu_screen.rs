@@ -48,7 +48,6 @@ impl Screen for MainMenuScreen {
 
 widget_ids! {
     CANVAS,
-    TITLE,
     NEW_GAME_BUTTON,
     EXIT_BUTTON,
 }
