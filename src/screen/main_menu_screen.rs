@@ -63,12 +63,8 @@ fn create_ui(window: &piston_window::PistonWindow,
 }
 
 fn handle_on_update(ui: &mut conrod::Ui<piston_window::Glyphs>, new_game: &mut bool, exit: &mut bool) {
-    // TODO: Remove?
-    const FRAME_WIDTH: f64 = 1.;
-
     ui.set_widgets(|ui| {
         conrod::Canvas::new()
-            .frame(FRAME_WIDTH)
             .pad(30.)
             .color(conrod::color::rgb(0.2, 0.35, 0.45))
             .scroll_kids()
@@ -78,7 +74,6 @@ fn handle_on_update(ui: &mut conrod::Ui<piston_window::Glyphs>, new_game: &mut b
             .w_h(200.0, 50.0)
             .mid_left_of(CANVAS)
             .rgb(0.4, 0.75, 0.6)
-            .frame(FRAME_WIDTH)
             .label("New game")
             .react(|| *new_game = true)
             .set(NEW_GAME_BUTTON, ui);
@@ -88,7 +83,6 @@ fn handle_on_update(ui: &mut conrod::Ui<piston_window::Glyphs>, new_game: &mut b
             .mid_left_of(CANVAS)
             .down_from(NEW_GAME_BUTTON, 45.0)
             .rgb(0.4, 0.75, 0.6)
-            .frame(FRAME_WIDTH)
             .label("Exit")
             .react(|| *exit = true)
             .set(EXIT_BUTTON, ui);
