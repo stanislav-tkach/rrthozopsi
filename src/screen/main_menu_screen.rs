@@ -15,6 +15,12 @@ impl MainMenuScreen {
     }
 }
 
+enum State {
+    NewGame,
+    Options,
+    Exit,
+}
+
 impl Screen for MainMenuScreen {
     fn on_input(&mut self,
                 input: &piston_window::Input,
