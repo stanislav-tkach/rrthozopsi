@@ -83,6 +83,15 @@ fn handle_on_update(ui: &mut conrod::Ui<piston_window::Glyphs>, new_game: &mut b
             .mid_left_of(CANVAS)
             .down_from(NEW_GAME_BUTTON, 45.0)
             .rgb(0.4, 0.75, 0.6)
+            .label("Options")
+            .react(|| ())
+            .set(OPTIONS_BUTTON, ui);
+
+        conrod::Button::new()
+            .w_h(200.0, 50.0)
+            .mid_left_of(CANVAS)
+            .down_from(OPTIONS_BUTTON, 45.0)
+            .rgb(0.4, 0.75, 0.6)
             .label("Exit")
             .react(|| *exit = true)
             .set(EXIT_BUTTON, ui);
