@@ -12,7 +12,7 @@ pub struct MainMenuScreen {
 
 impl MainMenuScreen {
     pub fn new(window: &piston_window::PistonWindow, context: &mut Context) -> MainMenuScreen {
-        MainMenuScreen { ui: create_ui(&window, &context.assets_path), new_game: false, exit: false, }
+        MainMenuScreen { ui: create_ui(&window, &context.assets_path), state: None, new_game: false, exit: false, }
     }
 }
 
@@ -49,7 +49,7 @@ impl Screen for MainMenuScreen {
     }
 
     fn on_update(&mut self, args: &piston_window::UpdateArgs) {
-        handle_on_update(&mut self.ui, &mut self.new_game, &mut self.exit);
+        handle_on_update(&mut self.ui, &mut self.state);
     }
 }
 
@@ -69,7 +69,7 @@ fn create_ui(window: &piston_window::PistonWindow,
     conrod::Ui::new(glyph_cache.unwrap(), theme)
 }
 
-fn handle_on_update(ui: &mut conrod::Ui<piston_window::Glyphs>, new_game: &mut bool, exit: &mut bool) {
+fn handle_on_update(ui: &mut conrod::Ui<piston_window::Glyphs>, state: &mut Option<State>) {
     ui.set_widgets(|ui| {
         conrod::Canvas::new()
             .pad(30.)
@@ -82,7 +82,7 @@ fn handle_on_update(ui: &mut conrod::Ui<piston_window::Glyphs>, new_game: &mut b
             .mid_left_of(CANVAS)
             .rgb(0.4, 0.75, 0.6)
             .label("New game")
-            .react(|| *new_game = true)
+            .react(|| *state = Some(State::NewGame))
             .set(NEW_GAME_BUTTON, ui);
 
         conrod::Button::new()
@@ -91,7 +91,7 @@ fn handle_on_update(ui: &mut conrod::Ui<piston_window::Glyphs>, new_game: &mut b
             .down_from(NEW_GAME_BUTTON, 45.0)
             .rgb(0.4, 0.75, 0.6)
             .label("Options")
-            .react(|| ())
+            .react(|| *state = Some(State::Options))
             .set(OPTIONS_BUTTON, ui);
 
         conrod::Button::new()
@@ -100,7 +100,7 @@ fn handle_on_update(ui: &mut conrod::Ui<piston_window::Glyphs>, new_game: &mut b
             .down_from(OPTIONS_BUTTON, 45.0)
             .rgb(0.4, 0.75, 0.6)
             .label("Exit")
-            .react(|| *exit = true)
+            .react(|| *state = Some(State::Exit))
             .set(EXIT_BUTTON, ui);
     });
 }
