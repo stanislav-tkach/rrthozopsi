@@ -6,13 +6,11 @@ use conrod::color::Colorable;
 pub struct MainMenuScreen {
     ui: conrod::Ui<piston_window::Glyphs>,
     state: Option<State>,
-    new_game: bool,
-    exit: bool,
 }
 
 impl MainMenuScreen {
     pub fn new(window: &piston_window::PistonWindow, context: &mut Context) -> MainMenuScreen {
-        MainMenuScreen { ui: create_ui(&window, &context.assets_path), state: None, new_game: false, exit: false, }
+        MainMenuScreen { ui: create_ui(&window, &context.assets_path), state: None, }
     }
 }
 
