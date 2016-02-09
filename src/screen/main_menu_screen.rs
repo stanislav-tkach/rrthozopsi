@@ -5,6 +5,7 @@ use conrod::color::Colorable;
 
 pub struct MainMenuScreen {
     ui: conrod::Ui<piston_window::Glyphs>,
+    state: Option<State>,
     new_game: bool,
     exit: bool,
 }
