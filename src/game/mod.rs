@@ -16,7 +16,6 @@ pub struct Game {
 impl Game {
     pub fn new() -> Game {
         let window: piston_window::PistonWindow = piston_window::WindowSettings::new("rrthozopsi", [600, 600])
-                                                      .exit_on_esc(true)
                                                       .build()
                                                       .unwrap();
         let mut context = screen::Context {
