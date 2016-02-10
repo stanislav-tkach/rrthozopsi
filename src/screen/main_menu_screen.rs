@@ -22,19 +22,20 @@ enum State {
 
 impl Screen for MainMenuScreen {
     fn on_input(&mut self,
-                input: &piston_window::Input,
+                _: &piston_window::Input,
                 window: &piston_window::PistonWindow,
                 context: &mut Context)
                 -> InputResults {
-        use piston_window::{Input, Button, MouseButton};
-
+        self.ui.handle_event(window);
         let mut result = Vec::new();
 
-        match input {
-            &Input::Press(Button::Mouse(MouseButton::Left)) => {
+        match self.state {
+            Some(State::NewGame) => {
                 result.push(InputResult::PopScreen);
                 result.push(InputResult::PushScreen(Box::new(BattleScreen::new(&window, context))));
             }
+            Some(State::Options) => {}
+            Some(State::Exit) => {}
             _ => {}
         }
 

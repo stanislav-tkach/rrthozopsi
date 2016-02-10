@@ -46,6 +46,10 @@ impl Game {
                 }
                 Some(Event::Input(ref input)) => {
                     handle_input(screens, &input, &window, &mut self.context);
+                    if screens.is_empty() {
+                        // No screens - exit game.
+                        return
+                    }
                 }
                 _ => {}
             }
@@ -69,7 +73,6 @@ fn handle_input(screens: &mut Screens,
             screen::InputResult::PopScreen => {
                 screens.pop();
             }
-            screen::InputResult::ExitGame => {}
         }
     }
 }
