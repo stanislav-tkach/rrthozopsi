@@ -36,7 +36,7 @@ impl Screen for MainMenuScreen {
             }
             Some(State::Options) => {}
             Some(State::Exit) => {}
-            _ => {}
+            None => {}
         }
 
         result
