@@ -3,6 +3,7 @@ use piston_window;
 pub enum InputResult {
     PushScreen(Box<Screen>),
     PopScreen,
+    ExitGame,
 }
 
 pub type InputResults = Vec<InputResult>;
