@@ -69,6 +69,7 @@ fn handle_input(screens: &mut Screens,
             screen::InputResult::PopScreen => {
                 screens.pop();
             }
+            screen::InputResult::ExitGame => {}
         }
     }
 }
