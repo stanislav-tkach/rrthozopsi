@@ -47,7 +47,7 @@ impl Game {
                     handle_input(screens, &input, &window, &mut self.context);
                     if screens.is_empty() {
                         // No screens - exit game.
-                        return
+                        return;
                     }
                 }
                 _ => {}
