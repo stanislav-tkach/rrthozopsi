@@ -53,6 +53,8 @@ impl Screen for MainMenuScreen {
     }
 
     fn on_update(&mut self, args: &piston_window::UpdateArgs) {
+        let button_color = conrod::color::rgb(0.4, 0.75, 0.6);
+
         let state = &mut self.state;
 
         self.ui.set_widgets(|ui| {
@@ -65,7 +67,7 @@ impl Screen for MainMenuScreen {
             conrod::Button::new()
                 .w_h(200.0, 50.0)
                 .mid_left_of(CANVAS)
-                .rgb(0.4, 0.75, 0.6)
+                .color(button_color)
                 .label("New game")
                 .react(|| *state = Some(State::NewGame))
                 .set(NEW_GAME_BUTTON, ui);
@@ -74,7 +76,7 @@ impl Screen for MainMenuScreen {
                 .w_h(200.0, 50.0)
                 .mid_left_of(CANVAS)
                 .down_from(NEW_GAME_BUTTON, 45.0)
-                .rgb(0.4, 0.75, 0.6)
+                .color(button_color)
                 .label("Options")
                 .react(|| *state = Some(State::Options))
                 .set(OPTIONS_BUTTON, ui);
@@ -83,7 +85,7 @@ impl Screen for MainMenuScreen {
                 .w_h(200.0, 50.0)
                 .mid_left_of(CANVAS)
                 .down_from(OPTIONS_BUTTON, 45.0)
-                .rgb(0.4, 0.75, 0.6)
+                .color(button_color)
                 .label("Exit")
                 .react(|| *state = Some(State::Exit))
                 .set(EXIT_BUTTON, ui);
