@@ -3,14 +3,14 @@ use piston_window;
 use conrod::{self, Widget, Frameable, Positionable, Sizeable, Labelable};
 use conrod::color::Colorable;
 
-pub struct MainMenuScreen {
+pub struct MainMenu {
     ui: conrod::Ui<piston_window::Glyphs>,
     state: Option<State>,
 }
 
-impl MainMenuScreen {
+impl MainMenu {
     pub fn new(window: &piston_window::PistonWindow, context: &mut Context) -> Self {
-        MainMenuScreen {
+        MainMenu {
             ui: create_ui(&window, &context.assets_path),
             state: None,
         }
@@ -23,7 +23,7 @@ enum State {
     Exit,
 }
 
-impl Screen for MainMenuScreen {
+impl Screen for MainMenu {
     fn on_input(&mut self,
                 _: &piston_window::Input,
                 window: &piston_window::PistonWindow,

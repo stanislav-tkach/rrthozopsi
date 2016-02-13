@@ -21,7 +21,7 @@ impl Game {
         let mut context = screen::Context {
             assets_path: find_folder::Search::KidsThenParents(3, 5).for_folder("assets").unwrap(),
         };
-        let screens: Screens = vec![Box::new(screen::MainMenuScreen::new(&window, &mut context))];
+        let screens: Screens = vec![Box::new(screen::MainMenu::new(&window, &mut context))];
         Game {
             window: window,
             screens: screens,
