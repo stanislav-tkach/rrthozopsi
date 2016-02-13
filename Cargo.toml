@@ -13,8 +13,8 @@ keywords = ["game", "piston"]
 name = "rrthozopsi"
 
 [dependencies]
-piston_window = "*"
+piston_window = "0.33.0"
 gfx_device_gl = "0.7.0"
-piston2d-gfx_graphics = "*"
+piston2d-gfx_graphics = "0.17.0"
 find_folder = "*"
 conrod = "*"
