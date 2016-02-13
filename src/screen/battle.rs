@@ -25,7 +25,7 @@ fn load_sprite(window: &piston_window::PistonWindow,
 }
 
 impl Battle {
-    pub fn new(window: &piston_window::PistonWindow, context: &mut Context) -> Battle {
+    pub fn new(window: &piston_window::PistonWindow, context: &mut Context) -> Self {
         Battle {
             player: object::Object::new(Some(load_sprite(&window, &context.assets_path, "skeleton.png"))),
             up: false,

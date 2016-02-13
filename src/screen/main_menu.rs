@@ -9,7 +9,7 @@ pub struct MainMenuScreen {
 }
 
 impl MainMenuScreen {
-    pub fn new(window: &piston_window::PistonWindow, context: &mut Context) -> MainMenuScreen {
+    pub fn new(window: &piston_window::PistonWindow, context: &mut Context) -> Self {
         MainMenuScreen {
             ui: create_ui(&window, &context.assets_path),
             state: None,

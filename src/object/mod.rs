@@ -14,7 +14,7 @@ pub struct Object {
 }
 
 impl Object {
-    pub fn new(sprite: Option<piston_window::Texture<gfx_device_gl::Resources>>) -> Object {
+    pub fn new(sprite: Option<piston_window::Texture<gfx_device_gl::Resources>>) -> Self {
         Object {
             x: 0.,
             y: 0.,

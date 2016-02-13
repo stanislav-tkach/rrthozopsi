@@ -14,7 +14,7 @@ pub struct Game {
 }
 
 impl Game {
-    pub fn new() -> Game {
+    pub fn new() -> Self {
         let window: piston_window::PistonWindow = piston_window::WindowSettings::new("rrthozopsi", [600, 600])
                                                       .build()
                                                       .unwrap();
