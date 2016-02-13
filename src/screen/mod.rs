@@ -1,7 +1,7 @@
 pub mod screen;
-mod main_menu_screen;
-mod battle_screen;
+mod main_menu;
+mod battle;
 
 pub use self::screen::*;
-pub use self::main_menu_screen::*;
-pub use self::battle_screen::*;
+pub use self::main_menu::*;
+pub use self::battle::*;
