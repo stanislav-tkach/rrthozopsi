@@ -3,7 +3,7 @@ use object;
 use piston_window::{self, Transformed};
 use gfx_device_gl;
 
-pub struct BattleScreen {
+pub struct Battle {
     player: object::Object,
     up: bool,
     down: bool,
@@ -24,9 +24,9 @@ fn load_sprite(window: &piston_window::PistonWindow,
         .unwrap()
 }
 
-impl BattleScreen {
-    pub fn new(window: &piston_window::PistonWindow, context: &mut Context) -> BattleScreen {
-        BattleScreen {
+impl Battle {
+    pub fn new(window: &piston_window::PistonWindow, context: &mut Context) -> Battle {
+        Battle {
             player: object::Object::new(Some(load_sprite(&window, &context.assets_path, "skeleton.png"))),
             up: false,
             down: false,
@@ -36,7 +36,7 @@ impl BattleScreen {
     }
 }
 
-impl Screen for BattleScreen {
+impl Screen for Battle {
     fn on_input(&mut self,
                 input: &piston_window::Input,
                 window: &piston_window::PistonWindow,

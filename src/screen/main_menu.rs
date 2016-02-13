@@ -35,7 +35,7 @@ impl Screen for MainMenuScreen {
         match self.state {
             Some(State::NewGame) => {
                 result.push(InputResult::PopScreen);
-                result.push(InputResult::PushScreen(Box::new(BattleScreen::new(&window, context))));
+                result.push(InputResult::PushScreen(Box::new(Battle::new(&window, context))));
             }
             Some(State::Options) => {}
             Some(State::Exit) => {
