@@ -7,3 +7,12 @@ pub struct Options {
     ui: conrod::Ui<piston_window::Glyphs>,
     back: bool,
 }
+
+impl Options {
+    pub fn new(window: &PistonWindow, context: &mut Context) -> Self {
+        MainMenu {
+            ui: create_ui(&window, &context.assets_path),
+            state: None,
+        }
+    }
+}
