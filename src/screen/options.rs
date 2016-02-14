@@ -11,7 +11,7 @@ pub struct Options {
 impl Options {
     pub fn new(window: &PistonWindow, context: &mut Context) -> Self {
         MainMenu {
-            ui: create_ui(&window, &context.assets_path),
+            ui: ui_utils::create_ui(&window, &context.assets_path),
             state: None,
         }
     }

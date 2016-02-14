@@ -11,7 +11,7 @@ pub struct MainMenu {
 impl MainMenu {
     pub fn new(window: &PistonWindow, context: &mut Context) -> Self {
         MainMenu {
-            ui: create_ui(&window, &context.assets_path),
+            ui: ui_utils::create_ui(&window, &context.assets_path),
             state: None,
         }
     }
@@ -98,13 +98,4 @@ widget_ids! {
     NEW_GAME_BUTTON,
     OPTIONS_BUTTON,
     EXIT_BUTTON,
-}
-
-fn create_ui(window: &PistonWindow,
-             assets_path: &::std::path::Path)
-             -> conrod::Ui<piston_window::Glyphs> {
-    let font_path = assets_path.join("NotoSans-Regular.ttf");
-    let theme = conrod::Theme::default();
-    let glyph_cache = piston_window::Glyphs::new(&font_path, window.factory.borrow().clone());
-    conrod::Ui::new(glyph_cache.unwrap(), theme)
 }
