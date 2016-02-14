@@ -1,4 +1,4 @@
-use piston_window;
+use piston_window::{self, PistonWindow};
 
 pub enum InputResult {
     PushScreen(Box<Screen>),
@@ -14,9 +14,9 @@ pub struct Context {
 pub trait Screen {
     fn on_input(&mut self,
                 input: &piston_window::Input,
-                window: &piston_window::PistonWindow,
+                window: &PistonWindow,
                 context: &mut Context)
                 -> InputResults;
-    fn on_draw(&mut self, args: &piston_window::RenderArgs, window: &piston_window::PistonWindow);
+    fn on_draw(&mut self, args: &piston_window::RenderArgs, window: &PistonWindow);
     fn on_update(&mut self, args: &piston_window::UpdateArgs);
 }

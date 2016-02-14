@@ -1,6 +1,6 @@
 use screen::*;
 use object;
-use piston_window::{self, Transformed};
+use piston_window::{self, PistonWindow, Transformed};
 use gfx_device_gl;
 
 pub struct Battle {
@@ -11,7 +11,7 @@ pub struct Battle {
     right: bool,
 }
 
-fn load_sprite(window: &piston_window::PistonWindow,
+fn load_sprite(window: &PistonWindow,
                assets_path: &::std::path::Path,
                name: &str)
                -> piston_window::Texture<gfx_device_gl::Resources> {
@@ -25,7 +25,7 @@ fn load_sprite(window: &piston_window::PistonWindow,
 }
 
 impl Battle {
-    pub fn new(window: &piston_window::PistonWindow, context: &mut Context) -> Self {
+    pub fn new(window: &PistonWindow, context: &mut Context) -> Self {
         Battle {
             player: object::Object::new(Some(load_sprite(&window, &context.assets_path, "skeleton.png"))),
             up: false,
@@ -39,7 +39,7 @@ impl Battle {
 impl Screen for Battle {
     fn on_input(&mut self,
                 input: &piston_window::Input,
-                window: &piston_window::PistonWindow,
+                window: &PistonWindow,
                 context: &mut Context)
                 -> InputResults {
         use piston_window::{Input, Button, Key};
@@ -87,7 +87,7 @@ impl Screen for Battle {
         result
     }
 
-    fn on_draw(&mut self, args: &piston_window::RenderArgs, window: &piston_window::PistonWindow) {
+    fn on_draw(&mut self, args: &piston_window::RenderArgs, window: &PistonWindow) {
         window.draw_2d(|context, graphics| {
             piston_window::clear([0.0, 0.0, 0.0, 1.0], graphics);
 

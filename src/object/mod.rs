@@ -1,9 +1,7 @@
 use gfx_device_gl;
 use gfx_graphics::GfxGraphics;
 
-use piston_window;
-use piston_window::Transformed;
-use piston_window::ImageSize;
+use piston_window::{self, Transformed, ImageSize};
 
 #[derive(Debug)]
 pub struct Object {

@@ -1,21 +1,20 @@
 extern crate find_folder;
 
-use screen;
-use screen::Screen;
+use screen::{self, Screen};
 
-use piston_window;
+use piston_window::{self, PistonWindow};
 
 type Screens = Vec<Box<screen::Screen>>;
 
 pub struct Game {
-    window: piston_window::PistonWindow,
+    window: PistonWindow,
     context: screen::Context,
     screens: Screens,
 }
 
 impl Game {
     pub fn new() -> Self {
-        let window: piston_window::PistonWindow = piston_window::WindowSettings::new("rrthozopsi", [600, 600])
+        let window: PistonWindow = piston_window::WindowSettings::new("rrthozopsi", [600, 600])
                                                       .build()
                                                       .unwrap();
         let mut context = screen::Context {
@@ -62,7 +61,7 @@ fn last<'a>(vec: &'a mut Screens) -> &'a mut Box<screen::Screen> {
 
 fn handle_input(screens: &mut Screens,
                 input: &piston_window::Input,
-                window: &piston_window::PistonWindow,
+                window: &PistonWindow,
                 context: &mut screen::Context) {
     for action in last(screens).on_input(&input, &window, context) {
         match action {

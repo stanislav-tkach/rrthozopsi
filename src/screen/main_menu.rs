@@ -1,5 +1,5 @@
 use screen::*;
-use piston_window;
+use piston_window::{self, PistonWindow};
 use conrod::{self, Widget, Frameable, Positionable, Sizeable, Labelable};
 use conrod::color::Colorable;
 
@@ -9,7 +9,7 @@ pub struct MainMenu {
 }
 
 impl MainMenu {
-    pub fn new(window: &piston_window::PistonWindow, context: &mut Context) -> Self {
+    pub fn new(window: &PistonWindow, context: &mut Context) -> Self {
         MainMenu {
             ui: create_ui(&window, &context.assets_path),
             state: None,
@@ -26,7 +26,7 @@ enum State {
 impl Screen for MainMenu {
     fn on_input(&mut self,
                 _: &piston_window::Input,
-                window: &piston_window::PistonWindow,
+                window: &PistonWindow,
                 context: &mut Context)
                 -> InputResults {
         self.ui.handle_event(window);
@@ -47,7 +47,7 @@ impl Screen for MainMenu {
         result
     }
 
-    fn on_draw(&mut self, args: &piston_window::RenderArgs, window: &piston_window::PistonWindow) {
+    fn on_draw(&mut self, args: &piston_window::RenderArgs, window: &PistonWindow) {
         self.ui.handle_event(window);
         window.draw_2d(|context, graphics| self.ui.draw_if_changed(context, graphics));
     }
@@ -100,7 +100,7 @@ widget_ids! {
     EXIT_BUTTON,
 }
 
-fn create_ui(window: &piston_window::PistonWindow,
+fn create_ui(window: &PistonWindow,
              assets_path: &::std::path::Path)
              -> conrod::Ui<piston_window::Glyphs> {
     let font_path = assets_path.join("NotoSans-Regular.ttf");
