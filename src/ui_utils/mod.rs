@@ -1,4 +1,7 @@
-fn create_ui(window: &PistonWindow,
+use piston_window::{self, PistonWindow};
+use conrod;
+
+pub fn create_ui(window: &PistonWindow,
              assets_path: &::std::path::Path)
              -> conrod::Ui<piston_window::Glyphs> {
     let font_path = assets_path.join("NotoSans-Regular.ttf");
