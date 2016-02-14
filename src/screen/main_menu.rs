@@ -47,12 +47,12 @@ impl Screen for MainMenu {
         result
     }
 
-    fn on_draw(&mut self, args: &piston_window::RenderArgs, window: &PistonWindow) {
+    fn on_draw(&mut self, _: &piston_window::RenderArgs, window: &PistonWindow) {
         self.ui.handle_event(window);
         window.draw_2d(|context, graphics| self.ui.draw_if_changed(context, graphics));
     }
 
-    fn on_update(&mut self, args: &piston_window::UpdateArgs) {
+    fn on_update(&mut self, _: &piston_window::UpdateArgs) {
         let button_color = conrod::color::rgb(0.4, 0.75, 0.6);
 
         let state = &mut self.state;
