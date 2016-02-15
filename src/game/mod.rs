@@ -15,8 +15,8 @@ pub struct Game {
 impl Game {
     pub fn new() -> Self {
         let window: PistonWindow = piston_window::WindowSettings::new("rrthozopsi", [600, 600])
-                                                      .build()
-                                                      .unwrap();
+                                       .build()
+                                       .unwrap();
         let mut context = screen::Context {
             assets_path: find_folder::Search::KidsThenParents(3, 5).for_folder("assets").unwrap(),
         };

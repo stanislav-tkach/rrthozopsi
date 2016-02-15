@@ -25,11 +25,7 @@ enum State {
 }
 
 impl Screen for MainMenu {
-    fn on_input(&mut self,
-                _: &piston_window::Input,
-                window: &PistonWindow,
-                context: &mut Context)
-                -> InputResults {
+    fn on_input(&mut self, _: &piston_window::Input, window: &PistonWindow, context: &mut Context) -> InputResults {
         self.ui.handle_event(window);
         let mut result = Vec::new();
 

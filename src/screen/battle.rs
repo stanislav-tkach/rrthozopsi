@@ -37,11 +37,7 @@ impl Battle {
 }
 
 impl Screen for Battle {
-    fn on_input(&mut self,
-                input: &piston_window::Input,
-                window: &PistonWindow,
-                context: &mut Context)
-                -> InputResults {
+    fn on_input(&mut self, input: &piston_window::Input, window: &PistonWindow, context: &mut Context) -> InputResults {
         use piston_window::{Input, Button, Key};
 
         let result = Vec::new();
