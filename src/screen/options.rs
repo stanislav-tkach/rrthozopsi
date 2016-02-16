@@ -1,4 +1,5 @@
 use screen::*;
+use ui_utils;
 use piston_window::{self, PistonWindow};
 use conrod::{self, Widget, Positionable, Sizeable, Labelable};
 use conrod::color::Colorable;
@@ -10,14 +11,14 @@ pub struct Options {
 
 impl Options {
     pub fn new(window: &PistonWindow, context: &mut Context) -> Self {
-        MainMenu {
+        Options {
             ui: ui_utils::create_ui(&window, &context.assets_path),
             back: false,
         }
     }
 }
 
-impl Screen for MainMenu {
+impl Screen for Options {
     fn on_input(&mut self,
                 _: &piston_window::Input,
                 window: &PistonWindow,
@@ -41,7 +42,7 @@ impl Screen for MainMenu {
     fn on_update(&mut self, _: &piston_window::UpdateArgs) {
         let button_color = conrod::color::rgb(0.4, 0.75, 0.6);
 
-        let back = &mut self.state;
+        let back = &mut self.back;
 
         self.ui.set_widgets(|ui| {
             conrod::Canvas::new()

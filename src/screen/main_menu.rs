@@ -34,7 +34,9 @@ impl Screen for MainMenu {
                 result.push(InputResult::PopScreen);
                 result.push(InputResult::PushScreen(Box::new(Battle::new(&window, context))));
             }
-            Some(State::Options) => {}
+            Some(State::Options) => {
+                result.push(InputResult::PushScreen(Box::new(Options::new(&window, context))));
+            }
             Some(State::Exit) => {
                 result.push(InputResult::PopScreen);
             }
