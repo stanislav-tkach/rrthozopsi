@@ -43,6 +43,7 @@ impl Screen for MainMenu {
             None => {}
         }
 
+        self.state = None;
         result
     }
 
