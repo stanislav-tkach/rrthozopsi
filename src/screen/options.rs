@@ -1,6 +1,6 @@
 use screen::*;
 use ui_utils;
-use piston_window::{self, PistonWindow};
+use piston_window::{self, PistonWindow, UpdateEvent};
 use conrod::{self, Widget, Positionable, Sizeable, Labelable};
 use conrod::color::Colorable;
 
@@ -56,6 +56,45 @@ impl Screen for Options {
                 .set(BACK_BUTTON, ui);
         });
     }
+
+    fn on_event(&mut self, window: &PistonWindow, context: &mut Context) -> InputResults {
+        self.ui.handle_event(window);
+
+        window.update(|_| {
+            let button_color = conrod::color::rgb(0.4, 0.75, 0.6);
+            let back = &mut self.back;
+            
+            self.ui.set_widgets(|ui| {
+                conrod::Canvas::new()
+                    .pad(30.)
+                    .color(conrod::color::rgb(0.2, 0.35, 0.45))
+                    .scroll_kids()
+                    .set(CANVAS, ui);
+
+                conrod::Button::new()
+                    .w_h(200.0, 50.0)
+                    .mid_left_of(CANVAS)
+                    .color(button_color)
+                    .label("Back")
+                    .react(|| *back = true)
+                    .set(BACK_BUTTON, ui);
+            });
+
+        });
+
+        window.draw_2d(|context, graphics| self.ui.draw_if_changed(context, graphics));
+
+
+
+        let mut result = Vec::new();
+
+        if self.back {
+            result.push(InputResult::PopScreen);
+        }
+
+        result
+    }
+
 }
 
 widget_ids! {

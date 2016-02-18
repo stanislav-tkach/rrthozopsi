@@ -106,4 +106,8 @@ impl Screen for Battle {
             self.player.mov(150.0 * args.dt, 0.0);
         }
     }
+
+    fn on_event(&mut self, window: &PistonWindow, context: &mut Context) -> InputResults {
+        Vec::new()
+    }
 }

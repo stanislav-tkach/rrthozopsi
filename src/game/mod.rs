@@ -2,7 +2,7 @@ extern crate find_folder;
 
 use screen::{self, Screen};
 
-use piston_window::{self, PistonWindow};
+use piston_window::{self, PistonWindow, EventLoop};
 
 type Screens = Vec<Box<screen::Screen>>;
 
@@ -32,7 +32,7 @@ impl Game {
         use piston_window::Event;
 
         let screens = &mut self.screens;
-
+/*
         // TODO: Remove clone?
         for window in &mut self.window {
             match window.event {
@@ -52,6 +52,14 @@ impl Game {
                 _ => {}
             }
         }
+*/
+        for event in self.window.clone().ups(60) {
+            handle_event(screens, &event, &mut self.context);
+            if screens.is_empty() {
+                // No screens - exit game.
+                return;
+            }
+        }
     }
 }
 
@@ -64,6 +72,21 @@ fn handle_input(screens: &mut Screens,
                 window: &PistonWindow,
                 context: &mut screen::Context) {
     for action in last(screens).on_input(&input, &window, context) {
+        match action {
+            screen::InputResult::PushScreen(new_screen) => {
+                screens.push(new_screen);
+            }
+            screen::InputResult::PopScreen => {
+                screens.pop();
+            }
+        }
+    }
+}
+
+fn handle_event(screens: &mut Screens,
+                window: &PistonWindow,
+                context: &mut screen::Context) {
+    for action in last(screens).on_event(&window, context) {
         match action {
             screen::InputResult::PushScreen(new_screen) => {
                 screens.push(new_screen);
