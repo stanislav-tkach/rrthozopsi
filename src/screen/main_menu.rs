@@ -1,6 +1,6 @@
 use screen::*;
 use ui_utils;
-use piston_window::{self, PistonWindow, UpdateEvent};
+use piston_window::{self, PistonWindow};
 use conrod::{self, Widget, Positionable, Sizeable, Labelable};
 use conrod::color::Colorable;
 
@@ -89,73 +89,6 @@ impl Screen for MainMenu {
                 .react(|| *state = Some(State::Exit))
                 .set(EXIT_BUTTON, ui);
         });
-    }
-
-    fn on_event(&mut self, window: &PistonWindow, context: &mut Context) -> InputResults {
-        self.ui.handle_event(window);
-
-        window.update(|_| {
-            let state = &mut self.state;
-            let button_color = conrod::color::rgb(0.4, 0.75, 0.6);
-            
-            self.ui.set_widgets(|ui| {
-                conrod::Canvas::new()
-                    .pad(30.)
-                    .color(conrod::color::rgb(0.2, 0.35, 0.45))
-                    .scroll_kids()
-                    .set(CANVAS, ui);
-
-                conrod::Button::new()
-                    .w_h(200.0, 50.0)
-                    .mid_left_of(CANVAS)
-                    .color(button_color)
-                    .label("New game")
-                    .react(|| *state = Some(State::NewGame))
-                    .set(NEW_GAME_BUTTON, ui);
-            
-                conrod::Button::new()
-                    .w_h(200.0, 50.0)
-                    .mid_left_of(CANVAS)
-                    .down_from(NEW_GAME_BUTTON, 45.0)
-                    .color(button_color)
-                    .label("Options")
-                    .react(|| *state = Some(State::Options))
-                    .set(OPTIONS_BUTTON, ui);
-            
-                conrod::Button::new()
-                    .w_h(200.0, 50.0)
-                    .mid_left_of(CANVAS)
-                    .down_from(OPTIONS_BUTTON, 45.0)
-                    .color(button_color)
-                    .label("Exit")
-                    .react(|| *state = Some(State::Exit))
-                    .set(EXIT_BUTTON, ui);
-            });
-
-        });
-
-        window.draw_2d(|context, graphics| self.ui.draw_if_changed(context, graphics));
-
-
-
-        let mut result = Vec::new();
-
-        match self.state {
-            Some(State::NewGame) => {
-                result.push(InputResult::PopScreen);
-                result.push(InputResult::PushScreen(Box::new(Battle::new(&window, context))));
-            }
-            Some(State::Options) => {
-                result.push(InputResult::PushScreen(Box::new(Options::new(&window, context))));
-            }
-            Some(State::Exit) => {
-                result.push(InputResult::PopScreen);
-            }
-            None => {}
-        }
-        self.state = None;
-
-        result
     }
 }
 
