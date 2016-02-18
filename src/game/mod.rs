@@ -33,7 +33,6 @@ impl Game {
 
         let screens = &mut self.screens;
 
-        // TODO: Remove clone?
         for window in &mut self.window {
             match window.event {
                 Some(Event::Update(ref args)) => {
