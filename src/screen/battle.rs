@@ -80,6 +80,8 @@ impl Screen for Battle {
             _ => {}
         }
 
+        // TODO: Handle esc.
+
         result
     }
 
