@@ -8,6 +8,7 @@ mod game;
 mod screen;
 mod object;
 mod ui_utils;
+mod context;
 
 fn main() {
     let mut game = game::Game::new();
