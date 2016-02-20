@@ -7,6 +7,12 @@ pub enum InputResult {
 
 pub type InputResults = Vec<InputResult>;
 
+pub enum GameState {
+    NotStarted,
+    Running,
+    Paused,
+}
+
 pub struct Context {
     pub assets_path: ::std::path::PathBuf,
 }
