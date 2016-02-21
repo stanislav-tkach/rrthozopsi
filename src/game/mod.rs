@@ -1,7 +1,7 @@
 extern crate find_folder;
 
 use screen::{self, Screen};
-use context::{Context};
+use context::{Context, GameState};
 
 use piston_window::{self, PistonWindow};
 
@@ -19,7 +19,7 @@ impl Game {
                                        .build()
                                        .unwrap();
         let mut context = Context {
-            assets_path: find_folder::Search::KidsThenParents(3, 5).for_folder("assets").unwrap(),
+            assets_path: find_folder::Search::KidsThenParents(3, 5).for_folder("assets").unwrap(), game_state: GameState::NotStarted,
         };
         let screens: Screens = vec![Box::new(screen::MainMenu::new(&window, &mut context))];
         Game {
