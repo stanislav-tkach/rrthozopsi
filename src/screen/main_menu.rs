@@ -43,6 +43,7 @@ impl Screen for MainMenu {
             None => {}
         }
 
+        // TODO: on scope exit?
         self.state = None;
         result
     }
