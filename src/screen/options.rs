@@ -1,7 +1,7 @@
 use screen::*;
 use ui_utils;
 use piston_window::{self, PistonWindow};
-use conrod::{self, Widget, Positionable, Sizeable, Labelable};
+use conrod::{self, Canvas, Button, Widget, Positionable, Sizeable, Labelable};
 use conrod::color::Colorable;
 
 pub struct Options {
@@ -41,13 +41,13 @@ impl Screen for Options {
         let back = &mut self.back;
 
         self.ui.set_widgets(|ui| {
-            conrod::Canvas::new()
+            Canvas::new()
                 .pad(30.)
                 .color(conrod::color::rgb(0.2, 0.35, 0.45))
                 .scroll_kids()
                 .set(CANVAS, ui);
 
-            conrod::Button::new()
+            Button::new()
                 .w_h(200.0, 50.0)
                 .mid_left_of(CANVAS)
                 .color(button_color)

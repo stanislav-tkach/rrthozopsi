@@ -1,5 +1,6 @@
 use screen::*;
 use object;
+use std::path::Path;
 use piston_window::{self, PistonWindow, Transformed};
 use gfx_device_gl;
 
@@ -12,7 +13,7 @@ pub struct Battle {
 }
 
 fn load_sprite(window: &PistonWindow,
-               assets_path: &::std::path::Path,
+               assets_path: &Path,
                name: &str)
                -> piston_window::Texture<gfx_device_gl::Resources> {
     // TODO: Create and use default sprite in case of failure during loading?

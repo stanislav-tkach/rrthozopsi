@@ -1,7 +1,7 @@
 use screen::*;
 use ui_utils;
 use piston_window::{self, PistonWindow};
-use conrod::{self, Widget, Positionable, Sizeable, Labelable};
+use conrod::{self, Canvas, Button, Widget, Positionable, Sizeable, Labelable};
 use conrod::color::Colorable;
 
 pub struct MainMenu {
@@ -59,13 +59,13 @@ impl Screen for MainMenu {
         let state = &mut self.state;
 
         self.ui.set_widgets(|ui| {
-            conrod::Canvas::new()
+            Canvas::new()
                 .pad(30.)
                 .color(conrod::color::rgb(0.2, 0.35, 0.45))
                 .scroll_kids()
                 .set(CANVAS, ui);
 
-            conrod::Button::new()
+            Button::new()
                 .w_h(200.0, 50.0)
                 .mid_left_of(CANVAS)
                 .color(button_color)
@@ -73,7 +73,7 @@ impl Screen for MainMenu {
                 .react(|| *state = Some(State::NewGame))
                 .set(NEW_GAME_BUTTON, ui);
 
-            conrod::Button::new()
+            Button::new()
                 .w_h(200.0, 50.0)
                 .mid_left_of(CANVAS)
                 .down_from(NEW_GAME_BUTTON, 45.0)
@@ -82,7 +82,7 @@ impl Screen for MainMenu {
                 .react(|| *state = Some(State::Options))
                 .set(OPTIONS_BUTTON, ui);
 
-            conrod::Button::new()
+            Button::new()
                 .w_h(200.0, 50.0)
                 .mid_left_of(CANVAS)
                 .down_from(OPTIONS_BUTTON, 45.0)

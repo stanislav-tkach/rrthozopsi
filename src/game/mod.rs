@@ -1,9 +1,9 @@
 extern crate find_folder;
 
-use screen::{self, Screen};
+use screen::{self, Screen, MainMenu};
 use context::{Context, GameState};
 
-use piston_window::{self, PistonWindow};
+use piston_window::{self, PistonWindow, WindowSettings};
 
 type Screens = Vec<Box<screen::Screen>>;
 
@@ -15,13 +15,13 @@ pub struct Game {
 
 impl Game {
     pub fn new() -> Self {
-        let window: PistonWindow = piston_window::WindowSettings::new("rrthozopsi", [600, 600])
+        let window: PistonWindow = WindowSettings::new("rrthozopsi", [600, 600])
                                        .build()
                                        .unwrap();
         let mut context = Context {
             assets_path: find_folder::Search::KidsThenParents(3, 5).for_folder("assets").unwrap(), game_state: GameState::NotStarted,
         };
-        let screens: Screens = vec![Box::new(screen::MainMenu::new(&window, &mut context))];
+        let screens: Screens = vec![Box::new(MainMenu::new(&window, &mut context))];
         Game {
             window: window,
             screens: screens,
