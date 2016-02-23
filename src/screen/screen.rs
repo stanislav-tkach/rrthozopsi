@@ -1,4 +1,4 @@
-pub use context::Context;
+use context::Context;
 use piston_window::{self, PistonWindow};
 
 pub enum InputResult {

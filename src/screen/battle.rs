@@ -1,4 +1,5 @@
 use screen::*;
+use context::Context;
 use object;
 use std::path::Path;
 use piston_window::{self, PistonWindow, Transformed};

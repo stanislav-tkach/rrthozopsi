@@ -1,4 +1,5 @@
 use screen::*;
+use context::Context;
 use ui_utils;
 use piston_window::{self, PistonWindow};
 use conrod::{self, Canvas, Button, Widget, Positionable, Sizeable, Labelable};

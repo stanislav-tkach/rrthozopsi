@@ -1,4 +1,5 @@
 use screen::*;
+use context::{Context, GameState};
 use ui_utils;
 use piston_window::{self, PistonWindow};
 use conrod::{self, Canvas, Button, Widget, Positionable, Sizeable, Labelable};
@@ -33,6 +34,7 @@ impl Screen for MainMenu {
             Some(State::NewGame) => {
                 result.push(InputResult::PopScreen);
                 result.push(InputResult::PushScreen(Box::new(Battle::new(&window, context))));
+                context.game_state = GameState::Started;
             }
             Some(State::Options) => {
                 result.push(InputResult::PushScreen(Box::new(Options::new(&window, context))));
