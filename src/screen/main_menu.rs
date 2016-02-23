@@ -29,7 +29,7 @@ impl Screen for MainMenu {
         self.ui.handle_event(window);
         let mut result = Vec::new();
 
-        match self.state {
+        match self.state.take() {
             Some(State::NewGame) => {
                 result.push(InputResult::PopScreen);
                 result.push(InputResult::PushScreen(Box::new(Battle::new(&window, context))));
@@ -43,8 +43,6 @@ impl Screen for MainMenu {
             None => {}
         }
 
-        // TODO: 'finally'?
-        self.state = None;
         result
     }
 
