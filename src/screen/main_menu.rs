@@ -34,7 +34,7 @@ impl Screen for MainMenu {
             Some(State::NewGame) => {
                 result.push(InputResult::PopScreen);
                 result.push(InputResult::PushScreen(Box::new(Battle::new(&window, context))));
-                context.game_state = GameState::Started;
+                context.game_state = GameState::InProgress;
             }
             Some(State::Options) => {
                 result.push(InputResult::PushScreen(Box::new(Options::new(&window, context))));

@@ -2,7 +2,7 @@ use std::path::PathBuf;
 
 pub enum GameState {
     NotStarted,
-    Started,
+    InProgress,
 }
 
 pub struct Context {
