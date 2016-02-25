@@ -3,7 +3,7 @@ use context::{Context, GameState};
 use ui_utils;
 use piston_window::{self, PistonWindow};
 use conrod::{self, Canvas, Button, Widget, Positionable, Sizeable, Labelable};
-use conrod::color::Colorable;
+use conrod::color::{self, Colorable};
 
 pub struct MainMenu {
     ui: conrod::Ui<piston_window::Glyphs>,
@@ -54,14 +54,14 @@ impl Screen for MainMenu {
     }
 
     fn on_update(&mut self, _: &piston_window::UpdateArgs) {
-        let button_color = conrod::color::rgb(0.4, 0.75, 0.6);
+        let button_color = color::rgb(0.4, 0.75, 0.6);
 
         let state = &mut self.state;
 
         self.ui.set_widgets(|ui| {
             Canvas::new()
                 .pad(30.)
-                .color(conrod::color::rgb(0.2, 0.35, 0.45))
+                .color(color::rgb(0.2, 0.35, 0.45))
                 .scroll_kids()
                 .set(CANVAS, ui);
 
