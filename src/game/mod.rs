@@ -69,6 +69,7 @@ fn handle_input(screens: &mut Screens, input: &piston_window::Input, window: &Pi
             screen::InputResult::PopScreen => {
                 screens.pop();
             }
+            screen::InputResult::Exit => {}
         }
     }
 }
