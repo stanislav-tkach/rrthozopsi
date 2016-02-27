@@ -61,17 +61,19 @@ fn last<'a>(vec: &'a mut Screens) -> &'a mut Box<Screen> {
 }
 
 fn handle_input(screens: &mut Screens, input: &piston_window::Input, window: &PistonWindow, context: &mut Context) {
+    use screen::InputResult;
+
     for action in last(screens).on_input(&input, &window, context) {
         match action {
-            screen::InputResult::PushScreen(new_screen) => {
+            InputResult::PushScreen(new_screen) => {
                 screens.push(new_screen);
             }
-            screen::InputResult::PopScreen => {
+            InputResult::PopScreen => {
                 screens.pop();
             }
             // TODO: Handle event correctly.
             // TODO: Use screen::InputResult.
-            screen::InputResult::Exit => {}
+            InputResult::Exit => {}
         }
     }
 }
