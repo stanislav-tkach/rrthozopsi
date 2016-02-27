@@ -70,8 +70,6 @@ fn handle_input(screens: &mut Screens, input: &piston_window::Input, window: &Pi
             InputResult::PopScreen => {
                 screens.pop();
             }
-            // TODO: Handle event correctly.
-            // TODO: Use screen::InputResult.
             InputResult::Exit => { return true }
         }
     }
