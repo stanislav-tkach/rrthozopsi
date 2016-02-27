@@ -1,6 +1,6 @@
 extern crate find_folder;
 
-use screen::{self, Screen, MainMenu};
+use screen::{Screen, MainMenu};
 use context::{Context, GameState};
 
 use piston_window::{self, PistonWindow, WindowSettings};
