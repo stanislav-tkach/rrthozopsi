@@ -60,7 +60,7 @@ fn last<'a>(vec: &'a mut Screens) -> &'a mut Box<Screen> {
     vec.last_mut().unwrap()
 }
 
-fn handle_input(screens: &mut Screens, input: &piston_window::Input, window: &PistonWindow, context: &mut Context) {
+fn handle_input(screens: &mut Screens, input: &piston_window::Input, window: &PistonWindow, context: &mut Context) -> bool {
     use screen::InputResult;
 
     for action in last(screens).on_input(&input, &window, context) {
@@ -73,7 +73,9 @@ fn handle_input(screens: &mut Screens, input: &piston_window::Input, window: &Pi
             }
             // TODO: Handle event correctly.
             // TODO: Use screen::InputResult.
-            InputResult::Exit => {}
+            InputResult::Exit => { return true }
         }
     }
+
+    false
 }
