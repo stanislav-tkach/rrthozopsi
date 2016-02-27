@@ -40,7 +40,7 @@ impl Screen for MainMenu {
                 result.push(InputResult::PushScreen(Box::new(Options::new(&window, context))));
             }
             Some(State::Exit) => {
-                result.push(InputResult::PopScreen);
+                result.push(InputResult::Exit);
             }
             None => {}
         }
