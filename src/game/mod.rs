@@ -5,7 +5,7 @@ use context::{Context, GameState};
 
 use piston_window::{self, PistonWindow, WindowSettings};
 
-type Screens = Vec<Box<screen::Screen>>;
+type Screens = Vec<Box<Screen>>;
 
 pub struct Game {
     window: PistonWindow,
@@ -44,7 +44,7 @@ impl Game {
                     last(screens).on_draw(&args, &window);
                 }
                 Some(Event::Input(ref input)) => {
-                    handle_input(screens, &input, &window, &mut self.context);
+                    //handle_input(screens, &input, &window, &mut self.context);
                     if screens.is_empty() {
                         // No screens - exit game.
                         return;
@@ -56,7 +56,7 @@ impl Game {
     }
 }
 
-fn last<'a>(vec: &'a mut Screens) -> &'a mut Box<screen::Screen> {
+fn last<'a>(vec: &'a mut Screens) -> &'a mut Box<Screen> {
     vec.last_mut().unwrap()
 }
 
