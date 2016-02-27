@@ -44,7 +44,8 @@ impl Game {
                     last(screens).on_draw(&args, &window);
                 }
                 Some(Event::Input(ref input)) => {
-                    //handle_input(screens, &input, &window, &mut self.context);
+                    handle_input(screens, &input, &window, &mut self.context);
+                    assert!(screens.is_empty());
                     if screens.is_empty() {
                         // No screens - exit game.
                         return;
