@@ -1,12 +1,13 @@
 use screen::*;
 use context::{Context, GameState};
 use ui_utils;
-use piston_window::{self, PistonWindow};
+use piston_window::{self, PistonWindow, Glyphs};
 use conrod::{self, Canvas, Button, Widget, Positionable, Sizeable, Labelable};
 use conrod::color::{self, Colorable};
 
 pub struct MainMenu {
-    ui: conrod::Ui<piston_window::Glyphs>,
+//    ui: conrod::Ui<piston_window::Glyphs>,
+    ui: conrod::Ui<(<piston_window::G2d<'static> as conrod::Graphics>::Texture, Glyphs)>,
     state: Option<State>,
 }
 
