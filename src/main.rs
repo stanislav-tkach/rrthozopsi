@@ -6,7 +6,6 @@ extern crate conrod;
 
 mod game;
 mod screen;
-mod object;
 mod ui_utils;
 mod context;
 
