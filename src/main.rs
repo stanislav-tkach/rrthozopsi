@@ -4,10 +4,10 @@ extern crate gfx_graphics;
 #[macro_use]
 extern crate conrod;
 
+mod context;
 mod game;
 mod screen;
-mod ui_utils;
-mod context;
+mod ui;
 
 fn main() {
     let mut game = game::Game::new();

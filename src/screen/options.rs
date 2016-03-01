@@ -1,6 +1,6 @@
 use screen::*;
 use context::Context;
-use ui_utils;
+use ui;
 use piston_window::{self, PistonWindow};
 use conrod::{self, Canvas, Button, Widget, Positionable, Sizeable, Labelable};
 use conrod::color::Colorable;
@@ -13,7 +13,7 @@ pub struct Options {
 impl Options {
     pub fn new(window: &PistonWindow, context: &mut Context) -> Self {
         Options {
-            ui: ui_utils::create_ui(&window, &context.assets_path),
+            ui: ui::create_ui(&window, &context.assets_path),
             back: false,
         }
     }
