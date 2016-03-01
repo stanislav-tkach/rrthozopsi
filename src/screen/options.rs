@@ -6,7 +6,7 @@ use conrod::{self, Canvas, Button, Widget, Positionable, Sizeable, Labelable};
 use conrod::color::Colorable;
 
 pub struct Options {
-    ui: conrod::Ui<(<piston_window::G2d<'static> as conrod::Graphics>::Texture, piston_window::Glyphs)>,
+    ui: ui::Ui,
     back: bool,
 }
 
@@ -41,12 +41,12 @@ impl Screen for Options {
 
         let back = &mut self.back;
 
-        self.ui.set_widgets(|ui| {
+        self.ui.set_widgets(|mut ui| {
             Canvas::new()
                 .pad(30.)
                 .color(conrod::color::rgb(0.2, 0.35, 0.45))
                 .scroll_kids()
-                .set(CANVAS, ui);
+                .set(CANVAS, &mut ui);
 
             Button::new()
                 .w_h(200.0, 50.0)
@@ -54,7 +54,7 @@ impl Screen for Options {
                 .color(button_color)
                 .label("Back")
                 .react(|| *back = true)
-                .set(BACK_BUTTON, ui);
+                .set(BACK_BUTTON, &mut ui);
         });
     }
 }

@@ -8,8 +8,7 @@ pub struct Battle;
 
 impl Battle {
     pub fn new(window: &PistonWindow, context: &mut Context) -> Self {
-        Battle {
-        }
+        Battle
     }
 }
 

@@ -3,7 +3,7 @@ use piston_window::{PistonWindow, G2d, Glyphs};
 use conrod::{self, Theme};
 
 type Backend = (<G2d<'static> as conrod::Graphics>::Texture, Glyphs);
-type Ui = conrod::Ui<Backend>;
+pub type Ui = conrod::Ui<Backend>;
 
 pub fn create_ui(window: &PistonWindow, assets_path: &Path) -> Ui {
     let font_path = assets_path.join("NotoSans-Regular.ttf");

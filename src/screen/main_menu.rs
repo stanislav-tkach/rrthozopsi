@@ -6,8 +6,7 @@ use conrod::{self, Canvas, Button, Widget, Positionable, Sizeable, Labelable};
 use conrod::color::{self, Colorable};
 
 pub struct MainMenu {
-//    ui: conrod::Ui<piston_window::Glyphs>,
-    ui: conrod::Ui<(<piston_window::G2d<'static> as conrod::Graphics>::Texture, piston_window::Glyphs)>,
+    ui: ui::Ui,
     state: Option<State>,
 }
 
@@ -59,12 +58,12 @@ impl Screen for MainMenu {
 
         let state = &mut self.state;
 
-        self.ui.set_widgets(|ui| {
+        self.ui.set_widgets(|mut ui| {
             Canvas::new()
                 .pad(30.)
                 .color(color::rgb(0.2, 0.35, 0.45))
                 .scroll_kids()
-                .set(CANVAS, ui);
+                .set(CANVAS, &mut ui);
 
             Button::new()
                 .w_h(200.0, 50.0)
@@ -72,7 +71,7 @@ impl Screen for MainMenu {
                 .color(button_color)
                 .label("New game")
                 .react(|| *state = Some(State::NewGame))
-                .set(NEW_GAME_BUTTON, ui);
+                .set(NEW_GAME_BUTTON, &mut ui);
 
             Button::new()
                 .w_h(200.0, 50.0)
@@ -81,7 +80,7 @@ impl Screen for MainMenu {
                 .color(button_color)
                 .label("Options")
                 .react(|| *state = Some(State::Options))
-                .set(OPTIONS_BUTTON, ui);
+                .set(OPTIONS_BUTTON, &mut ui);
 
             Button::new()
                 .w_h(200.0, 50.0)
@@ -90,7 +89,7 @@ impl Screen for MainMenu {
                 .color(button_color)
                 .label("Exit")
                 .react(|| *state = Some(State::Exit))
-                .set(EXIT_BUTTON, ui);
+                .set(EXIT_BUTTON, &mut ui);
         });
     }
 }
