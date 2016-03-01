@@ -7,7 +7,7 @@ use conrod::color::{self, Colorable};
 
 pub struct MainMenu {
 //    ui: conrod::Ui<piston_window::Glyphs>,
-    ui: conrod::Ui<(<piston_window::G2d<'static> as conrod::Graphics>::Texture, Glyphs)>,
+    ui: conrod::Ui<(<piston_window::G2d<'static> as conrod::Graphics>::Texture, piston_window::Glyphs)>,
     state: Option<State>,
 }
 

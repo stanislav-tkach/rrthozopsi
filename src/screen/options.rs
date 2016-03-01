@@ -6,7 +6,7 @@ use conrod::{self, Canvas, Button, Widget, Positionable, Sizeable, Labelable};
 use conrod::color::Colorable;
 
 pub struct Options {
-    ui: conrod::Ui<piston_window::Glyphs>,
+    ui: conrod::Ui<(<piston_window::G2d<'static> as conrod::Graphics>::Texture, piston_window::Glyphs)>,
     back: bool,
 }
 

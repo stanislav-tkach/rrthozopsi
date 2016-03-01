@@ -31,9 +31,7 @@ impl Object {
     }
 
     pub fn render(&self,
-                  graphic: &mut GfxGraphics<gfx_device_gl::Resources,
-                                            gfx_device_gl::CommandBuffer<gfx_device_gl::Resources>,
-                                            gfx_device_gl::Output>,
+                  graphic: &mut i32,
                   view: &piston_window::math::Matrix2d) {
         if let Some(ref sprite) = self.sprite {
             let (x, y) = sprite.get_size();
