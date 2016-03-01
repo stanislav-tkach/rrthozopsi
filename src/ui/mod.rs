@@ -1,10 +1,13 @@
 use std::path::Path;
-use piston_window::{self, PistonWindow};
-use conrod;
+use piston_window::{PistonWindow, G2d, Glyphs};
+use conrod::{self, Theme};
 
-pub fn create_ui(window: &PistonWindow, assets_path: &Path) -> conrod::Ui<(<piston_window::G2d<'static> as conrod::Graphics>::Texture, piston_window::Glyphs)> {
+type Backend = (<G2d<'static> as conrod::Graphics>::Texture, Glyphs);
+type Ui = conrod::Ui<Backend>;
+
+pub fn create_ui(window: &PistonWindow, assets_path: &Path) -> Ui {
     let font_path = assets_path.join("NotoSans-Regular.ttf");
-    let theme = conrod::Theme::default();
-    let glyph_cache = piston_window::Glyphs::new(&font_path, window.factory.borrow().clone());
-    conrod::Ui::new(glyph_cache.unwrap(), theme)
+    let theme = Theme::default();
+    let glyph_cache = Glyphs::new(&font_path, window.factory.borrow().clone());
+    Ui::new(glyph_cache.unwrap(), theme)
 }
