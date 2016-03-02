@@ -27,6 +27,5 @@ impl Screen for Battle {
         });
     }
 
-    fn on_update(&mut self, args: &piston_window::UpdateArgs) {
-    }
+    fn on_update(&mut self, args: &piston_window::UpdateArgs) {}
 }
