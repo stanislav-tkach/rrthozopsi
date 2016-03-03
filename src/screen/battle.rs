@@ -2,7 +2,6 @@ use screen::*;
 use context::Context;
 use std::path::Path;
 use piston_window::{self, PistonWindow, Transformed};
-use gfx_device_gl;
 
 pub struct Battle;
 
