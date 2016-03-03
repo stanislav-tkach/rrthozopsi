@@ -2,7 +2,6 @@ extern crate find_folder;
 
 use screen::{Screen, MainMenu};
 use context::{Context, GameState};
-
 use piston_window::{self, PistonWindow, WindowSettings};
 
 type Screens = Vec<Box<Screen>>;

@@ -1,19 +1,19 @@
 use screen::*;
 use context::{Context, GameState};
-use ui;
-use piston_window::{self, PistonWindow, Glyphs};
-use conrod::{self, Canvas, Button, Widget, Positionable, Sizeable, Labelable};
+use ui::{create_ui, Ui};
+use piston_window::{self, PistonWindow};
+use conrod::{Canvas, Button, Widget, Positionable, Sizeable, Labelable};
 use conrod::color::{self, Colorable};
 
 pub struct MainMenu {
-    ui: ui::Ui,
+    ui: Ui,
     state: Option<State>,
 }
 
 impl MainMenu {
     pub fn new(window: &PistonWindow, context: &mut Context) -> Self {
         MainMenu {
-            ui: ui::create_ui(&window, &context.assets_path),
+            ui: create_ui(&window, &context.assets_path),
             state: None,
         }
     }
