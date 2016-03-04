@@ -20,7 +20,7 @@ impl Screen for Battle {
     }
 
     fn on_draw(&mut self, _args: &piston_window::RenderArgs, window: &PistonWindow) {
-        window.draw_2d(|context, graphics| {
+        window.draw_2d(|_context, graphics| {
             piston_window::clear([0.0, 0.0, 0.0, 1.0], graphics);
         });
     }
