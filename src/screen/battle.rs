@@ -13,10 +13,30 @@ impl Battle {
 }
 
 impl Screen for Battle {
-    fn on_input(&mut self, _input: &piston_window::Input, _: &PistonWindow, _: &mut Context) -> InputResults {
+    fn on_input(&mut self, input: &piston_window::Input, _: &PistonWindow, _: &mut Context) -> InputResults {
+        use piston_window::{Input, Button, Key};
+
         let result = Vec::new();
 
-        // TODO: Handle esc.
+        match input {
+            &Input::Press(button) => {
+                match button {
+                    Button::Keyboard(Key::Escape) => {
+                        self.main_menu = true;
+                    }
+                    _ => {}
+                }
+            }
+            &Input::Release(button) => {
+                match button {
+                    Button::Keyboard(Key::Escape) => {
+                        self.main_menu = false;
+                    }
+                    _ => {}
+                }
+            }
+            _ => {}
+        }
 
         result
     }
