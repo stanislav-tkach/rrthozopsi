@@ -2,11 +2,13 @@ use screen::*;
 use context::Context;
 use piston_window::{self, PistonWindow};
 
-pub struct Battle;
+pub struct Battle {
+    main_menu: bool,
+}
 
 impl Battle {
     pub fn new(_window: &PistonWindow, _context: &mut Context) -> Self {
-        Battle
+        Battle { main_menu: false }
     }
 }
 
