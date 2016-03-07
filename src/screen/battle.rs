@@ -2,13 +2,11 @@ use screen::*;
 use context::Context;
 use piston_window::{self, PistonWindow};
 
-pub struct Battle {
-    main_menu: bool,
-}
+pub struct Battle;
 
 impl Battle {
     pub fn new(_window: &PistonWindow, _context: &mut Context) -> Self {
-        Battle { main_menu: false }
+        Battle
     }
 }
 
@@ -23,14 +21,6 @@ impl Screen for Battle {
                 match button {
                     Button::Keyboard(Key::Escape) => {
                         result.push(InputResult::PushScreen(Box::new(MainMenu::new(&window, context))));
-                    }
-                    _ => {}
-                }
-            }
-            &Input::Release(button) => {
-                match button {
-                    Button::Keyboard(Key::Escape) => {
-                        self.main_menu = false;
                     }
                     _ => {}
                 }
