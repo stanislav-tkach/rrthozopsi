@@ -59,6 +59,7 @@ impl Screen for MainMenu {
 
     fn on_update(&mut self, _: &piston_window::UpdateArgs) {
         let button_color = color::rgb(0.4, 0.75, 0.6);
+//        let game_button_text = 
 
         let state = &mut self.state;
 

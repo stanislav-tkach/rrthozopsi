@@ -1,5 +1,6 @@
 use std::path::PathBuf;
 
+#[derive(PartialEq)]
 pub enum GameState {
     NotStarted,
     InProgress,
