@@ -33,8 +33,12 @@ impl Screen for MainMenu {
         match self.state.take() {
             Some(State::NewGame) => {
                 result.push(InputResult::PopScreen);
-                result.push(InputResult::PushScreen(Box::new(Battle::new(&window, context))));
-                context.game_state = GameState::InProgress;
+
+                if let GameState::NotStarted = context.game_state {
+                    // Start new game.
+                    result.push(InputResult::PushScreen(Box::new(Battle::new(&window, context))));
+                    context.game_state = GameState::InProgress;
+                }
             }
             Some(State::Options) => {
                 result.push(InputResult::PushScreen(Box::new(Options::new(&window, context))));
