@@ -8,6 +8,7 @@ use conrod::color::{self, Colorable};
 pub struct MainMenu {
     ui: Ui,
     state: Option<State>,
+    new_game: bool,
 }
 
 impl MainMenu {
@@ -15,6 +16,7 @@ impl MainMenu {
         MainMenu {
             ui: create_ui(&window, &context.assets_path),
             state: None,
+            new_game: context.game_state == GameState::NotStarted,
         }
     }
 }
@@ -34,7 +36,7 @@ impl Screen for MainMenu {
             Some(State::NewGame) => {
                 result.push(InputResult::PopScreen);
 
-                if let GameState::NotStarted = context.game_state {
+                if self.new_game {
                     // Start new game.
                     result.push(InputResult::PushScreen(Box::new(Battle::new(&window, context))));
                     context.game_state = GameState::InProgress;
@@ -59,7 +61,12 @@ impl Screen for MainMenu {
 
     fn on_update(&mut self, _: &piston_window::UpdateArgs) {
         let button_color = color::rgb(0.4, 0.75, 0.6);
-//        let game_button_text = 
+        let game_button_text = if self.new_game {
+            "New Game"
+        }
+        else {
+            "Continue"
+        };
 
         let state = &mut self.state;
 
@@ -74,14 +81,14 @@ impl Screen for MainMenu {
                 .w_h(200.0, 50.0)
                 .mid_left_of(CANVAS)
                 .color(button_color)
-                .label("New game")
+                .label(game_button_text)
                 .react(|| *state = Some(State::NewGame))
                 .set(NEW_OR_CONTINUE_GAME_BUTTON, &mut ui);
 
             Button::new()
                 .w_h(200.0, 50.0)
                 .mid_left_of(CANVAS)
-                .down_from(NEW_GAME_BUTTON, 45.0)
+                .down_from(NEW_OR_CONTINUE_GAME_BUTTON, 45.0)
                 .color(button_color)
                 .label("Options")
                 .react(|| *state = Some(State::Options))
