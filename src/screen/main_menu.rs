@@ -75,7 +75,7 @@ impl Screen for MainMenu {
                 .color(button_color)
                 .label("New game")
                 .react(|| *state = Some(State::NewGame))
-                .set(NEW_GAME_BUTTON, &mut ui);
+                .set(NEW_OR_CONTINUE_GAME_BUTTON, &mut ui);
 
             Button::new()
                 .w_h(200.0, 50.0)
@@ -100,7 +100,7 @@ impl Screen for MainMenu {
 
 widget_ids! {
     CANVAS,
-    NEW_GAME_BUTTON,
+    NEW_OR_CONTINUE_GAME_BUTTON,
     OPTIONS_BUTTON,
     EXIT_BUTTON,
 }
