@@ -63,8 +63,7 @@ impl Screen for MainMenu {
         let button_color = color::rgb(0.4, 0.75, 0.6);
         let game_button_text = if self.new_game {
             "New Game"
-        }
-        else {
+        } else {
             "Continue"
         };
 
