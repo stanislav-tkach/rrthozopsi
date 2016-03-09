@@ -4,6 +4,7 @@
 [![travis-ci-image][]] [travis-ci-link]
 [![appveyor-ci-image][]] [appveyor-ci-link]
 [![coveralls-image][]] [coveralls-link]
+[![clippy-image][]] [clippy-link]
 
 ## Overview
 
@@ -38,3 +39,5 @@ Rrthozopsi is licensed under the MIT license (see the `LICENSE` file).
 [license-file]: https://github.com/DarkEld3r/rrthozopsi/blob/master/LICENSE
 [coveralls-image]: https://coveralls.io/repos/DarkEld3r/rrthozopsi/badge.svg?branch=master&service=github
 [coveralls-link]: https://coveralls.io/github/DarkEld3r/rrthozopsi?branch=master
+[clippy-image]: http://clippy.bashy.io/github/DarkEld3r/rrthozopsi/master/badge.svg
+[clippy-link]: http://clippy.bashy.io/github/DarkEld3r/rrthozopsi/master/log
