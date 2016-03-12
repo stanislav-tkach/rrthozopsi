@@ -2,13 +2,13 @@ extern crate find_folder;
 
 use std::path::PathBuf;
 
-pub struct Loader {
+pub struct Manager {
     assets_path: PathBuf,
 }
 
-impl Loader {
+impl Manager {
     pub fn new() -> Self {
-        Loader { assets_path: find_folder::Search::KidsThenParents(3, 5).for_folder("assets").unwrap() }
+        Manager { assets_path: find_folder::Search::KidsThenParents(3, 5).for_folder("assets").unwrap() }
     }
 
     pub fn get_asset_path(&self, name: &str) -> PathBuf {
