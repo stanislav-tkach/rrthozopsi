@@ -1,6 +1,6 @@
 use screen::{Screen, MainMenu};
 use context::{Context, GameState};
-use resource_loader::Loader;
+use resource_manager::Manager;
 use piston_window::{self, PistonWindow, WindowSettings};
 
 type Screens = Vec<Box<Screen>>;
@@ -17,7 +17,7 @@ impl Game {
                                        .build()
                                        .unwrap();
         let mut context = Context {
-            loader: Loader::new(),
+            resource_manager: Manager::new(),
             game_state: GameState::NotStarted,
         };
         let screens: Screens = vec![Box::new(MainMenu::new(&window, &mut context))];

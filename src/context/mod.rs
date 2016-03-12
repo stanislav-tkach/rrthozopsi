@@ -1,4 +1,4 @@
-use resource_loader::Loader;
+use resource_manager::Manager;
 
 #[derive(PartialEq)]
 pub enum GameState {
@@ -7,6 +7,6 @@ pub enum GameState {
 }
 
 pub struct Context {
-    pub loader: Loader,
+    pub resource_manager: Manager,
     pub game_state: GameState,
 }

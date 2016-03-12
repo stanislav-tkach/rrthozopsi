@@ -13,7 +13,7 @@ pub struct Options {
 impl Options {
     pub fn new(window: &PistonWindow, context: &mut Context) -> Self {
         Options {
-            ui: ui::create_ui(&window, &context.loader.get_font()),
+            ui: ui::create_ui(&window, &context.resource_manager.get_font()),
             back: false,
         }
     }

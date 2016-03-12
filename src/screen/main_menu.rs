@@ -14,7 +14,7 @@ pub struct MainMenu {
 impl MainMenu {
     pub fn new(window: &PistonWindow, context: &mut Context) -> Self {
         MainMenu {
-            ui: create_ui(&window, &context.loader.get_font()),
+            ui: create_ui(&window, &context.resource_manager.get_font()),
             state: None,
             new_game: context.game_state == GameState::NotStarted,
         }

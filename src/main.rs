@@ -6,7 +6,7 @@ mod context;
 mod game;
 mod screen;
 mod ui;
-mod resource_loader;
+mod resource_manager;
 
 fn main() {
     let mut game = game::Game::new();
