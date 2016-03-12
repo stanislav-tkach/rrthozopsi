@@ -15,7 +15,7 @@ impl Loader {
         self.assets_path.join(name)
     }
 
-    pub fn get_font() -> PathBuf {
+    pub fn get_font(&self) -> PathBuf {
         self.assets_path.join("NotoSans-Regular.ttf")
     }
 }
