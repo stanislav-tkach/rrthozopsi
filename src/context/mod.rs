@@ -1,4 +1,4 @@
-use std::path::PathBuf;
+use resource_loader::Loader;
 
 #[derive(PartialEq)]
 pub enum GameState {
@@ -7,6 +7,6 @@ pub enum GameState {
 }
 
 pub struct Context {
-    pub assets_path: PathBuf,
+    pub loader: Loader,
     pub game_state: GameState,
 }

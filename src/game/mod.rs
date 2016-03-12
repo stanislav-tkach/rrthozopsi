@@ -1,7 +1,6 @@
-extern crate find_folder;
-
 use screen::{Screen, MainMenu};
 use context::{Context, GameState};
+use resource_loader::Loader;
 use piston_window::{self, PistonWindow, WindowSettings};
 
 type Screens = Vec<Box<Screen>>;
@@ -18,7 +17,7 @@ impl Game {
                                        .build()
                                        .unwrap();
         let mut context = Context {
-            assets_path: find_folder::Search::KidsThenParents(3, 5).for_folder("assets").unwrap(),
+            loader: Loader::new(),
             game_state: GameState::NotStarted,
         };
         let screens: Screens = vec![Box::new(MainMenu::new(&window, &mut context))];
