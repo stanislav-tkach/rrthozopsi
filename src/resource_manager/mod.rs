@@ -11,7 +11,7 @@ impl Manager {
         Manager { assets_path: find_folder::Search::KidsThenParents(3, 5).for_folder("assets").unwrap() }
     }
 
-    pub fn get_asset_path(&self, name: &str) -> PathBuf {
+    pub fn get_asset(&self, name: &str) -> PathBuf {
         self.assets_path.join(name)
     }
 
