@@ -16,6 +16,6 @@ impl Manager {
     }
 
     pub fn get_font(&self) -> PathBuf {
-        self.assets_path.join("NotoSans-Regular.ttf")
+        self.get_asset("NotoSans-Regular.ttf")
     }
 }
