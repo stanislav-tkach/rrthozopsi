@@ -30,10 +30,16 @@ fn new() {
 }
 
 #[test]
+fn get_asset() {
+    let manager = Manager::new();
+    let asset_path = manager.get_asset("test");
+    assert!(asset_path.to_string_lossy().len() > manager.assets_path.to_string_lossy().len());
+}
+
+#[test]
 fn get_font() {
     let manager = Manager::new();
     let font_path = manager.get_font();
-    assert!(font_path.to_string_lossy().len() > manager.assets_path.to_string_lossy().len());
     assert!(font_path.is_absolute());
     assert!(font_path.is_file());
     assert_eq!("ttf", font_path.extension().unwrap());
