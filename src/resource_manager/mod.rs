@@ -25,8 +25,16 @@ fn new() {
     let manager = Manager::new();
     assert!(!manager.assets_path.to_string_lossy().is_empty());
     assert!(manager.assets_path.is_absolute());
-    assert_eq!(None, manager.assets_path.extension());
-
-//    assert_eq!("tts", manager.assets_path.extension().unwrap());
+    assert!(manager.assets_path.exists());
+    assert!(manager.assets_path.is_dir());
 }
 
+#[test]
+fn get_font() {
+    let manager = Manager::new();
+    let font_path = manager.get_font();
+    assert!(font_path.to_string_lossy().len() > manager.assets_path.to_string_lossy().len());
+    assert!(font_path.is_absolute());
+    assert!(font_path.is_file());
+    assert_eq!("ttf", font_path.extension().unwrap());
+}
