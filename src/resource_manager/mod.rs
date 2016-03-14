@@ -19,3 +19,14 @@ impl Manager {
         self.get_asset("NotoSans-Regular.ttf")
     }
 }
+
+#[test]
+fn new() {
+    let manager = Manager::new();
+    assert!(!manager.assets_path.to_string_lossy().is_empty());
+    assert!(manager.assets_path.is_absolute());
+    assert_eq!(None, manager.assets_path.extension());
+
+//    assert_eq!("tts", manager.assets_path.extension().unwrap());
+}
+
