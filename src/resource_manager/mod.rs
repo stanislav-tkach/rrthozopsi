@@ -18,6 +18,10 @@ impl Manager {
     pub fn get_font(&self) -> PathBuf {
         self.get_asset("NotoSans-Regular.ttf")
     }
+
+    pub fn load_texture(&self) {
+        // TODO: FIXME.
+    }
 }
 
 #[test]
