@@ -1,6 +1,8 @@
 extern crate find_folder;
+extern crate gfx_device_gl;
 
 use std::path::PathBuf;
+use piston_window::{PistonWindow, Texture, Flip, TextureSettings};
 
 pub struct Manager {
     assets_path: PathBuf,
@@ -19,8 +21,8 @@ impl Manager {
         self.get_asset("NotoSans-Regular.ttf")
     }
 
-    pub fn load_texture(&self) {
-        // TODO: FIXME.
+    pub fn load_texture(&self, window: &PistonWindow) -> Texture<gfx_device_gl::Resources> {
+        Texture::from_path(&mut *window.factory.borrow_mut(), self.get_asset("skeleton.png"), Flip::None, &TextureSettings::new()).unwrap()
     }
 }
 
