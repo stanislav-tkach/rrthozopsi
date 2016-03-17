@@ -22,7 +22,11 @@ impl Manager {
     }
 
     pub fn load_texture(&self, window: &PistonWindow) -> Texture<gfx_device_gl::Resources> {
-        Texture::from_path(&mut *window.factory.borrow_mut(), self.get_asset("skeleton.png"), Flip::None, &TextureSettings::new()).unwrap()
+        Texture::from_path(&mut *window.factory.borrow_mut(),
+                           self.get_asset("skeleton.png"),
+                           Flip::None,
+                           &TextureSettings::new())
+            .unwrap()
     }
 }
 
