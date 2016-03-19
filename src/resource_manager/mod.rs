@@ -1,8 +1,8 @@
 extern crate find_folder;
-extern crate gfx_device_gl;
 
 use std::path::PathBuf;
 use piston_window::{PistonWindow, Texture, Flip, TextureSettings};
+use gfx_device_gl;
 
 pub struct Manager {
     assets_path: PathBuf,

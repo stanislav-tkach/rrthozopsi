@@ -1,4 +1,5 @@
 extern crate piston_window;
+extern crate gfx_device_gl;
 #[macro_use]
 extern crate conrod;
 

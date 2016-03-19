@@ -1,12 +1,15 @@
 use screen::*;
 use context::Context;
-use piston_window::{self, PistonWindow};
+use piston_window::{self, PistonWindow, Texture};
+use gfx_device_gl;
 
-pub struct Battle;
+pub struct Battle {
+    a: Texture<gfx_device_gl::Resources>,
+}
 
 impl Battle {
-    pub fn new(_window: &PistonWindow, _context: &mut Context) -> Self {
-        Battle
+    pub fn new(window: &PistonWindow, context: &mut Context) -> Self {
+        Battle { a: context.resource_manager.load_texture(window) }
     }
 }
 
