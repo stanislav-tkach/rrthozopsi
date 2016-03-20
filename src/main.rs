@@ -1,5 +1,4 @@
 extern crate piston_window;
-extern crate gfx_device_gl;
 #[macro_use]
 extern crate conrod;
 
@@ -8,6 +7,7 @@ mod game;
 mod screen;
 mod ui;
 mod resource_manager;
+mod graphics;
 
 fn main() {
     let mut game = game::Game::new();

@@ -1,10 +1,10 @@
 use screen::*;
 use context::Context;
-use piston_window::{self, PistonWindow, Texture};
-use gfx_device_gl;
+use graphics::Texture;
+use piston_window::{self, PistonWindow};
 
 pub struct Battle {
-    a: Texture<gfx_device_gl::Resources>,
+    a: Texture,
 }
 
 impl Battle {
