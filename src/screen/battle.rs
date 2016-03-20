@@ -9,7 +9,7 @@ pub struct Battle {
 
 impl Battle {
     pub fn new(window: &PistonWindow, context: &mut Context) -> Self {
-        Battle { a: context.resource_manager.load_texture(window) }
+        Battle { a: context.resource_manager.load_texture(window, "skeleton.png") }
     }
 }
 

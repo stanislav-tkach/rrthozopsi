@@ -21,9 +21,9 @@ impl Manager {
         self.get_asset("NotoSans-Regular.ttf")
     }
 
-    pub fn load_texture(&self, window: &PistonWindow) -> Texture {
+    pub fn load_texture(&self, window: &PistonWindow, name: &str) -> Texture {
         Texture::from_path(&mut *window.factory.borrow_mut(),
-                           self.get_asset("skeleton.png"),
+                           self.get_asset(name),
                            Flip::None,
                            &TextureSettings::new())
             .unwrap()
