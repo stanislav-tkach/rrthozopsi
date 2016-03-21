@@ -4,6 +4,10 @@ use std::path::PathBuf;
 use graphics::Texture;
 use piston_window::{PistonWindow, Flip, TextureSettings};
 
+pub enum Textures {
+    EmptyTile,
+}
+
 pub struct Manager {
     assets_path: PathBuf,
 }
