@@ -1,5 +1,6 @@
 use screen::*;
 use context::Context;
+use resource_manager::Textures;
 use graphics::Texture;
 use piston_window::{self, PistonWindow};
 
@@ -9,7 +10,7 @@ pub struct Battle {
 
 impl Battle {
     pub fn new(window: &PistonWindow, context: &mut Context) -> Self {
-        Battle { a: context.resource_manager.load_texture(window, "skeleton.png") }
+        Battle { a: context.resource_manager.load_texture(window, Textures::EmptyTile) }
     }
 }
 
