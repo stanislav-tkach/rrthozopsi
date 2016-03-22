@@ -25,12 +25,18 @@ impl Manager {
         self.get_asset("NotoSans-Regular.ttf")
     }
 
-    pub fn load_texture(&self, window: &PistonWindow, name: &str) -> Texture {
+    pub fn load_texture(&self, window: &PistonWindow, texture: Textures) -> Texture {
         Texture::from_path(&mut *window.factory.borrow_mut(),
-                           self.get_asset(name),
+                           self.get_asset(texture_to_str(texture)),
                            Flip::None,
                            &TextureSettings::new())
             .unwrap()
+    }
+}
+
+fn texture_to_str(texture: Textures) -> &'static str {
+    match texture {
+        Textures::EmptyTile => "skeleton.png",
     }
 }
 
