@@ -5,12 +5,12 @@ use graphics::Texture;
 use piston_window::{self, PistonWindow};
 
 pub struct Battle {
-    a: Texture,
+    empty_tile: Texture,
 }
 
 impl Battle {
     pub fn new(window: &PistonWindow, context: &mut Context) -> Self {
-        Battle { a: context.resource_manager.load_texture(window, Textures::EmptyTile) }
+        Battle { empty_tile: context.resource_manager.load_texture(window, Textures::EmptyTile) }
     }
 }
 
