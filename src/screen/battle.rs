@@ -38,7 +38,7 @@ impl Screen for Battle {
     fn on_draw(&mut self, _args: &piston_window::RenderArgs, window: &PistonWindow) {
         window.draw_2d(|context, graphics| {
             piston_window::clear([0.0, 0.0, 0.0, 1.0], graphics);
-            piston_window::image(&self.a, context.transform, graphics);
+            piston_window::image(&self.empty_tile, context.transform, graphics);
         });
     }
 
