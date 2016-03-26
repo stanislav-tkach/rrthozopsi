@@ -15,6 +15,9 @@ Simple experimental game.
 ### Instal FreeType
 Piston uses [FreeType](http://www.freetype.org/) for font rendering.
 
+### Assets
+Game assets are stored in [separate repo](https://github.com/DarkEld3r/rrthozopsi_assets) and will be downloaded during build process.
+
 ### Build
 ```sh
 git clone https://github.com/DarkEld3r/rrthozopsi
