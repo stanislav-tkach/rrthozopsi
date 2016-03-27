@@ -8,6 +8,7 @@ license = "MIT"
 readme = "README.md"
 description = "Experimental game"
 keywords = ["game", "piston"]
+build = "build.rs"
 
 [[bin]]
 name = "rrthozopsi"
