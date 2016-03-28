@@ -6,7 +6,7 @@ fn main() {
     let output = Command::new("git")
                      .arg("clone")
                      .arg("https://github.com/DarkEld3r/rrthozopsi_assets")
-                     .arg("target/assets")
+                     .arg("assets")
                      .output()
                      .unwrap();
 

@@ -1,5 +1,6 @@
 # Build/output directory.
 /target/
+/assets/
 
 # Cargo lock file.
 Cargo.lock
