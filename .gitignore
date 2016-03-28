@@ -1,5 +1,6 @@
-# Build/output directory.
+# Build/output dir
 /target/
+# Assets are stored in separate repository and downloaded during build.
 /assets/
 
 # Cargo lock file.
