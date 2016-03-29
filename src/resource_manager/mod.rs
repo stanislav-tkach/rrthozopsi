@@ -36,7 +36,7 @@ impl Manager {
 
 fn texture_to_str(texture: Textures) -> &'static str {
     match texture {
-        Textures::EmptyTile => "skeleton.png",
+        Textures::EmptyTile => "empty_tile.png",
     }
 }
 
