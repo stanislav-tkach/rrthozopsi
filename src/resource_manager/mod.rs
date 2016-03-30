@@ -1,5 +1,4 @@
-extern crate find_folder;
-
+use std::env::current_dir;
 use std::path::PathBuf;
 use graphics::Texture;
 use piston_window::{PistonWindow, Flip, TextureSettings};
@@ -14,7 +13,7 @@ pub struct Manager {
 
 impl Manager {
     pub fn new() -> Self {
-        Manager { assets_path: find_folder::Search::KidsThenParents(3, 5).for_folder("assets").unwrap() }
+        Manager { assets_path: current_dir().expect("Unable to get current directory") }
     }
 
     pub fn get_asset(&self, name: &str) -> PathBuf {

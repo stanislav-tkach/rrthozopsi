@@ -15,6 +15,5 @@ name = "rrthozopsi"
 
 [dependencies]
 piston_window = "0.37.0"
-find_folder = "*"
 conrod = "*"
 gfx_device_gl = "0.8.2"
