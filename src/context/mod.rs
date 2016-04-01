@@ -1,6 +1,6 @@
 use resource_manager::Manager;
 
-#[derive(PartialEq, Clone, Debug)]
+#[derive(PartialEq)]
 pub enum GameState {
     NotStarted,
     InProgress,
