@@ -2,7 +2,7 @@ use screen::*;
 use context::Context;
 use resource_manager::Textures;
 use graphics::Texture;
-use piston_window::{self, PistonWindow};
+use piston_window::{self, PistonWindow, ImageSize, Transformed};
 
 pub struct Battle {
     empty_tile: Texture,
@@ -38,7 +38,16 @@ impl Screen for Battle {
     fn on_draw(&mut self, _args: &piston_window::RenderArgs, window: &PistonWindow) {
         window.draw_2d(|context, graphics| {
             piston_window::clear([0.0, 0.0, 0.0, 1.0], graphics);
-            piston_window::image(&self.empty_tile, context.transform, graphics);
+
+            // Draw grid.
+            let tiles_count = 4;
+            let (height, width) = self.empty_tile.get_size();
+            for x in 0..tiles_count {
+                for y in 0..tiles_count {
+                    // TODO: draw_many?
+                    piston_window::image(&self.empty_tile, context.transform.trans((x * height + 5) as f64, (y * width + 5) as f64), graphics);
+                }
+            }
         });
     }
 
