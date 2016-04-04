@@ -46,8 +46,10 @@ impl Screen for Battle {
             for x in 0..tiles_count {
                 for y in 0..tiles_count {
                     // TODO: draw_many?
-                    //piston_window::image(&self.empty_tile, context.transform.trans((x * height + (5 * if x == 0 { 1 } else { 2 })) as f64, (y * width + (5 * if y == 0 { 1 } else { 2 })) as f64), graphics);
-                    piston_window::image(&self.empty_tile, context.transform.trans((x * (height + offset)) as f64, (y * (width + offset)) as  f64), graphics);
+                    piston_window::image(&self.empty_tile,
+                                         context.transform.trans((x * (height + offset)) as f64,
+                                                                 (y * (width + offset)) as f64),
+                                         graphics);
                 }
             }
         });
