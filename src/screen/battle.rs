@@ -40,11 +40,11 @@ impl Screen for Battle {
             piston_window::clear([0.0, 0.0, 0.0, 1.0], graphics);
 
             // Draw grid.
-            let tiles_count = 4;
+            let (x_count, y_count) = (9, 8);
             let offset = 5;
             let (height, width) = self.empty_tile.get_size();
-            for x in 0..tiles_count {
-                for y in 0..tiles_count {
+            for x in 0..x_count {
+                for y in 0..y_count {
                     // TODO: draw_many?
                     piston_window::image(&self.empty_tile,
                                          context.transform.trans((x * (height + offset)) as f64,
