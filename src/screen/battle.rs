@@ -16,7 +16,7 @@ impl Battle {
 
 impl Screen for Battle {
     fn on_input(&mut self, input: &piston_window::Input, window: &PistonWindow, context: &mut Context) -> InputResults {
-        use piston_window::{Input, Button, Key};
+        use piston_window::{Input, Button, Key, MouseButton};
 
         let mut result = Vec::new();
 
@@ -26,6 +26,7 @@ impl Screen for Battle {
                     Button::Keyboard(Key::Escape) => {
                         result.push(InputResult::PushScreen(Box::new(MainMenu::new(&window, context))));
                     }
+                    Button::Mouse(MouseButton::Left) => { /* TODO */ }
                     _ => {}
                 }
             }
