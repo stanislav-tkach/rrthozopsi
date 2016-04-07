@@ -26,7 +26,9 @@ impl Screen for Battle {
                     Button::Keyboard(Key::Escape) => {
                         result.push(InputResult::PushScreen(Box::new(MainMenu::new(&window, context))));
                     }
-                    Button::Mouse(MouseButton::Left) => { /* TODO */ }
+                    Button::Mouse(MouseButton::Left) => {
+                        // TODO
+                    }
                     _ => {}
                 }
             }
