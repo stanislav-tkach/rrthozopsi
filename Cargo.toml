@@ -14,6 +14,6 @@ build = "build.rs"
 name = "rrthozopsi"
 
 [dependencies]
-piston_window = "0.37.0"
+piston_window = "0.45.0"
 conrod = "*"
-gfx_device_gl = "0.8.2"
+gfx_device_gl = "0.9.0"

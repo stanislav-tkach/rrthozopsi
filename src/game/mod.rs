@@ -33,7 +33,8 @@ impl Game {
 
         let screens = &mut self.screens;
 
-        for window in &mut self.window {
+        while let Some(event) = window.next() {
+        //for window in &mut self.window {
             match window.event {
                 Some(Event::Update(ref args)) => {
                     last(screens).on_update(&args);
