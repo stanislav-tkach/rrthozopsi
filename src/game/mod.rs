@@ -33,17 +33,16 @@ impl Game {
 
         let screens = &mut self.screens;
 
-        while let Some(event) = window.next() {
-        //for window in &mut self.window {
-            match window.event {
+        while let Some(event) = self.window.next() {
+            match event {
                 Some(Event::Update(ref args)) => {
                     last(screens).on_update(&args);
                 }
                 Some(Event::Render(ref args)) => {
-                    last(screens).on_draw(&args, &window);
+                    last(screens).on_draw(&args, &self.window);
                 }
                 Some(Event::Input(ref input)) => {
-                    if handle_input(screens, &input, &window, &mut self.context) {
+                    if handle_input(screens, &input, &self.window, &mut self.context) {
                         // Exit game.
                         return;
                     }
